@@ -1,9 +1,149 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import Hero from "../components/Hero.astro";
+import Card from "../components/Card.astro";
+
+// Mock data para demostración
+const recentNews = [
+  {
+    title: "Nova Xunta Directiva 2024",
+    excerpt: "GPUL ten un novo equipo directivo que liderará a asociación nos próximos anos.",
+    date: "2024-03-15",
+    author: "GPUL",
+    href: "/news/nova-xunta-2024"
+  },
+  {
+    title: "Hackathon HackUDC 2024",
+    excerpt: "O maior hackathon de Galicia volve en febreiro con grandes novidades e premios.",
+    date: "2024-02-10",
+    author: "Organizadores",
+    href: "/events/hackudc-2024"
+  },
+  {
+    title: "Charla sobre Software Libre",
+    excerpt: "Próxima charla sobre a importancia do software libre na educación superior.",
+    date: "2024-01-20",
+    author: "GPUL",
+    href: "/news/charla-software-libre"
+  }
+];
+
+const upcomingEvents = [
+  {
+    title: "GPUL Schools - Curso de Git",
+    excerpt: "Aprende os fundamentos de Git e GitHub neste curso gratuíto.",
+    date: "2024-04-15",
+    tags: ["Curso", "Git", "GitHub"]
+  },
+  {
+    title: "AtlánticaConf 2027",
+    excerpt: "Conferencia de tecnoloxía e innovación do noroeste peninsular.",
+    date: "2027-06-01",
+    tags: ["Conferencia", "Tecnoloxía"]
+  }
+];
 ---
 
-<BaseLayout title="Hello World" description="A simple hello world page">
-  <main class="flex items-center justify-center min-h-screen">
-    <h1 class="text-4xl font-bold text-center">Hello World!</h1>
-  </main>
-</BaseLayout>
+<PageLayout 
+  title="GPUL - Grupo de Programadores e Usuarios de Linux" 
+  description="Defendendo o software libre dende 1998. Asociación universitaria dedicada á promoción do software libre e a tecnoloxía aberta."
+>
+  <Hero />
+  
+  <!-- Sección: A que nos dedicamos -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">A que nos dedicamos</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Promovemos a cultura libre en todos os seus aspectos: software, hardware e coñecemento.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Software libre</h3>
+          <p class="text-gray-600">
+            Ver e reutilizar o código é fundamental para aprender, para estar seguros de ter privacidade e para mellorar o software.
+          </p>
+        </div>
+        
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Hardware libre</h3>
+          <p class="text-gray-600">
+            Igual que no software, no hardware tamén se poden publicar os planos e deseños para democratizar o acceso a tecnoloxía.
+          </p>
+        </div>
+        
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Coñecemento libre</h3>
+          <p class="text-gray-600">
+            Non nos podemos olvidar da importancia de compartir coñecemento libremente, sen restricións, mellorando a sociedade.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Últimas noticias -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">Últimas noticias</h2>
+        <a href="/news" class="text-blue-600 hover:text-blue-700 font-medium">
+          Ver todas →
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {recentNews.map((news) => (
+          <Card
+            title={news.title}
+            excerpt={news.excerpt}
+            date={news.date}
+            author={news.author}
+            href={news.href}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Próximos eventos -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">Próximos eventos</h2>
+        <a href="/events" class="text-blue-600 hover:text-blue-700 font-medium">
+          Ver todos →
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {upcomingEvents.map((event) => (
+          <Card
+            title={event.title}
+            excerpt={event.excerpt}
+            date={event.date}
+            tags={event.tags}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>

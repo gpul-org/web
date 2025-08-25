@@ -1,0 +1,205 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import Card from "../components/Card.astro";
+
+// Mock data para posts do blog
+const blogPosts = [
+  {
+    title: "Reflexións sobre o HackUDC 2024",
+    excerpt: "Unha mirada retrospectiva ao maior hackathon de Galicia, os seus momentos máis destacados e o impacto na comunidade tech galega.",
+    date: "2024-03-01",
+    author: "Equipo GPUL",
+    href: "/blog/hackudc-2024-reflexions",
+    tags: ["HackUDC", "Eventos", "Reflexións"]
+  },
+  {
+    title: "A importancia do Software Libre na educación",
+    excerpt: "Como as tecnoloxías abertas poden transformar o ensino superior e preparar mellor aos estudantes para o futuro profesional.",
+    date: "2024-02-15",
+    author: "Jorge Teixeira",
+    href: "/blog/software-libre-educacion",
+    tags: ["Educación", "Software Libre", "Universidade"]
+  },
+  {
+    title: "Construíndo comunidade: 26 anos de GPUL",
+    excerpt: "Un percorrido pola historia de GPUL, os seus logros e como seguimos construíndo comunidade arredor da tecnoloxía libre.",
+    date: "2024-01-30",
+    author: "David Maseda",
+    href: "/blog/26-anos-gpul",
+    tags: ["Historia", "Comunidade", "GPUL"]
+  },
+  {
+    title: "Guía para novos colaboradores",
+    excerpt: "Todo o que necesitas saber para comezar a colaborar con GPUL: dende como participar ata como organizar o teu primeiro evento.",
+    date: "2024-01-15",
+    author: "Paula Taibo",
+    href: "/blog/guia-novos-colaboradores",
+    tags: ["Guía", "Colaboración", "Principiantes"]
+  },
+  {
+    title: "O futuro do Hardware Libre",
+    excerpt: "Análise das tendencias actuais no hardware aberto e como estas tecnoloxías están a democratizar o acceso á innovación.",
+    date: "2024-01-01",
+    author: "Bruno Cabado",
+    href: "/blog/futuro-hardware-libre",
+    tags: ["Hardware Libre", "Innovación", "Tecnoloxía"]
+  }
+];
+
+const categories = [
+  "Todos", "Eventos", "Educación", "Tecnoloxía", "Comunidade", "Guías", "Reflexións"
+];
+---
+
+<PageLayout 
+  title="Blog - GPUL" 
+  description="Artículos, reflexións e guías sobre software libre, tecnoloxía e comunidade polo equipo de GPUL e colaboradores."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold mb-4">Blog GPUL</h1>
+        <p class="text-xl text-indigo-100 max-w-3xl mx-auto">
+          Artículos, reflexións e guías sobre software libre, tecnoloxía e comunidade.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorías -->
+  <section class="py-8 bg-gray-50 border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap gap-2 justify-center">
+        {categories.map((category, index) => (
+          <button class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            index === 0 
+              ? 'bg-indigo-600 text-white hover:bg-indigo-700' 
+              : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+          }`}>
+            {category}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Post destacado -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Post destacado</h2>
+        <p class="text-gray-600">O artículo máis recente do noso blog</p>
+      </div>
+      
+      <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl overflow-hidden text-white">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center p-8 lg:p-12">
+          <div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              {blogPosts[0].tags.map((tag) => (
+                <span class="px-3 py-1 bg-white/20 rounded-full text-sm font-medium">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h3 class="text-2xl lg:text-3xl font-bold mb-4">
+              {blogPosts[0].title}
+            </h3>
+            <p class="text-indigo-100 mb-6 text-lg">
+              {blogPosts[0].excerpt}
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="text-sm text-indigo-200">
+                Por {blogPosts[0].author} • {blogPosts[0].date}
+              </div>
+              <a 
+                href={blogPosts[0].href}
+                class="inline-flex items-center px-6 py-2 bg-white text-indigo-600 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+              >
+                Ler artículo
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="flex justify-center lg:justify-end">
+            <div class="w-full max-w-md aspect-square bg-white/10 rounded-2xl flex items-center justify-center">
+              <svg class="w-16 h-16 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de artículos -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">Todos os artículos</h2>
+        <div class="text-sm text-gray-500">
+          {blogPosts.length} artículos publicados
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogPosts.slice(1).map((post) => (
+          <Card
+            title={post.title}
+            excerpt={post.excerpt}
+            date={post.date}
+            author={post.author}
+            href={post.href}
+            tags={post.tags}
+          />
+        ))}
+      </div>
+
+      <!-- Paginación -->
+      <div class="mt-12 flex justify-center">
+        <div class="flex space-x-2">
+          <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+            Anterior
+          </button>
+          <button class="px-3 py-2 text-sm font-medium text-white bg-indigo-600 border border-indigo-600 rounded-md">
+            1
+          </button>
+          <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+            2
+          </button>
+          <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+            Seguinte
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter signup -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-indigo-600 rounded-2xl p-8 text-white">
+        <h2 class="text-2xl font-bold mb-4">Non te perdas ningunha actualización</h2>
+        <p class="text-indigo-100 mb-6">
+          Subscríbete para recibir os nosos últimos artículos directamente no teu correo.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+          <input 
+            type="email" 
+            placeholder="O teu email"
+            class="flex-1 px-4 py-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+          />
+          <button class="px-6 py-2 bg-white text-indigo-600 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+            Subscribir
+          </button>
+        </div>
+        <p class="text-xs text-indigo-200 mt-3">
+          Podes cancelar a subscrición en calquera momento. Respectamos a túa privacidade.
+        </p>
+      </div>
+    </div>
+  </section>
+</PageLayout>

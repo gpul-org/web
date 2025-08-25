@@ -1,0 +1,101 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+
+interface Props {
+  title: string;
+  excerpt?: string;
+  date?: string;
+  author?: string;
+  href?: string;
+  showImage?: boolean;
+  imageAlt?: string;
+  tags?: string[];
+}
+
+const { 
+  title,
+  excerpt,
+  date,
+  author,
+  href,
+  showImage = true,
+  imageAlt = title,
+  tags = []
+} = Astro.props;
+
+const CardTag = href ? 'a' : 'div';
+---
+
+<CardTag 
+  href={href} 
+  class={`bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-200 hover:scale-105 hover:shadow-lg ${href ? 'cursor-pointer' : ''}`}
+>
+  {showImage && (
+    <div class="aspect-video">
+      <ImagePlaceholder 
+        width="100%" 
+        height="200px" 
+        alt={imageAlt}
+        className="w-full h-full object-cover"
+      />
+    </div>
+  )}
+  
+  <div class="p-6">
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-3">
+        {tags.map((tag) => (
+          <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+    
+    <h3 class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
+      {title}
+    </h3>
+    
+    {excerpt && (
+      <p class="text-gray-600 mb-4 line-clamp-3">
+        {excerpt}
+      </p>
+    )}
+    
+    <div class="flex items-center justify-between text-sm text-gray-500">
+      <div class="flex items-center space-x-4">
+        {author && (
+          <span class="font-medium">{author}</span>
+        )}
+        {date && (
+          <time datetime={date}>{date}</time>
+        )}
+      </div>
+      
+      {href && (
+        <span class="text-blue-600 font-medium flex items-center">
+          Ler máis
+          <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </span>
+      )}
+    </div>
+  </div>
+</CardTag>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
