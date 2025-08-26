@@ -1,5 +1,6 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+import PageTitle from "../components/PageTitle.astro";
 import Card from "../components/Card.astro";
 
 // Mock data para noticias
@@ -59,17 +60,10 @@ const allNews = [
   title="Noticias - GPUL" 
   description="Mantente ao día coas últimas noticias e actualidades do Grupo de Programadores e Usuarios de Linux (GPUL)."
 >
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <h1 class="text-4xl lg:text-5xl font-bold mb-4">Noticias GPUL</h1>
-        <p class="text-xl text-blue-100 max-w-3xl mx-auto">
-          Mantente informado das últimas novidades, eventos e iniciativas do noso grupo.
-        </p>
-      </div>
-    </div>
-  </section>
+  <PageTitle 
+    title="Noticias GPUL" 
+    subtitle="Mantente informado das últimas novidades, eventos e iniciativas do noso grupo"
+  />
 
   <!-- Filtros -->
   <section class="py-8 bg-gray-50 border-b">

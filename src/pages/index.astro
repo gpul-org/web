@@ -2,6 +2,7 @@
 import PageLayout from "../layouts/PageLayout.astro";
 import Hero from "../components/Hero.astro";
 import Card from "../components/Card.astro";
+import { Code, Cpu, BookOpen } from "lucide-astro";
 
 // Mock data para demostración
 const recentNews = [
@@ -63,9 +64,7 @@ const upcomingEvents = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="text-center p-6">
           <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-            </svg>
+            <Code class="w-8 h-8 text-blue-600" />
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-3">Software libre</h3>
           <p class="text-gray-600">
@@ -75,9 +74,7 @@ const upcomingEvents = [
         
         <div class="text-center p-6">
           <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-            </svg>
+            <Cpu class="w-8 h-8 text-green-600" />
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-3">Hardware libre</h3>
           <p class="text-gray-600">
@@ -87,9 +84,7 @@ const upcomingEvents = [
         
         <div class="text-center p-6">
           <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
+            <BookOpen class="w-8 h-8 text-purple-600" />
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-3">Coñecemento libre</h3>
           <p class="text-gray-600">

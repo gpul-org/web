@@ -1,4 +1,8 @@
 ---
+import { Image } from "astro:assets";
+import { Menu } from "lucide-astro";
+import logoSmall from "../assets/logo-small.svg";
+
 interface NavItem {
   name: string;
   href: string;
@@ -6,28 +10,33 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { name: "Inicio", href: "/" },
-  { name: "Quen somos", href: "/about" },
-  { name: "Noticias", href: "/news" },
-  { name: "Eventos", href: "/events" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contacto", href: "/contact" },
+  { name: "Quen somos", href: "/sobre-nos" },
+  { name: "Noticias", href: "/novas" },
+  { name: "Eventos", href: "/eventos" },
+  { name: "Contacto", href: "/contacto" },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="bg-blue-800 text-white">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm text-gray-800 border-b border-blue-100/50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo/Brand -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-3">
-          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-            <span class="text-blue-800 font-bold text-lg">G</span>
-          </div>
+          <Image
+            src={logoSmall}
+            alt="GPUL Logo"
+            width={40}
+            height={40}
+            class="w-10 h-10"
+          />
           <div>
-            <h1 class="text-xl font-bold">GPUL</h1>
-            <p class="text-xs text-blue-200">Grupo de Programadores e Usuarios de Linux</p>
+            <h1 class="text-xl font-bold text-gray-800">GPUL</h1>
+            <p class="text-xs text-gray-500">
+              Grupo de Programadores e Usuarios de Linux
+            </p>
           </div>
         </a>
       </div>
@@ -35,18 +44,20 @@ const currentPath = Astro.url.pathname;
       <!-- Desktop Navigation -->
       <div class="hidden md:block">
         <div class="ml-10 flex items-baseline space-x-4">
-          {navItems.map((item) => (
-            <a
-              href={item.href}
-              class={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                currentPath === item.href
-                  ? "bg-blue-900 text-white"
-                  : "text-blue-100 hover:bg-blue-700 hover:text-white"
-              }`}
-            >
-              {item.name}
-            </a>
-          ))}
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                class={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  currentPath === item.href
+                    ? "bg-blue-100 text-blue-700"
+                    : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
+                }`}
+              >
+                {item.name}
+              </a>
+            ))
+          }
         </div>
       </div>
 
@@ -54,14 +65,11 @@ const currentPath = Astro.url.pathname;
       <div class="md:hidden">
         <button
           type="button"
-          class="bg-blue-800 inline-flex items-center justify-center p-2 rounded-md text-blue-200 hover:text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-800 focus:ring-white"
+          class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-500"
           id="mobile-menu-button"
         >
           <span class="sr-only">Abrir menú principal</span>
-          <!-- Menu icon -->
-          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+          <Menu class="h-6 w-6" />
         </button>
       </div>
     </div>
@@ -69,29 +77,31 @@ const currentPath = Astro.url.pathname;
 
   <!-- Mobile Navigation -->
   <div class="md:hidden hidden" id="mobile-menu">
-    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-blue-900">
-      {navItems.map((item) => (
-        <a
-          href={item.href}
-          class={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-            currentPath === item.href
-              ? "bg-blue-950 text-white"
-              : "text-blue-100 hover:bg-blue-800 hover:text-white"
-          }`}
-        >
-          {item.name}
-        </a>
-      ))}
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-blue-100">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+              currentPath === item.href
+                ? "bg-blue-100 text-blue-700"
+                : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
+            }`}
+          >
+            {item.name}
+          </a>
+        ))
+      }
     </div>
   </div>
 </nav>
 
 <script>
   // Mobile menu toggle
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+  mobileMenuButton?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
   });
 </script>
