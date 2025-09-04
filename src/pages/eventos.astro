@@ -3,10 +3,11 @@ import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Card from "../components/Card.astro";
 import { Plus } from "lucide-astro";
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { isUpcomingEvent, isPastEvent } from '../content/config.ts';
 
-const nextEvents = await getCollection('events', ({ data }) => data.status === "upcoming");
-const pastEvents = await getCollection('events', ({ data }) => data.status !== "upcoming");
+const nextEvents = await getCollection('events', isUpcomingEvent);
+const pastEvents = await getCollection('events', isPastEvent);
 ---
 
 <PageLayout 
@@ -59,7 +60,7 @@ const pastEvents = await getCollection('events', ({ data }) => data.status !== "
               title={event.data.title}
               excerpt={event.data.excerpt}
               date={event.data.date}
-              href={event.data.href}
+              href={`events/${event.id}`}
               tags={event.data.tags}
             />
             <div class="absolute top-4 right-4">

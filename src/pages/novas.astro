@@ -2,58 +2,9 @@
 import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Card from "../components/Card.astro";
+import { getCollection } from 'astro:content';
 
-// Mock data para noticias
-const allNews = [
-  {
-    title: "Nova Xunta Directiva 2024",
-    excerpt: "GPUL ten un novo equipo directivo que liderará a asociación nos próximos anos. Con Jorge Teixeira á cabeza como presidente, esta nova directiva busca continuar coa misión de promover o software libre.",
-    date: "2024-03-15",
-    author: "GPUL",
-    href: "/news/nova-xunta-2024",
-    tags: ["Directiva", "Organización"]
-  },
-  {
-    title: "Charla sobre Software Libre na Educación",
-    excerpt: "Próxima charla sobre a importancia do software libre na educación superior. Analizaremos como as tecnoloxías abertas poden transformar o ensino universitario.",
-    date: "2024-01-20",
-    author: "GPUL",
-    href: "/news/charla-software-libre",
-    tags: ["Educación", "Charla"]
-  },
-  {
-    title: "GPUL celebra 26 anos promovendo a cultura libre",
-    excerpt: "Un ano máis, GPUL continúa coa súa misión de defender e promover o software libre, o hardware aberto e o coñecemento libre na comunidade universitaria.",
-    date: "2024-01-10",
-    author: "Redacción",
-    href: "/news/26-anos-gpul",
-    tags: ["Aniversario", "Historia"]
-  },
-  {
-    title: "Éxito do GPUL Schools de Python",
-    excerpt: "Máis de 50 participantes asistiron ao curso de introducción a Python organizado por GPUL Schools. O curso cubrió dende conceptos básicos ata programación avanzada.",
-    date: "2023-12-15",
-    author: "Formación",
-    href: "/news/gpul-schools-python",
-    tags: ["Formación", "Python", "GPUL Schools"]
-  },
-  {
-    title: "Colaboración con comunidades de software libre",
-    excerpt: "GPUL fortalece os seus vínculos coas principais comunidades de software libre, participando activamente en proxectos e iniciativas de ámbito nacional e internacional.",
-    date: "2023-11-20",
-    author: "GPUL",
-    href: "/news/colaboracion-comunidades",
-    tags: ["Colaboración", "Comunidade"]
-  },
-  {
-    title: "Renovación da infraestrutura tecnolóxica",
-    excerpt: "GPUL renovou a súa infraestrutura de servidores e servicios, mellorando a dispoñibilidade e rendemento das súas plataformas dixitais.",
-    date: "2023-10-05",
-    author: "Infraestrutura",
-    href: "/news/renovacion-infraestrutura",
-    tags: ["Tecnoloxía", "Infraestrutura"]
-  }
-];
+const allNews = await getCollection('news');
 ---
 
 <PageLayout 
@@ -94,12 +45,12 @@ const allNews = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {allNews.map((news) => (
           <Card
-            title={news.title}
-            excerpt={news.excerpt}
-            date={news.date}
-            author={news.author}
-            href={news.href}
-            tags={news.tags}
+            title={news.data.title}
+            excerpt={news.data.excerpt}
+            date={news.data.date}
+            author={news.data.author}
+            href={`news/${news.id}`}
+            tags={news.data.tags}
           />
         ))}
       </div>
