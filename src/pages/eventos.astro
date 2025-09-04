@@ -5,11 +5,8 @@ import Card from "../components/Card.astro";
 import { Plus } from "lucide-astro";
 import { getCollection, getEntry } from 'astro:content';
 
-const allEvents = await getCollection('events')
-const nextEvents = await getCollection('events', ({ data }) => data.status === "upcoming")
-const pastEvents = await getCollection('events', ({ data }) => data.status !== "upcoming")
-
-console.log(nextEvents, pastEvents, allEvents)
+const nextEvents = await getCollection('events', ({ data }) => data.status === "upcoming");
+const pastEvents = await getCollection('events', ({ data }) => data.status !== "upcoming");
 ---
 
 <PageLayout 
