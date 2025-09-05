@@ -14,9 +14,6 @@ const events = defineCollection({
   })
 });
 
-export const isUpcomingEvent = ({ data }) => data.status === "upcoming" 
-export const isPastEvent = event => !isUpcomingEvent(event) 
-
 const news = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/news'}),
   schema : z.object({
@@ -28,12 +25,6 @@ const news = defineCollection({
   })
 });
 
-export const isRecentNew = ({ data }) => {
-  const recentTime = new Date();
-  recentTime.setFullYear(recentTime.getFullYear() - 1);
-
-  return data.date < recentTime;
-} 
 
 
 export const collections = { events, news };

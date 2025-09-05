@@ -3,13 +3,10 @@ import PageLayout from "../layouts/PageLayout.astro";
 import Hero from "../components/Hero.astro";
 import Card from "../components/Card.astro";
 import { Code, Cpu, BookOpen } from "lucide-astro";
-import { isRecentNew, isUpcomingEvent } from '../content/config.ts';
-import { getCollection } from 'astro:content';
+import { isUpcomingEvent, type Article } from '../content/config.ts';
 
-// Mock data para demostración
-const recentNews = await getCollection('news', isRecentNew);
-
-const upcomingEvents = await getCollection('events', isUpcomingEvent);
+import { recentArticles } from '../content/article.ts';
+import { upcomingEvents } from '../content/event.ts';
 ---
 
 <PageLayout 
@@ -73,7 +70,7 @@ const upcomingEvents = await getCollection('events', isUpcomingEvent);
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {recentNews.map((news) => (
+        {recentArticles.map((news) => (
           <Card
             title={news.data.title}
             excerpt={news.data.excerpt}

@@ -3,8 +3,10 @@ import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Card from "../components/Card.astro";
 import { getCollection } from 'astro:content';
+import type { Article } from '../content/config.ts';
 
-const allNews = await getCollection('news');
+const allNews: Article[] = await getCollection('news');
+const allTags = allNews.map(({data}) => data);
 ---
 
 <PageLayout 
