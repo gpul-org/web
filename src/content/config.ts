@@ -1,4 +1,4 @@
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
 
@@ -25,6 +25,16 @@ const news = defineCollection({
   })
 });
 
+const directive = defineCollection({
+  loader: file('./src/content/directive.yaml'),
+  schema: z.object({
+    role: z.string(),
+    bio: z.string(),
+    github: z.string().optional(),
+    linkedin: z.string().optional(),
+  })
+});
 
 
-export const collections = { events, news };
+
+export const collections = { events, news, directive };

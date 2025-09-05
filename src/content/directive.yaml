@@ -1,0 +1,39 @@
+Jorge Teixeira:
+  role: Presidente
+  bio: "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+  github: "https://github.com/jorgeteixe"
+  linkedin: "https://linkedin.com/in/jorge-teixeira-crespo"
+
+David Maseda:
+  role: Vicepresidente
+  bio: "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+  github: "https://github.com/wizenink"
+  linkedin: "https://www.linkedin.com/in/david-maseda-neira-98a042a2/"
+  
+Álvaro Freire:
+  role: Tesoureiro
+  bio: "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+  github: "https://github.com/alvaro-freire"
+  linkedin: "https://linkedin.com/in/alvvarofreire"
+  
+Paula Taibo:
+  role: Secretaria
+  bio: "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+  github: "https://github.com/PT-15"
+  
+Siyuan He:
+  role: Vogal
+  bio: "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+  github: "https://github.com/siyunesweek"
+  
+Bruno Cabado:
+  role: Vogal
+  bio: "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+  github: "https://github.com/kr4is"
+  linkedin: "https://www.linkedin.com/in/brunocabado/"
+
+Pedro Costal:
+  role: Vogal
+  bio: "Lorem ipsum dolor sit amet consectetur adipiscing elit."
+  github: "https://github.com/pedrety"
+  linkedin: "https://www.linkedin.com/in/pedro-costal-millán/"
