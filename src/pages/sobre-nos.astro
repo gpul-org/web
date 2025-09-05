@@ -3,57 +3,9 @@ import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
 import ImagePlaceholder from "../components/ImagePlaceholder.astro";
 import { Github, Linkedin } from "lucide-astro";
+import { directive } from '../content/directive.ts'
 
-// Mock data para directiva
-const directiva = [
-  {
-    name: "Jorge Teixeira",
-    role: "Presidente",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    github: "https://github.com/jorgeteixe",
-    linkedin: "https://linkedin.com/in/jorge-teixeira-crespo",
-  },
-  {
-    name: "David Maseda",
-    role: "Vicepresidente",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    github: "https://github.com/wizenink",
-    linkedin: "https://www.linkedin.com/in/david-maseda-neira-98a042a2/",
-  },
-  {
-    name: "Álvaro Freire",
-    role: "Tesoureiro",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    github: "https://github.com/alvaro-freire",
-    linkedin: "https://linkedin.com/in/alvvarofreire",
-  },
-  {
-    name: "Paula Taibo",
-    role: "Secretaria",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    github: "https://github.com/PT-15",
-  },
-  {
-    name: "Siyuan He",
-    role: "Vogal",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    github: "https://github.com/siyunesweek",
-  },
-  {
-    name: "Bruno Cabado",
-    role: "Vogal",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    github: "https://github.com/kr4is",
-    linkedin: "https://www.linkedin.com/in/brunocabado/",
-  },
-  {
-    name: "Pedro Costal",
-    role: "Vogal",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    github: "https://github.com/pedrety",
-    linkedin: "https://www.linkedin.com/in/pedro-costal-millán/",
-  },
-];
+console.log(directive)
 ---
 
 <PageLayout
@@ -162,12 +114,12 @@ const directiva = [
 
       <div class="flex flex-wrap justify-center gap-6">
         {
-          directiva.map((membro) => (
+          directive.map((membro) => (
             <div class="bg-white rounded-lg shadow-md overflow-hidden w-80">
               <div class="p-2">
                 <img
-                  src={membro.github + ".png"}
-                  alt={membro.name}
+                  src={membro.data.github + ".png"}
+                  alt={membro.id}
                   height="100%"
                   width="100%"
                   class="w-full h-48 object-cover rounded"
@@ -175,30 +127,30 @@ const directiva = [
               </div>
               <div class="p-4">
                 <h3 class="text-lg font-semibold text-gray-900 mb-1">
-                  {membro.name}
+                  {membro.id}
                 </h3>
-                <p class="text-blue-600 font-medium mb-2">{membro.role}</p>
-                <p class="text-sm text-gray-600 mb-4">{membro.bio}</p>
+                <p class="text-blue-600 font-medium mb-2">{membro.data.role}</p>
+                <p class="text-sm text-gray-600 mb-4">{membro.data.bio}</p>
 
                 <div class="flex gap-2 justify-center">
-                  {membro.github && (
+                  {membro.data.github && (
                     <a
-                      href={membro.github}
+                      href={membro.data.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       class="inline-flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-                      title={`GitHub de ${membro.name}`}
+                      title={`GitHub de ${membro.id}`}
                     >
                       <Github class="w-5 h-5 text-gray-700" />
                     </a>
                   )}
-                  {membro.linkedin && (
+                  {membro.data.linkedin && (
                     <a
-                      href={membro.linkedin}
+                      href={membro.data.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       class="inline-flex items-center justify-center w-10 h-10 bg-blue-100 hover:bg-blue-200 rounded-lg transition-colors"
-                      title={`LinkedIn de ${membro.name}`}
+                      title={`LinkedIn de ${membro.id}`}
                     >
                       <Linkedin class="w-5 h-5 text-blue-700" />
                     </a>
