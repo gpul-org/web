@@ -4,10 +4,7 @@ import PageTitle from "../components/PageTitle.astro";
 import Card from "../components/Card.astro";
 import { Plus } from "lucide-astro";
 import { getCollection } from 'astro:content';
-import { isUpcomingEvent, isPastEvent } from '../content/config.ts';
-
-const nextEvents = await getCollection('events', isUpcomingEvent);
-const pastEvents = await getCollection('events', isPastEvent);
+import { upcomingEvents, pastEvents } from '../content/event.ts';
 ---
 
 <PageLayout 
@@ -54,7 +51,7 @@ const pastEvents = await getCollection('events', isPastEvent);
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {nextEvents.map((event) => (
+        {upcomingEvents.map((event) => (
           <div class="relative">
             <Card
               title={event.data.title}
@@ -140,7 +137,7 @@ const pastEvents = await getCollection('events', isPastEvent);
               title={event.data.title}
               excerpt={event.data.excerpt}
               date={event.data.date}
-              href={event.data.href}
+              href={`events/${event.id}`}
               tags={event.data.tags}
             />
             <div class="absolute top-4 right-4">
