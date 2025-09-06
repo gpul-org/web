@@ -2,68 +2,10 @@
 import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Card from "../components/Card.astro";
+
 import Plus from "lucide-astro/Plus";
-
-// Mock data para eventos
-const upcomingEvents = [
-  {
-    title: "HackUDC 2025",
-    excerpt: "O maior hackathon de Galicia volve en febreiro. 48 horas de programación intensiva, mentoría e premios incríbles. Rexístrate xa!",
-    date: "2025-02-15",
-    location: "Facultade de Informática, UDC",
-    href: "/events/hackudc-2025",
-    tags: ["Hackathon", "Programación", "Competición"],
-    status: "upcoming"
-  },
-  {
-    title: "GPUL Schools - Curso de Docker",
-    excerpt: "Aprende os fundamentos de Docker e containerización. Curso práctico con exemplos reais e exercicios hands-on.",
-    date: "2025-01-20",
-    location: "Online",
-    href: "/events/curso-docker",
-    tags: ["Formación", "Docker", "DevOps"],
-    status: "upcoming"
-  },
-  {
-    title: "Charla: Introducción ao Machine Learning",
-    excerpt: "Descubre os conceptos básicos do aprendizaxe automático e as súas aplicacións en proxectos reais.",
-    date: "2025-01-15",
-    location: "Aula 3.0, Facultade de Informática",
-    href: "/events/charla-ml",
-    tags: ["Charla", "Machine Learning", "IA"],
-    status: "upcoming"
-  }
-];
-
-const pastEvents = [
-  {
-    title: "HackUDC 2024",
-    excerpt: "Máis de 200 participantes, 48 horas de innovación e creatividade. Coñece os proxectos gañadores e os momentos máis destacados.",
-    date: "2024-02-17",
-    location: "Facultade de Informática, UDC",
-    href: "/events/hackudc-2024",
-    tags: ["Hackathon", "Programación"],
-    status: "past"
-  },
-  {
-    title: "GPUL Schools - Python para Principiantes",
-    excerpt: "50 estudantes aprenderon os fundamentos de Python nun curso intensivo de 3 días.",
-    date: "2023-12-10",
-    location: "Online",
-    href: "/events/python-principiantes",
-    tags: ["Formación", "Python"],
-    status: "past"
-  },
-  {
-    title: "Conferencia Richard Stallman",
-    excerpt: "O fundador do movemento do software libre visitou a UDC para falar sobre liberdade dixital.",
-    date: "2023-11-15",
-    location: "Salón de Actos, Facultade de Informática",
-    href: "/events/stallman-2023",
-    tags: ["Conferencia", "Software Libre"],
-    status: "past"
-  }
-];
+import { getCollection } from 'astro:content';
+import { upcomingEvents, pastEvents } from '../content/event.ts';
 ---
 
 <PageLayout 
@@ -113,11 +55,11 @@ const pastEvents = [
         {upcomingEvents.map((event) => (
           <div class="relative">
             <Card
-              title={event.title}
-              excerpt={event.excerpt}
-              date={event.date}
-              href={event.href}
-              tags={event.tags}
+              title={event.data.title}
+              excerpt={event.data.excerpt}
+              date={event.data.date}
+              href={`events/${event.id}`}
+              tags={event.data.tags}
             />
             <div class="absolute top-4 right-4">
               <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
@@ -193,11 +135,11 @@ const pastEvents = [
         {pastEvents.map((event) => (
           <div class="relative">
             <Card
-              title={event.title}
-              excerpt={event.excerpt}
-              date={event.date}
-              href={event.href}
-              tags={event.tags}
+              title={event.data.title}
+              excerpt={event.data.excerpt}
+              date={event.data.date}
+              href={`events/${event.id}`}
+              tags={event.data.tags}
             />
             <div class="absolute top-4 right-4">
               <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
