@@ -1,7 +1,6 @@
 import { glob, file } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
-
 const events = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/events'}),
   schema: z.object({
@@ -35,6 +34,9 @@ const directive = defineCollection({
   })
 });
 
+const history = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/history'}),
+});
 
 
-export const collections = { events, news, directive };
+export const collections = { events, news, directive, history };
