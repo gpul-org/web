@@ -2,8 +2,11 @@
 import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
 import ImagePlaceholder from "../components/ImagePlaceholder.astro";
-import { Github, Linkedin } from "lucide-astro";
+
 import { directive } from '../content/directive.ts'
+
+import Github from "lucide-astro/Github";
+import Linkedin from "lucide-astro/Linkedin";
 ---
 
 <PageLayout
@@ -172,13 +175,13 @@ import { directive } from '../content/directive.ts'
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href="/contact"
+          href="/contacto"
           class="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
         >
           Asóciate
         </a>
         <a
-          href="/events"
+          href="/eventos"
           class="inline-flex items-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
         >
           Ver eventos
