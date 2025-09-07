@@ -16,7 +16,8 @@ const navItems: NavItem[] = [
   { name: "Contacto", href: "/contacto" },
 ];
 
-const currentPath = Astro.url.pathname;
+/// In dev pathname ends without '/' but in prod it does
+const currentPath = "/" + Astro.url.pathname.split('/')[1];
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm text-gray-800 border-b border-blue-100/50">
@@ -43,7 +44,7 @@ const currentPath = Astro.url.pathname;
 
       <!-- Desktop Navigation -->
       <div class="hidden md:block">
-        <div class="ml-10 flex items-baseline space-x-4">
+        <div class="ml-10 flex items-center space-x-4">
           {
             navItems.map((item) => (
               <a
