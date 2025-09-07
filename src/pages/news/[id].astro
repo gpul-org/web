@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from "../../layouts/PageLayout.astro";
+import Card from "../../components/Card.astro";
+
+export async function getStaticPaths() {
+  const news = await getCollection('news');
+  return news.map(article => ({
+    params: { id: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+<PageLayout>
+
+WIP 
+
+<Content/>
+</PageLayout>

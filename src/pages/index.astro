@@ -2,47 +2,13 @@
 import PageLayout from "../layouts/PageLayout.astro";
 import Hero from "../components/Hero.astro";
 import Card from "../components/Card.astro";
-import { Code, Cpu, BookOpen } from "lucide-astro";
 
-// Mock data para demostración
-const recentNews = [
-  {
-    title: "Nova Xunta Directiva 2024",
-    excerpt: "GPUL ten un novo equipo directivo que liderará a asociación nos próximos anos.",
-    date: "2024-03-15",
-    author: "GPUL",
-    href: "/news/nova-xunta-2024"
-  },
-  {
-    title: "Hackathon HackUDC 2024",
-    excerpt: "O maior hackathon de Galicia volve en febreiro con grandes novidades e premios.",
-    date: "2024-02-10",
-    author: "Organizadores",
-    href: "/events/hackudc-2024"
-  },
-  {
-    title: "Charla sobre Software Libre",
-    excerpt: "Próxima charla sobre a importancia do software libre na educación superior.",
-    date: "2024-01-20",
-    author: "GPUL",
-    href: "/news/charla-software-libre"
-  }
-];
+import Code from "lucide-astro/Code";
+import Cpu from "lucide-astro/Cpu";
+import BookOpen from "lucide-astro/BookOpen";
 
-const upcomingEvents = [
-  {
-    title: "GPUL Schools - Curso de Git",
-    excerpt: "Aprende os fundamentos de Git e GitHub neste curso gratuíto.",
-    date: "2024-04-15",
-    tags: ["Curso", "Git", "GitHub"]
-  },
-  {
-    title: "AtlánticaConf 2027",
-    excerpt: "Conferencia de tecnoloxía e innovación do noroeste peninsular.",
-    date: "2027-06-01",
-    tags: ["Conferencia", "Tecnoloxía"]
-  }
-];
+import { recentArticles } from '../content/article.ts';
+import { upcomingEvents } from '../content/event.ts';
 ---
 
 <PageLayout 
@@ -106,13 +72,13 @@ const upcomingEvents = [
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {recentNews.map((news) => (
+        {recentArticles.map((news) => (
           <Card
-            title={news.title}
-            excerpt={news.excerpt}
-            date={news.date}
-            author={news.author}
-            href={news.href}
+            title={news.data.title}
+            excerpt={news.data.excerpt}
+            date={news.data.date}
+            author={news.data.author}
+            href={news.data.href}
           />
         ))}
       </div>
@@ -132,10 +98,10 @@ const upcomingEvents = [
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {upcomingEvents.map((event) => (
           <Card
-            title={event.title}
-            excerpt={event.excerpt}
-            date={event.date}
-            tags={event.tags}
+            title={event.data.title}
+            excerpt={event.data.excerpt}
+            date={event.data.date}
+            tags={event.data.tags}
           />
         ))}
       </div>

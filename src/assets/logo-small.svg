@@ -4,11 +4,11 @@
 <svg
    id="svg1923"
    sodipodi:version="0.32"
-   inkscape:version="0.44.1"
-   width="173.46719"
-   height="142.35828"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   width="173.467"
+   height="173.467"
    version="1.0"
-   sodipodi:docname="logo.svg"
+   sodipodi:docname="logo-small.svg"
    inkscape:export-filename="/home/ana/logogpulnuevo.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
@@ -261,8 +261,8 @@
        r="27.603354" />
   </defs>
   <sodipodi:namedview
-     inkscape:window-height="689"
-     inkscape:window-width="1017"
+     inkscape:window-height="816"
+     inkscape:window-width="1406"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      guidetolerance="10.0"
@@ -273,19 +273,20 @@
      pagecolor="#ffffff"
      id="base"
      inkscape:zoom="1.5241936"
-     inkscape:cx="74.765919"
-     inkscape:cy="58.554409"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:cx="74.465606"
+     inkscape:cy="58.06349"
+     inkscape:window-x="26"
+     inkscape:window-y="23"
      inkscape:current-layer="svg1923"
      width="200px"
      height="200px"
      inkscape:showpageshadow="2"
      inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1" />
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:window-maximized="0" />
   <g
      id="g9045"
-     transform="translate(-9.3634408,-26.597817)">
+     transform="translate(-9.3634408,-11.043459)">
     <g
        id="g5018">
       <ellipse
