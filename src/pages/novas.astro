@@ -3,13 +3,12 @@ import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Card from "../components/Card.astro";
 import { getCollection } from 'astro:content';
-import type { Article } from '../content/config.ts';
-
-const allNews: Article[] = await getCollection('news');
-const allTags = allNews.map(({data}) => data);
+import { type Article, articles } from '../content/article.ts';
+import ContentDisplay from "../components/ContentDisplay.astro";
+import ArticleCard from "../components/ArticleCard.astro";
 ---
 
-<PageLayout 
+<PageLayout
   title="Noticias - GPUL" 
   description="Mantente ao día coas últimas noticias e actualidades do Grupo de Programadores e Usuarios de Linux (GPUL)."
 >
@@ -42,41 +41,30 @@ const allTags = allNews.map(({data}) => data);
   </section>
 
   <!-- Lista de noticias -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {allNews.map((news) => (
-          <Card
-            title={news.data.title}
-            excerpt={news.data.excerpt}
-            date={news.data.date}
-            author={news.data.author}
-            href={`news/${news.id}`}
-            tags={news.data.tags}
-          />
-        ))}
-      </div>
+  <ContentDisplay contents={articles} card={ArticleCard}>
+    <Fragment slot="title">
 
-      <!-- Paginación placeholder -->
-      <div class="mt-12 flex justify-center">
-        <div class="flex space-x-2">
-          <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            Anterior
-          </button>
-          <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-md">
-            1
-          </button>
-          <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            2
-          </button>
-          <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            3
-          </button>
-          <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            Seguinte
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
+    </Fragment>
+  </ContentDisplay>
+
+  <!-- TODO: should we really paginate this? the data is already loaded, can't it be doomscroll? -->
+  <!-- <div class="mt-12 flex justify-center"> -->
+    <!-- <div class="flex space-x-2"> -->
+      <!-- <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50"> -->
+        <!-- Anterior -->
+      <!-- </button> -->
+      <!-- <button class="px-3 py-2 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-md"> -->
+        <!-- 1 -->
+      <!-- </button> -->
+      <!-- <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"> -->
+        <!-- 2 -->
+      <!-- </button> -->
+      <!-- <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"> -->
+        <!-- 3 -->
+      <!-- </button> -->
+      <!-- <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"> -->
+        <!-- Seguinte -->
+      <!-- </button> -->
+    <!-- </div> -->
+  <!-- </div> -->
 </PageLayout>

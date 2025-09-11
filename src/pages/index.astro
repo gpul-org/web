@@ -3,11 +3,12 @@ import PageLayout from "../layouts/PageLayout.astro";
 import Hero from "../components/Hero.astro";
 import Activities from "../components/Activities.astro";
 import ArticleCard from "../components/ArticleCard.astro";
-import Card from "../components/Card.astro";
+import EventCard from "../components/EventCard.astro";
 import ContentTeaser from "../components/ContentTeaser.astro";
 
 import { articles } from '../content/article.ts';
 import { upcomingEvents } from '../content/event.ts';
+import CallToAction from "../components/CallToAction.astro";
 ---
 
 <PageLayout 
@@ -27,25 +28,13 @@ import { upcomingEvents } from '../content/event.ts';
   </ContentTeaser>
 
   <!-- Sección: Próximos eventos -->
-  <section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between mb-12">
-        <h2 class="text-3xl font-bold text-gray-900">Próximos eventos</h2>
-        <a href="/events" class="text-blue-600 hover:text-blue-700 font-medium">
-          Ver todos →
-        </a>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {upcomingEvents.map((event) => (
-          <Card
-            title={event.data.title}
-            excerpt={event.data.excerpt}
-            date={event.data.date}
-            tags={event.data.tags}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
+  <ContentTeaser contents={upcomingEvents} card={EventCard}>
+    <h2 slot="title" class="text-3xl font-bold text-gray-900">Próximos eventos</h2>
+    <a slot="more" href="/events" class="text-blue-600 hover:text-blue-700 font-medium">
+      Ver todos →
+    </a>
+  </ContentTeaser>
+
+  <CallToAction/>
+
 </PageLayout>

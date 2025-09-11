@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { 
-  class: className,
+  class: className = "",
   title,
   excerpt,
   date,
@@ -37,8 +37,8 @@ const formatDate = (date: Date) => {
 const CardTag = href ? 'a' : 'div';
 ---
 
-<CardTag 
-  href={href} 
+<CardTag
+  href={href}
   class={`bg-white block rounded-lg shadow-md overflow-hidden transition-transform duration-200 hover:scale-105 hover:shadow-lg ${href ? 'cursor-pointer' : ''} ${className}`}
 >
   {showImage && (
@@ -79,7 +79,7 @@ const CardTag = href ? 'a' : 'div';
           <span class="font-medium">{author}</span>
         )}
         {date && (
-          <time datetime={date}>{formatDate(date)}</time>
+          <time datetime={date.toString()}>{formatDate(date)}</time>
         )}
       </div>
       
