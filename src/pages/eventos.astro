@@ -2,6 +2,9 @@
 import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Card from "../components/Card.astro";
+import Stats from "../components/Stats.astro";
+import EventCard from "../components/EventCard.astro";
+import ContentDisplay from "../components/ContentDisplay.astro";
 
 import Plus from "lucide-astro/Plus";
 import { getCollection } from 'astro:content';
@@ -17,60 +20,17 @@ import { upcomingEvents, pastEvents } from '../content/event.ts';
     subtitle="Participa nas nosas actividades, aprende novas tecnoloxías e conecta coa comunidade"
   />
 
-  <!-- Stats -->
-  <section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-        <div>
-          <div class="text-3xl font-bold text-blue-600 mb-2">200+</div>
-          <div class="text-gray-600">Participantes en HackUDC</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-green-600 mb-2">50+</div>
-          <div class="text-gray-600">Eventos anuais</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-purple-600 mb-2">1000+</div>
-          <div class="text-gray-600">Estudantes formados</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-orange-600 mb-2">26</div>
-          <div class="text-gray-600">Anos de experiencia</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Stats/>
 
-  <!-- Próximos eventos -->
-  <section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Próximos Eventos</h2>
-        <p class="text-xl text-gray-600">
-          Non te perdas as nosas próximas actividades
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {upcomingEvents.map((event) => (
-          <div class="relative">
-            <Card
-              title={event.data.title}
-              excerpt={event.data.excerpt}
-              date={event.data.date}
-              href={`events/${event.id}`}
-              tags={event.data.tags}
-            />
-            <div class="absolute top-4 right-4">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                Próximamente
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <!-- CTA -->
+  <ContentDisplay contents={upcomingEvents} card={EventCard}>
+    <Fragment slot="title">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Próximos Eventos</h2>
+      <p class="text-xl text-gray-600">
+        Non te perdas as nosas próximas actividades
+      </p>
+    </Fragment>
+
+    <Fragment slot="cta">
       <div class="text-center mt-12">
         <a 
           href="/contact" 
@@ -80,8 +40,8 @@ import { upcomingEvents, pastEvents } from '../content/event.ts';
           <Plus class="ml-2 w-5 h-5" />
         </a>
       </div>
-    </div>
-  </section>
+    </Fragment>
+  </ContentDisplay>
 
   <!-- Eventos destacados -->
   <section class="py-16">
@@ -122,33 +82,13 @@ import { upcomingEvents, pastEvents } from '../content/event.ts';
   </section>
 
   <!-- Eventos pasados -->
-  <section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between mb-12">
-        <h2 class="text-3xl font-bold text-gray-900">Eventos Anteriores</h2>
-        <a href="/blog" class="text-blue-600 hover:text-blue-700 font-medium">
-          Ver todas as crónicas →
-        </a>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {pastEvents.map((event) => (
-          <div class="relative">
-            <Card
-              title={event.data.title}
-              excerpt={event.data.excerpt}
-              date={event.data.date}
-              href={`events/${event.id}`}
-              tags={event.data.tags}
-            />
-            <div class="absolute top-4 right-4">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                Finalizado
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <ContentDisplay contents={pastEvents} card={EventCard}>
+    <Fragment slot="title">
+      <h2 class="text-3xl font-bold text-gray-900">Eventos Anteriores</h2>
+      <a href="/blog" class="text-blue-600 hover:text-blue-700 font-medium">
+        Ver todas as crónicas →
+      </a>
+    </Fragment>
+  </ContentDisplay>
+
 </PageLayout>
