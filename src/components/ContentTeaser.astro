@@ -1,0 +1,32 @@
+---
+const { contents, card } = Astro.props
+const Card = card
+const sizes = ["", "hidden md:block", "hidden lg:block"]
+
+/*
+tiny:
+  _ h h
+mid:
+  _ _ h
+lg:
+  _ _ _
+*/
+---
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-12">
+      <slot name="title"/>
+      <slot name="more"/>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {contents.slice(0,3).map( (content: any, i: number) =>
+        <Card
+          class={sizes[i]}
+          content={content}
+        />
+      )}
+    </div>
+
+  </div>
+</section>

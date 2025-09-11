@@ -15,6 +15,7 @@
     "astro": "^5.13.3",
     "lucide-astro": "^0.541.0",
     "sharp": "^0.34.3",
-    "tailwindcss": "^4.1.12"
+    "tailwindcss": "^4.1.12",
+    "typescript": "^5.9.2"
   }
 }

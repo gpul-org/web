@@ -3,6 +3,7 @@ import ImagePlaceholder from './ImagePlaceholder.astro';
 import ChevronRight from 'lucide-astro/ChevronRight';
 
 interface Props {
+  class?: string;
   title: string;
   excerpt?: string;
   date?: Date;
@@ -14,6 +15,7 @@ interface Props {
 }
 
 const { 
+  class: className,
   title,
   excerpt,
   date,
@@ -37,7 +39,7 @@ const CardTag = href ? 'a' : 'div';
 
 <CardTag 
   href={href} 
-  class={`bg-white block rounded-lg shadow-md overflow-hidden transition-transform duration-200 hover:scale-105 hover:shadow-lg ${href ? 'cursor-pointer' : ''}`}
+  class={`bg-white block rounded-lg shadow-md overflow-hidden transition-transform duration-200 hover:scale-105 hover:shadow-lg ${href ? 'cursor-pointer' : ''} ${className}`}
 >
   {showImage && (
     <div class="aspect-video">
