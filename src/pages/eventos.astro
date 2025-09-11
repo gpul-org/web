@@ -1,14 +1,13 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
-import Card from "../components/Card.astro";
 import Stats from "../components/Stats.astro";
 import EventCard from "../components/EventCard.astro";
 import ContentDisplay from "../components/ContentDisplay.astro";
 
 import Plus from "lucide-astro/Plus";
-import { getCollection } from 'astro:content';
 import { upcomingEvents, pastEvents } from '../content/event.ts';
+import StarContent from "../components/StarContent.astro";
 ---
 
 <PageLayout 
@@ -22,6 +21,7 @@ import { upcomingEvents, pastEvents } from '../content/event.ts';
 
   <Stats/>
 
+  <!-- Eventos próximos -->
   <ContentDisplay contents={upcomingEvents} card={EventCard}>
     <Fragment slot="title">
       <h2 class="text-3xl font-bold text-gray-900 mb-4">Próximos Eventos</h2>
@@ -43,51 +43,16 @@ import { upcomingEvents, pastEvents } from '../content/event.ts';
     </Fragment>
   </ContentDisplay>
 
-  <!-- Eventos destacados -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Os Nosos Fregados</h2>
-        <p class="text-xl text-gray-600">
-          Grandes eventos que organizamos cada ano
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- HackUDC -->
-        <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
-          <h3 class="text-2xl font-bold mb-4">HackUDC</h3>
-          <p class="text-blue-100 mb-6">
-            O maior hackathon de Galicia. 48 horas de innovación, creatividade e programación coa mellor comunidade tech do noroeste.
-          </p>
-          <div class="flex items-center space-x-4">
-            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Febreiro</span>
-            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">200+ participantes</span>
-          </div>
-        </div>
-        
-        <!-- AtlánticaConf -->
-        <div class="bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl p-8 text-white">
-          <h3 class="text-2xl font-bold mb-4">AtlánticaConf</h3>
-          <p class="text-green-100 mb-6">
-            Conferencia de tecnoloxía e innovación do noroeste peninsular. Conectamos profesionais, estudantes e empresas.
-          </p>
-          <div class="flex items-center space-x-4">
-            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">2027</span>
-            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Próximamente</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <StarContent/>
 
   <!-- Eventos pasados -->
   <ContentDisplay contents={pastEvents} card={EventCard}>
     <Fragment slot="title">
       <h2 class="text-3xl font-bold text-gray-900">Eventos Anteriores</h2>
-      <a href="/blog" class="text-blue-600 hover:text-blue-700 font-medium">
-        Ver todas as crónicas →
-      </a>
+      <!-- TODO: can't we doomscroll this as well -->
+      <!-- <a href="/blog" class="text-blue-600 hover:text-blue-700 font-medium"> -->
+        <!-- Ver todas as crónicas → -->
+      <!-- </a> -->
     </Fragment>
   </ContentDisplay>
 
