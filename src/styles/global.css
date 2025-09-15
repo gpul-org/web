@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Round poster images on event page */
+#event-body img {
+  @apply rounded-2xl w-10/12 m-auto mb-4;
+}

@@ -4,5 +4,5 @@ excerpt: O maior hackathon de Galicia volve en febreiro. 48 horas de programaci�
 date: 2025-02-15
 location: Facultade de Informática, UDC
 tags: [Hackathon, Programación, Competición]
-status: upcoming
+status: past
 ---

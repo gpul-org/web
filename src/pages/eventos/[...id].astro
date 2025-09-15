@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+export async function getStaticPaths() {
+  const eventos = await getCollection("eventos");
+  return eventos.map((evento) => ({
+    params: { id: evento.id },
+    props: { evento },
+  }));
+}
+
+const { evento } = Astro.props;
+const { Content } = await render(evento);
+
+console.log(evento);
+---
+
+<PageLayout>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8" id="event-body">
+    <h1 class="text-5xl font-semibold">{evento.data.title}</h1>
+    {
+      evento.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-4 mt-2">
+          {evento.data.tags.map((tag) => (
+            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )
+    }
+    <Content />
+    <br />
+  </div>
+</PageLayout>
