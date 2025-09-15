@@ -4,15 +4,15 @@ import PageLayout from "../../layouts/PageLayout.astro";
 import Card from "../../components/Card.astro";
 
 export async function getStaticPaths() {
-  const events = await getCollection('events');
-  return events.map(event => ({
-    params: { id: event.id },
-    props: { event },
+  const eventos = await getCollection('eventos');
+  return eventos.map(evento => ({
+    params: { id: evento.id },
+    props: { evento },
   }));
 }
 
-const { event } = Astro.props;
-const { Content } = await render(event);
+const { evento } = Astro.props;
+const { Content } = await render(evento);
 ---
 <PageLayout>
 

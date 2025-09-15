@@ -4,7 +4,7 @@ import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
 export const definition = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/news'}),
+  loader: glob({ pattern: '*.md', base: './src/content/novas'}),
   schema : z.object({
     title: z.string(),
     excerpt: z.string(),
@@ -14,8 +14,8 @@ export const definition = defineCollection({
   })
 });
 
-export type Article = CollectionEntry<'news'>;
+export type Nova = CollectionEntry<'novas'>;
 
-export const articles = (await getCollection('news')).toSorted(
+export const novas = (await getCollection('novas')).toSorted(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );

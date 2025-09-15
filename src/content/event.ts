@@ -4,7 +4,7 @@ import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
 export const definition = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/events'}),
+  loader: glob({ pattern: '*.md', base: './src/content/eventos'}),
   schema: z.object({
     title: z.string(),
     excerpt: z.string(),
@@ -15,8 +15,8 @@ export const definition = defineCollection({
   })
 });
 
-export type Event = CollectionEntry<'events'>;
-export const events: Event[] = await getCollection('events')
+export type Event = CollectionEntry<'eventos'>;
+export const events: Event[] = await getCollection('eventos')
 
 // MAYBE should create a enum for event.status
 export const upcomingEvents = events.filter(

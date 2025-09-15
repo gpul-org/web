@@ -1,9 +1,9 @@
 ---
-import type { Article } from '../content/article.ts';
+import type { Nova } from '../content/nova.ts';
 import Card from "../components/Card.astro";
 
 interface Props {
-  content : Article,
+  content : Nova,
   class: string
 }
 const { content, class: className } = Astro.props;
