@@ -1,9 +1,9 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
-import { articles } from '../content/article.ts';
+import { novas } from '../content/nova.ts';
 import ContentDisplay from "../components/ContentDisplay.astro";
-import ArticleCard from "../components/ArticleCard.astro";
+import NovaCard from "../components/NovaCard.astro";
 ---
 
 <PageLayout
@@ -39,7 +39,7 @@ import ArticleCard from "../components/ArticleCard.astro";
   </section>
 
   <!-- Lista de noticias -->
-  <ContentDisplay contents={articles} card={ArticleCard}>
+  <ContentDisplay contents={novas} card={NovaCard}>
     <Fragment slot="title">
 
     </Fragment>

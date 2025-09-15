@@ -1,9 +1,9 @@
 ---
-import type { Article } from '../content/article.ts';
+import type { Nova } from '../content/nova.ts';
 import Card from "../components/Card.astro";
 
 interface Props {
-  content : Article,
+  content : Nova,
   class: string
 }
 const { content, class: className } = Astro.props;
@@ -15,6 +15,6 @@ const { content, class: className } = Astro.props;
   excerpt={content.data.excerpt}
   date={content.data.date}
   author={content.data.author}
-  href={`news/${content.id}`}
+  href={`novas/${content.id}`}
   tags={content.data.tags}
 />

@@ -2,11 +2,11 @@
 import PageLayout from "../layouts/PageLayout.astro";
 import Hero from "../components/Hero.astro";
 import Activities from "../components/Activities.astro";
-import ArticleCard from "../components/ArticleCard.astro";
+import NovaCard from "../components/NovaCard.astro";
 import EventCard from "../components/EventCard.astro";
 import ContentTeaser from "../components/ContentTeaser.astro";
 
-import { articles } from '../content/article.ts';
+import { novas } from '../content/nova.ts';
 import { upcomingEvents } from '../content/event.ts';
 import CallToAction from "../components/CallToAction.astro";
 ---
@@ -20,9 +20,9 @@ import CallToAction from "../components/CallToAction.astro";
   <Activities/>
 
   <!-- Sección: Últimas noticias -->
-  <ContentTeaser contents={articles} card={ArticleCard}>
+  <ContentTeaser contents={novas} card={NovaCard}>
     <h2 slot="title" class="text-3xl font-bold text-gray-900">Últimas noticias</h2>
-    <a slot="more" href="/news" class="text-blue-600 hover:text-blue-700 font-medium">
+    <a slot="more" href="/novas" class="text-blue-600 hover:text-blue-700 font-medium">
       Ver todas →
     </a>
   </ContentTeaser>
@@ -30,7 +30,7 @@ import CallToAction from "../components/CallToAction.astro";
   <!-- Sección: Próximos eventos -->
   <ContentTeaser contents={upcomingEvents} card={EventCard}>
     <h2 slot="title" class="text-3xl font-bold text-gray-900">Próximos eventos</h2>
-    <a slot="more" href="/events" class="text-blue-600 hover:text-blue-700 font-medium">
+    <a slot="more" href="/eventos" class="text-blue-600 hover:text-blue-700 font-medium">
       Ver todos →
     </a>
   </ContentTeaser>
