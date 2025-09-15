@@ -1,12 +1,12 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
-import ImagePlaceholder from "../components/ImagePlaceholder.astro";
+import Mission from "../components/Mission.astro";
+import CallToAction from "../components/CallToAction.astro";
 
 import { directive } from '../content/directive.ts'
-
-import Github from "lucide-astro/Github";
-import Linkedin from "lucide-astro/Linkedin";
+import DirectiveCard from "../components/DirectiveCard.astro";
+import ContentDisplay from "../components/ContentDisplay.astro";
 ---
 
 <PageLayout
@@ -18,52 +18,10 @@ import Linkedin from "lucide-astro/Linkedin";
     subtitle="26 anos promovendo a cultura libre na Universidade da Coruña e máis alá"
   />
 
-  <!-- Misión e visión -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">A nosa misión</h2>
-          <p class="text-lg text-gray-600 mb-6">
-            GPUL é unha asociación universitaria sen ánimo de lucro que traballa
-            dende 1998 para promover e defender o software libre, o hardware
-            aberto e o coñecemento libre na comunidade universitaria e na
-            sociedade en xeral.
-          </p>
-          <p class="text-lg text-gray-600 mb-6">
-            A través de charlas, cursos, talleres e eventos como HackUDC,
-            buscamos formar a futuras xeracións de profesionais comprometidos
-            coa tecnoloxía ética e accesible.
-          </p>
-          <div class="flex flex-wrap gap-4">
-            <span
-              class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium"
-              >Software Libre</span
-            >
-            <span
-              class="bg-green-100 text-green-800 px-4 py-2 rounded-full font-medium"
-              >Hardware Aberto</span
-            >
-            <span
-              class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full font-medium"
-              >Coñecemento Libre</span
-            >
-          </div>
-        </div>
-
-        <div class="flex justify-center">
-          <ImagePlaceholder
-            width="400px"
-            height="300px"
-            alt="GPUL en acción"
-            className="rounded-lg shadow-lg"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+  <Mission/>
 
   <!-- Historia -->
+  <!-- TODO: HistoryCard? ContentDisplay(HistoryCard)? -->
   <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
@@ -104,89 +62,15 @@ import Linkedin from "lucide-astro/Linkedin";
   </section>
 
   <!-- Directiva actual -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Xunta Directiva</h2>
-        <p class="text-xl text-gray-600">
-          O equipo que lidera GPUL na actualidade
-        </p>
-      </div>
-
-      <div class="flex flex-wrap justify-center gap-6">
-        {
-          directive.map((membro) => (
-            <div class="bg-white rounded-lg shadow-md overflow-hidden w-80">
-              <div class="p-2">
-                <img
-                  src={membro.data.github + ".png"}
-                  alt={membro.id}
-                  height="100%"
-                  width="100%"
-                  class="w-full h-48 object-cover rounded"
-                />
-              </div>
-              <div class="p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-1">
-                  {membro.id}
-                </h3>
-                <p class="text-blue-600 font-medium mb-2">{membro.data.role}</p>
-                <p class="text-sm text-gray-600 mb-4">{membro.data.bio}</p>
-
-                <div class="flex gap-2 justify-center">
-                  {membro.data.github && (
-                    <a
-                      href={membro.data.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-                      title={`GitHub de ${membro.id}`}
-                    >
-                      <Github class="w-5 h-5 text-gray-700" />
-                    </a>
-                  )}
-                  {membro.data.linkedin && (
-                    <a
-                      href={membro.data.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center w-10 h-10 bg-blue-100 hover:bg-blue-200 rounded-lg transition-colors"
-                      title={`LinkedIn de ${membro.id}`}
-                    >
-                      <Linkedin class="w-5 h-5 text-blue-700" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA para participar -->
-  <section class="py-16 bg-blue-600 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold mb-4">Únete á nosa comunidade</h2>
-      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-        Forma parte do maior grupo de software libre de Galicia. Colabora,
-        aprende e fai a diferenza.
+  <ContentDisplay contents={directive} card={DirectiveCard}>
+    <Fragment slot="title">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Xunta Directiva</h2>
+      <p class="text-xl text-gray-600">
+        O equipo que lidera GPUL na actualidade
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="/contacto"
-          class="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
-        >
-          Asóciate
-        </a>
-        <a
-          href="/eventos"
-          class="inline-flex items-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
-        >
-          Ver eventos
-        </a>
-      </div>
-    </div>
-  </section>
+    </Fragment>
+  </ContentDisplay>
+
+  <CallToAction/>
+
 </PageLayout>
