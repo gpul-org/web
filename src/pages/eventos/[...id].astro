@@ -17,7 +17,18 @@ console.log(evento);
 ---
 
 <PageLayout>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8" id="event-body">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-3"
+    id="event-body"
+  >
+    <div class="bg-orange-100 border border-orange-500 p-4 rounded-md">
+      <ul>
+        <li><b>Data:</b> {evento.data.date.toLocaleDateString()}</li>
+        <li><b>Hora:</b></li>
+        <li><b>Lugar:</b></li>
+        <li><b>Poñente:</b></li>
+      </ul>
+    </div>
     <h1 class="text-5xl font-semibold">{evento.data.title}</h1>
     {
       evento.data.tags.length > 0 && (
