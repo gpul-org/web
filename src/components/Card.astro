@@ -9,7 +9,7 @@ interface Props {
   date?: Date;
   author?: string;
   href?: string;
-  showImage?: boolean;
+  image?: string;
   imageAlt?: string;
   tags?: string[];
 }
@@ -21,7 +21,7 @@ const {
   date,
   author,
   href,
-  showImage = true,
+  image,
   imageAlt = title,
   tags = []
 } = Astro.props;
@@ -35,21 +35,30 @@ const formatDate = (date: Date) => {
 }
 
 const CardTag = href ? 'a' : 'div';
+console.log(image)
 ---
 
 <CardTag
   href={href}
   class={`bg-white block rounded-lg shadow-md overflow-hidden transition-transform duration-200 hover:scale-105 hover:shadow-lg ${href ? 'cursor-pointer' : ''} ${className}`}
 >
-  {showImage && (
+  {image ? (
     <div class="aspect-video">
-      <ImagePlaceholder 
+      <img 
         width="100%" 
         height="200px" 
+        src={image}
         alt={imageAlt}
         className="w-full h-full object-cover"
       />
     </div>
+  ) : (
+    <ImagePlaceholder 
+      width="100%" 
+      height="200px" 
+      alt={imageAlt}
+      className="w-full h-full object-cover"
+    />
   )}
   
   <div class="p-6">

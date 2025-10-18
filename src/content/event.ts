@@ -15,6 +15,7 @@ export const definition = defineCollection({
     location: z.string(),
     tags: z.array(z.string()),
     status: z.string(),
+    author: z.string().optional(),
   }),
 });
 
