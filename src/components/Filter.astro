@@ -1,0 +1,45 @@
+---
+const filters = ["Todas", "Directiva", "Formación", "Eventos", "Tecnoloxía"];
+---
+
+<section class="py-8 bg-gray-50 border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-2 justify-center" id="filters">
+      {
+        filters.map((name, index) => {
+          const id = `filter-checkbox-${index + 1}`;
+          return (
+            <div>
+              <input type="checkbox" id={id} class="hidden peer" />
+              <label
+                for={id}
+                class="px-4 py-2 bg-white text-gray-700 border rounded-full text-sm font-medium hover:bg-gray-50 transition-colors hover:cursor-pointer peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-none peer-checked:hover:bg-blue-700"
+              >
+                {name}
+              </label>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <script is:inline>
+    const allCheckbox = document.getElementById("filter-checkbox-1");
+    const otherCheckboxes = Array.from(
+      document.querySelectorAll("#filters input")
+    ).filter((cb) => cb !== allCheckbox);
+
+    allCheckbox.addEventListener("change", () => {
+      if (allCheckbox.checked) {
+        otherCheckboxes.forEach((cb) => (cb.checked = false));
+      }
+    });
+
+    otherCheckboxes.forEach((cb) => {
+      cb.addEventListener("change", () => {
+        if (cb.checked) allCheckbox.checked = false;
+      });
+    });
+  </script>
+</section>
