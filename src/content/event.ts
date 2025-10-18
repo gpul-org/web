@@ -28,13 +28,18 @@ export const authors_definition = defineCollection({
   })
 });
 
+enum EventStatus {
+  Upcoming = "upcoming",
+  Past = "past"
+}
+
 export type Event = CollectionEntry<"eventos">;
 export const events: Event[] = (await getCollection("eventos"))
   .toSorted((a, b) => a.data.date.getTime() - b.data.date.getTime());
-// MAYBE should create a enum for event.status
+
 export const upcomingEvents = events.filter(
-  ({ data }) => data.status === "upcoming"
+  ({ data }) => data.status === EventStatus.Upcoming
 );
 export const pastEvents = events.filter(
-  ({ data }) => data.status !== "upcoming"
+  ({ data }) => data.status === EventStatus.Past
 );
