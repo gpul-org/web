@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from "../../layouts/PageLayout.astro";
+import Card from "../../components/Card.astro";
+
+export async function getStaticPaths() {
+  const novas = await getCollection('novas');
+  return novas.map(nova => ({
+    params: { id: nova.id },
+    props: { nova },
+  }));
+}
+
+const { nova } = Astro.props;
+const { Content } = await render(nova);
+---
+<PageLayout
+  title=`GPUL - ${nova.data.title}` 
+  description=`${nova.data.excerpt}`
+>
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 mt-8"
+    id="post-body"
+  >
+    <h1 class="text-5xl font-semibold">{nova.data.title}</h1>
+    <p class="text-gray-500 italic">{nova.data.excerpt}</p>
+    <p>{nova.data.author} - {nova.data.date.toLocaleDateString()}</p>
+{
+      nova.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-4 mt-2">
+          {nova.data.tags.map((tag) => (
+            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )
+    }
+    <Content />
+    <br />
+  </div>
+</PageLayout>
