@@ -16,6 +16,5 @@ export const definition = defineCollection({
 
 export type Nova = CollectionEntry<'novas'>;
 
-export const novas = (await getCollection('novas')).toSorted(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+export const novas = (await getCollection('novas'))
+  .toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime());

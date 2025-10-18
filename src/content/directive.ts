@@ -12,5 +12,5 @@ export const definition = defineCollection({
   })
 });
 
-export type Directive = CollectionEntry<'directive'>;
-export const directive = await getCollection('directive')
+export type Directive = CollectionEntry<'directiva'>;
+export const directive = await getCollection('directiva')

@@ -7,8 +7,6 @@ tags: [School]
 status: upcoming
 ---
 
-![](poster-install-party.png)
-
 Trae tu ordenador y te ayudaremos a instalarle GNU/Linux, junto al sistema operativo que ya tengas.
 
 Si todavía no sabes si quieres instalar Linux, ven igual y te enseñaremos cómo funciona, para que decidas si te apetece

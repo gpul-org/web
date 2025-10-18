@@ -15,16 +15,22 @@ export const definition = defineCollection({
     location: z.string(),
     tags: z.array(z.string()),
     status: z.string(),
+    author: z.string().optional(),
   }),
 });
 
-export type Event = CollectionEntry<"eventos">;
-export const events: Event[] = await getCollection("eventos");
+enum EventStatus {
+  Upcoming = "upcoming",
+  Past = "past"
+}
 
-// MAYBE should create a enum for event.status
+export type Event = CollectionEntry<"eventos">;
+export const events: Event[] = (await getCollection("eventos"))
+  .toSorted((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
 export const upcomingEvents = events.filter(
-  ({ data }) => data.status === "upcoming"
+  ({ data }) => data.status === EventStatus.Upcoming
 );
 export const pastEvents = events.filter(
-  ({ data }) => data.status !== "upcoming"
+  ({ data }) => data.status === EventStatus.Past
 );

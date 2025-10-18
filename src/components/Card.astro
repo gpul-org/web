@@ -9,7 +9,7 @@ interface Props {
   date?: Date;
   author?: string;
   href?: string;
-  showImage?: boolean;
+  image?: string;
   imageAlt?: string;
   tags?: string[];
 }
@@ -21,7 +21,7 @@ const {
   date,
   author,
   href,
-  showImage = true,
+  image,
   imageAlt = title,
   tags = [],
 } = Astro.props;
