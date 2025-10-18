@@ -15,7 +15,7 @@ const { content, class: className } = Astro.props;
     excerpt={content.data.excerpt}
     date={content.data.date}
     author={content.data.author}
-    image={`/eventos/${content.id}.png`}
+    image={`/media/eventos/${content.id}.png`}
     href={`/eventos/${content.id}`}
     tags={content.data.tags}
   />
@@ -23,7 +23,7 @@ const { content, class: className } = Astro.props;
     <span
       class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
     >
-      Próximamente
+      {content.data.status}
     </span>
   </div>
 </div>

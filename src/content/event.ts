@@ -20,8 +20,8 @@ export const definition = defineCollection({
 });
 
 export type Event = CollectionEntry<"eventos">;
-export const events: Event[] = await getCollection("eventos");
-
+export const events: Event[] = (await getCollection("eventos"))
+  .toSorted((a, b) => a.data.date.getTime() - b.data.date.getTime());
 // MAYBE should create a enum for event.status
 export const upcomingEvents = events.filter(
   ({ data }) => data.status === "upcoming"
