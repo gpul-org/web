@@ -1,7 +1,7 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
 import PageTitle from "../components/PageTitle.astro";
-import { novas } from "../content/nova.ts";
+import { novas, novaTags } from "../content/nova.ts";
 import ContentDisplay from "../components/ContentDisplay.astro";
 import NovaCard from "../components/NovaCard.astro";
 import Filter from "../components/Filter.astro";
@@ -17,7 +17,7 @@ import Filter from "../components/Filter.astro";
   />
 
   <!-- Filtros -->
-  <Filter />
+  <Filter tags={novaTags}/>
 
   <!-- Lista de noticias -->
   <ContentDisplay contents={novas} card={NovaCard}>
