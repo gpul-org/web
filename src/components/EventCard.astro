@@ -10,12 +10,19 @@ const { content, class: className } = Astro.props;
 ---
 
 <Card
-  class={`${className}`}
+  class={`${className}`}>
   title={content.data.title}
   excerpt={content.data.excerpt}
   date={content.data.date}
-  author={content.data.author}
+  author={content.data.authors?.map(author => author.id).join(', ')}
   image={`/media/eventos/${content.id}.png`}
   href={`/eventos/${content.id}`}
   tags={content.data.tags}
 />
+    <span
+      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
+    >
+      {content.data.status}
+    </span>
+  </div>
+</div>

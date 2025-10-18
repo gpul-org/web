@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection, render, getEntries } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
 
 export async function getStaticPaths() {
@@ -11,20 +11,25 @@ export async function getStaticPaths() {
 }
 
 const { evento } = Astro.props;
+const authors = evento.data.authors ? await getEntries(evento.data.authors) : [];
 const { Content } = await render(evento);
 ---
 
-<PageLayout>
+<PageLayout
+  title=`GPUL - ${evento.data.title}` 
+  description=`Evento de GPUL`
+>
   <div
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-3"
     id="event-body"
   >
     <div class="bg-orange-100 border border-orange-500 p-4 rounded-md">
       <ul>
-        <li><b>Data:</b> {evento.data.date.toLocaleDateString()}</li>
-        <li><b>Hora:</b></li>
-        <li><b>Lugar:</b></li>
-        <li><b>Poñente:</b></li>
+        {evento.data.date &&
+          <li><b>Data:</b> {evento.data.date.toLocaleDateString("UTC")}</li>
+          <li><b>Hora:</b> {evento.data.date.toLocaleTimeString("UTC",{hour: 'numeric', minute: 'numeric'})}</li>}
+        {evento.data.location && <li><b>Lugar:</b> {evento.data.location}</li>}
+        {evento.data.authors && <li><b>Poñentes:</b> {authors.map((author,idx)=> <span> <a class="text-blue-600 hover:underline" href={author.data.portfolio} target="_blank">{author.data.id}</a>{idx < authors.length - 1 && ", "}</span>)}</li>}
       </ul>
     </div>
     <h1 class="text-5xl font-semibold">{evento.data.title}</h1>
