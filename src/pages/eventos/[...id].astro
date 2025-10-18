@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection, render, getEntries } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
 
 export async function getStaticPaths() {
@@ -11,6 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { evento } = Astro.props;
+const authors = evento.data.authors ? await getEntries(evento.data.authors) : [];
 const { Content } = await render(evento);
 ---
 
@@ -28,7 +29,7 @@ const { Content } = await render(evento);
           <li><b>Data:</b> {evento.data.date.toLocaleDateString("UTC")}</li>
           <li><b>Hora:</b> {evento.data.date.toLocaleTimeString("UTC",{hour: 'numeric', minute: 'numeric'})}</li>}
         {evento.data.location && <li><b>Lugar:</b> {evento.data.location}</li>}
-        {evento.data.author && <li><b>Poñente:</b> {evento.data.author}</li>}
+        {evento.data.authors && <li><b>Poñentes:</b> {authors.map((author,idx)=> <span> <a class="text-blue-600 hover:underline" href={author.data.portfolio} target="_blank">{author.data.id}</a>{idx < authors.length - 1 && ", "}</span>)}</li>}
       </ul>
     </div>
     <h1 class="text-5xl font-semibold">{evento.data.title}</h1>

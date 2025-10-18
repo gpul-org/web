@@ -1,7 +1,8 @@
-import { glob } from "astro/loaders";
+import { glob, file } from "astro/loaders";
 import {
   type CollectionEntry,
   defineCollection,
+  reference,
   getCollection,
   z,
 } from "astro:content";
@@ -15,8 +16,16 @@ export const definition = defineCollection({
     location: z.string(),
     tags: z.array(z.string()),
     status: z.string(),
-    author: z.string().optional(),
+    authors: z.array(reference('authors')).optional(),
   }),
+});
+
+export const authors_definition = defineCollection({
+  loader: file('./src/content/authors.json'),
+  schema: z.object({
+    id: z.string(),
+    portfolio: z.string().url(),
+  })
 });
 
 export type Event = CollectionEntry<"eventos">;
