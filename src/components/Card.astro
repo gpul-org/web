@@ -1,6 +1,6 @@
 ---
-import ImagePlaceholder from './ImagePlaceholder.astro';
-import ChevronRight from 'lucide-astro/ChevronRight';
+import ImagePlaceholder from "./ImagePlaceholder.astro";
+import ChevronRight from "lucide-astro/ChevronRight";
 
 interface Props {
   class?: string;
@@ -9,21 +9,21 @@ interface Props {
   date?: Date;
   author?: string;
   href?: string;
-  showImage?: boolean;
+  image?: string;
   imageAlt?: string;
   tags?: string[];
 }
 
-const { 
+const {
   class: className = "",
   title,
   excerpt,
   date,
   author,
   href,
-  showImage = true,
+  image,
   imageAlt = title,
-  tags = []
+  tags = [],
 } = Astro.props;
 
 const formatDate = (date: Date) => {
@@ -31,64 +31,69 @@ const formatDate = (date: Date) => {
     year: "numeric",
     month: "numeric",
     day: "numeric",
-  }).format(date)
-}
+  }).format(date);
+};
 
-const CardTag = href ? 'a' : 'div';
+const CardTag = href ? "a" : "div";
 ---
 
 <CardTag
   href={href}
-  class={`bg-white block rounded-lg shadow-md overflow-hidden transition-transform duration-200 hover:scale-105 hover:shadow-lg ${href ? 'cursor-pointer' : ''} ${className}`}
+  class={`w-sm h-full p-3 bg-white block rounded-lg shadow-md overflow-hidden
+          transition-transform duration-200 hover:scale-102
+          hover:shadow-lg ${href == "a" ? "cursor-pointer" : ""} ${className}`}
+  data-filtrable={tags.join(' ')}
 >
-  {showImage && (
-    <div class="aspect-video">
-      <ImagePlaceholder 
-        width="100%" 
-        height="200px" 
+  {
+    image ? (
+      <img
+        height="200px"
+        src={image}
         alt={imageAlt}
-        className="w-full h-full object-cover"
+        class="aspect-video rounded-lg"
       />
-    </div>
-  )}
-  
+    ) : (
+      <ImagePlaceholder
+        height="200px"
+        alt={imageAlt}
+        className="aspect-video rounded-lg"
+      />
+    )
+  }
+
   <div class="p-6">
-    {tags.length > 0 && (
-      <div class="flex flex-wrap gap-2 mb-3">
-        {tags.map((tag) => (
-          <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">
-            {tag}
-          </span>
-        ))}
-      </div>
-    )}
-    
-    <h3 class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
+    {
+      tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-3">
+          {tags.map((tag) => (
+            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )
+    }
+
+    <h3 class="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 h-13">
       {title}
     </h3>
-    
-    {excerpt && (
-      <p class="text-gray-600 mb-4 line-clamp-3">
-        {excerpt}
-      </p>
-    )}
-    
+
+    {excerpt && <p class="text-gray-600 mb-4 line-clamp-3 h-18">{excerpt}</p>}
+
     <div class="flex items-center justify-between text-sm text-gray-500">
       <div class="flex items-center space-x-4">
-        {author && (
-          <span class="font-medium">{author}</span>
-        )}
-        {date && (
-          <time datetime={date.toString()}>{formatDate(date)}</time>
-        )}
+        {author && <span class="font-medium">{author}</span>}
+        {date && <time datetime={date.toString()}>{formatDate(date)}</time>}
       </div>
-      
-      {href && (
-        <span class="text-blue-600 font-medium flex items-center">
-          Ler máis
-          <ChevronRight class="ml-1 w-4 h-4" />
-        </span>
-      )}
+
+      {
+        href && (
+          <span class="text-blue-600 font-medium flex items-center">
+            Ler máis
+            <ChevronRight class="ml-1 w-4 h-4" />
+          </span>
+        )
+      }
     </div>
   </div>
 </CardTag>
@@ -100,7 +105,7 @@ const CardTag = href ? 'a' : 'div';
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;

@@ -7,8 +7,6 @@ tags: [School]
 status: upcoming
 ---
 
-![](poster-git.png)
-
 Traballes só ou en equipo; desenvolvendo código, escribindo documentación, artellando configuracións ou facendo páxinas webs: levar un axeitado control de versións é unha práctica imprescindible.
 
 Git é un versátil e potente sistema de control de versións que se axeita a case calquera fluxo de traballo e necesidade.
