@@ -4,7 +4,7 @@ excerpt: Trae o teu portátil e che axudaremos a instalarlle GNU/Linux!
 date: 2025-09-23
 location: Aula 3.5, Facultade de Informática
 tags: [School]
-status: upcoming
+status: past
 ---
 
 Trae tu ordenador y te ayudaremos a instalarle GNU/Linux, junto al sistema operativo que ya tengas.

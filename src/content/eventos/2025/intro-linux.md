@@ -4,7 +4,7 @@ excerpt: Aprende a utilizar bash desde cero. Coñecerás os comandos básicos pa
 date: 2025-09-30
 location: Aula 3.5, Facultade de Informática
 tags: [School]
-status: upcoming
+status: past
 ---
 
 Despois de instalar GNU/Linux é importante aprender a sacarlle o máximo rendemento. Aínda que ao principio pode parecer compicada, a terminal é o xeito máis natural de facer gran cantidade de cousas no teu equipo, dende xestionar paquetes e configurar o sistema ata editar ficheiros.

@@ -4,7 +4,7 @@ excerpt: Empezamos las charlas de este cuatrimestre con una breve charla introdu
 date: 2025-09-16
 location: Aula 3.5, Facultade de Informática
 tags: [School]
-status: upcoming
+status: past
 ---
 
 Empezamos las charlas de este cuatrimestre con una breve charla introductoria. Presentaremos a GPUL y explicaremos qué es el software libre.

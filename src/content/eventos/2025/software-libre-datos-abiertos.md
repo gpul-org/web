@@ -4,7 +4,7 @@ excerpt: Aprende cómo funciona a contratación pública e como é o software da
 date: 2025-10-16
 location: Aula 2.12, Facultade de Informática
 tags: [School]
-status: upcoming
+status: past
 ---
 
 ¿Cómo se contrata un proyecto de software en la administración pública?¿Qué pasa cuando se utilizan formatos privativos?
