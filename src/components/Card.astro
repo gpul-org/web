@@ -42,6 +42,7 @@ const CardTag = href ? "a" : "div";
   class={`w-sm h-full p-3 bg-white block rounded-lg shadow-md overflow-hidden
           transition-transform duration-200 hover:scale-102
           hover:shadow-lg ${href == "a" ? "cursor-pointer" : ""} ${className}`}
+  data-filtrable={tags.join(' ')}
 >
   {
     image ? (
