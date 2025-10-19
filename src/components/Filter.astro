@@ -1,76 +1,84 @@
 ---
+interface Props {
+  tags: string[]
+}
 
 const {
-  contents,
   tags
 } = Astro.props;
+
+const tagClass = `
+    block px-4 py-2 border rounded-full whitespace-nowrap h-max text-sm
+    transition-colors cursor-pointer 
+    bg-white has-checked:bg-blue-600
+    text-gray-700 has-checked:text-white
+    hover:bg-gray-100 has-checked:hover:bg-blue-700`
 ---
 
 <section class="py-3 bg-gray-50 border-b flex flex-row gap-3">
-  <div class="max-w-7xl mx-auto flex gap-3 px-4 sm:px-6 lg:px-8">
-    <div class="py-3">
-      <label
-        class="px-4 py-2 bg-white text-gray-700 border rounded-full w-max block
-               text-sm font-medium hover:bg-gray-50 transition-colors
-               hover:cursor-pointer has-checked:bg-blue-600 has-checked:text-white
-               has-checked:hover:bg-blue-700"
-      >
-        <input
-          data-filter="all"
-          type="checkbox" class="hidden peer"
-        />
-        Todas
-      </label>
-    </div>
-    <div class="flex py-3 gap-3 place-center overflow-x-scroll" id="filters">
+  <div class="max-w-7xl mx-auto flex gap-3 px-4 overflow-hidden">
+    <label class={tagClass}>
+      <input
+        data-filter="all" checked
+        type="checkbox" class="hidden"
+      />
+      Todas
+    </label>
+    <div class="flex gap-3 place-center overflow-x-scroll" id="filters">
       {
-        tags.map((name, index) => {
-          return (
-            <div>
-              <label
-                class="px-4 py-2 bg-white text-gray-700 border rounded-full w-max block
-                       text-sm font-medium hover:bg-gray-50 transition-colors
-                       hover:cursor-pointer has-checked:bg-blue-600 has-checked:text-white
-                       has-checked:hover:bg-blue-700"
-              >
-                <input data-filter={name} type="checkbox" class="hidden peer" />
-                {name}
-              </label>
-            </div>
-          )
-        })
+        tags.map(name =>
+          <label class={tagClass}>
+            <input data-filter={name} type="checkbox" class="hidden" />
+            {name}
+          </label>
+        )
       }
     </div>
   </div>
 
-  <script is:inline defer>
+  <script is:inline defer>window.addEventListener("load", ()=>{
     const allCheckbox = document.querySelector('[data-filter="all"]');
     const otherCheckboxes = document.querySelectorAll('[data-filter]:not([data-filter="all"])');
+    const filtrables = document.querySelectorAll(`[data-filtrable]`);
+    const filtrableWithTag = tag => document.querySelectorAll(`[data-filtrable~="${tag}"]`);
+
+    const showContent = content => content.classList.remove("hidden")
+    const hideContent = content => content.classList.add("hidden")
 
     allCheckbox.addEventListener("change", () => {
-      if (!allCheckbox.checked) {return;}
-      otherCheckboxes.forEach((cb) => (cb.checked = false));
-      const filtrables = document.querySelectorAll('[data-filtrable]')
-      filtrables.forEach(e => e.classList.remove("hidden"))
+      // Ignore turning off all
+      if (!allCheckbox.checked) { allCheckbox.checked = true }
+      // Uncheck other filters
+      otherCheckboxes.forEach(cb => cb.checked = false);
+      // Show every filtrable
+      filtrables.forEach(showContent)
     });
 
     otherCheckboxes.forEach(cb => {
       cb.addEventListener("change", () => {
-        if (!cb.checked) return;
-        
+        // Uncheck all filter
         allCheckbox.checked = false;
-        const selected =
-          document.querySelectorAll(`[data-filtrable~="${cb.dataset.filter}"]`)
-        const discarded =
-          document.querySelectorAll(`[data-filtrable]:not([data-filtrable~="${cb.dataset.filter}"])`)
+        // Take all checked filters
+        const filters = [...document.querySelectorAll(`[data-filter]:checked`)
+          .values().map(tag => tag.dataset.filter)];
 
-        selected.forEach(e => e.classList.remove("hidden"))
-        discarded.forEach(e => e.classList.add("hidden"))
+        // Show everything if no tag is selected
+        if(filters.length == 0) {
+          filtrables.forEach(showContent);
+          allCheckbox.checked = true;
+          return;
+        } 
+
+        // Hide everything
+        filtrables.forEach(hideContent);
+        console.log({filtrables})
+        // Show selected content
+        filters.forEach( tag => {
+          console.log(filtrableWithTag(tag))
+          filtrableWithTag(tag).forEach(showContent)
+        });
       });
     });
 
-    function filterContent() {
-      
-    }
-  </script>
+  })</script>
 </section>
