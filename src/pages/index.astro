@@ -6,35 +6,46 @@ import NovaCard from "../components/NovaCard.astro";
 import EventCard from "../components/EventCard.astro";
 import ContentTeaser from "../components/ContentTeaser.astro";
 
-import { novas } from '../content/nova.ts';
-import { upcomingEvents } from '../content/event.ts';
+import { novas } from "../content/nova.ts";
+import { upcomingEvents } from "../content/event.ts";
 import CallToAction from "../components/CallToAction.astro";
 ---
 
-<PageLayout 
-  title="GPUL - Grupo de Programadores e Usuarios de Linux" 
+<PageLayout
+  title="GPUL - Grupo de Programadores e Usuarios de Linux"
   description="Defendendo o software libre dende 1998. Asociación universitaria dedicada á promoción do software libre e a tecnoloxía aberta."
 >
   <Hero />
-  
-  <Activities/>
 
-  <!-- Sección: Últimas noticias -->
-  <ContentTeaser contents={novas} card={NovaCard}>
-    <h2 slot="title" class="text-3xl font-bold text-gray-900">Últimas noticias</h2>
-    <a slot="more" href="/novas" class="text-blue-600 hover:text-blue-700 font-medium">
-      Ver todas →
-    </a>
-  </ContentTeaser>
+  <Activities />
 
   <!-- Sección: Próximos eventos -->
   <ContentTeaser contents={upcomingEvents} card={EventCard}>
-    <h2 slot="title" class="text-3xl font-bold text-gray-900">Próximos eventos</h2>
-    <a slot="more" href="/eventos" class="text-blue-600 hover:text-blue-700 font-medium">
+    <h2 slot="title" class="text-3xl font-bold text-gray-900">
+      Próximos eventos
+    </h2>
+    <a
+      slot="more"
+      href="/eventos"
+      class="text-blue-600 hover:text-blue-700 font-medium"
+    >
       Ver todos →
     </a>
   </ContentTeaser>
 
-  <CallToAction/>
+  <!-- Sección: Últimas noticias -->
+  <ContentTeaser contents={novas} card={NovaCard}>
+    <h2 slot="title" class="text-3xl font-bold text-gray-900">
+      Últimas noticias
+    </h2>
+    <a
+      slot="more"
+      href="/novas"
+      class="text-blue-600 hover:text-blue-700 font-medium"
+    >
+      Ver todas →
+    </a>
+  </ContentTeaser>
 
+  <CallToAction />
 </PageLayout>

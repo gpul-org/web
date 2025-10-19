@@ -5,7 +5,7 @@
     <br>
 </p>
 
-Este repositorio contén o código e o contigo da web principal da asociación.
+Este repositorio contén o código e o contido da web principal da asociación.
 
 ## Uso
 
