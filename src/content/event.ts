@@ -35,7 +35,7 @@ enum EventStatus {
 
 export type Event = CollectionEntry<"eventos">;
 export const events: Event[] = (await getCollection("eventos"))
-  .toSorted((a, b) => a.data.date.getTime() - b.data.date.getTime());
+  .toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 export const upcomingEvents = events.filter(
   ({ data }) => data.status === EventStatus.Upcoming
