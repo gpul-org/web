@@ -1,6 +1,27 @@
-[{
-  "id": "Emilio J. P.",
-  "portfolio": "https://kernel.org"
-},
-{"id": "GPUL", "portfolio": "https://kernel.org"}
+[
+  {
+    "id": "emiliojpg",
+    "name": "Emilio J. P.",
+    "portfolio": "https://github.com/emilioj"
+  },
+  {
+    "id": "peprolinbot",
+    "name": "Pedro Rey",
+    "portfolio": "https://github.com/peprolinbot"
+  },
+  {
+    "id": "delthia",
+    "name": "Iago Rivas",
+    "portfolio": "https://github.com/delthia"
+  },
+  {
+    "id": "sprinter05",
+    "name": "Samuel H.",
+    "portfolio": "https://github.com/sprinter05"
+  },
+  {
+    "id": "l1911",
+    "name": "Lúa",
+    "portfolio": "https://github.com/L1911"
+  }
 ]

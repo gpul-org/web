@@ -1,7 +1,7 @@
 ---
 title: Linux Install Party
 excerpt: Trae o teu portátil e che axudaremos a instalarlle GNU/Linux!
-date: 2025-09-23
+date: 2025-09-23T12:00:00
 location: Aula 3.5, Facultade de Informática
 tags: [School]
 status: past
