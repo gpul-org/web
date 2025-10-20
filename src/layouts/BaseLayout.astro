@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 
 interface Props {
@@ -14,7 +15,7 @@ const imageUrl = `${siteUrl}${image}`;
 ---
 
 <!doctype html>
-<html lang="en" class="h-full">
+<html lang="es" class="h-full" transition:name="root" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -55,6 +56,9 @@ const imageUrl = `${siteUrl}${image}`;
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={imageUrl} />
+    
+    <!-- View Transitions -->
+    <ClientRouter />
   </head>
   <body class="h-full bg-white">
     <slot />
