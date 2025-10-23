@@ -15,4 +15,7 @@ export default defineConfig({
   },
 
   integrations: [mdx(), sitemap()],
+  redirects: {
+    "/school": "/eventos"
+  }
 });
