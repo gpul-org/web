@@ -33,6 +33,7 @@ location: Laboratorio 0.6, Facultade de Informática
 tags: ['School']
 status: upcoming
 authors: [delthia]
+video: https://www.youtube.com/watch?v=MWfT4XG6-SM
 ---
 
 ```
@@ -42,6 +43,7 @@ authors: [delthia]
 - en `tags` indica o tipo de evento. Podes engadir outras etiquetas separándoas con comas
 - `status` será _upcoming_ para eventos futuros e _past_ para eventos pasados
 - en `authors` indica o id de quen deu o evento. Podes poñer varios separados por comas
+- en `video` indica a URL á gravación da charla, se a hai
 
 Terás que crear o autor en `src/content/authors.json`, engadindo algo coma:
 

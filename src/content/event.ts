@@ -17,6 +17,7 @@ export const definition = defineCollection({
     tags: z.array(z.string()),
     status: z.string(),
     authors: z.array(reference("authors")).optional(),
+    video: z.string().optional(),
   }),
 });
 

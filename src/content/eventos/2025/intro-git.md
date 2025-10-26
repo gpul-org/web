@@ -4,8 +4,9 @@ excerpt: Git é un versátil e potente sistema de control de versións que se ax
 date: 2025-10-21T17:30:00
 location: Aula 3.5, Facultade de Informática
 tags: [School]
-status: upcoming
+status: past
 authors: [emiliojpg]
+video: https://www.youtube.com/watch?v=o_ah0gpGEts
 ---
 
 Traballes só ou en equipo; desenvolvendo código, escribindo documentación, artellando configuracións ou facendo páxinas webs: levar un axeitado control de versións é unha práctica imprescindible.

@@ -6,6 +6,7 @@ location: Aula 2.12, Facultade de Informática
 tags: [School]
 status: past
 authors: [delthia]
+video: https://www.youtube.com/watch?v=RdtmLzBg71g
 ---
 
 ¿Cómo se contrata un proyecto de software en la administración pública?¿Qué pasa cuando se utilizan formatos privativos?

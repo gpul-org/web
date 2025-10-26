@@ -6,6 +6,7 @@ location: Aula 3.5, Facultade de Informática
 tags: [School]
 status: past
 authors: [delthia]
+video: https://www.youtube.com/watch?v=MWfT4XG6-SM
 ---
 
 Despois de instalar GNU/Linux é importante aprender a sacarlle o máximo rendemento. Aínda que ao principio pode parecer compicada, a terminal é o xeito máis natural de facer gran cantidade de cousas no teu equipo, dende xestionar paquetes e configurar o sistema ata editar ficheiros.
