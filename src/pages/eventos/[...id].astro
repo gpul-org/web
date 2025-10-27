@@ -56,7 +56,7 @@ const { Content } = await render(evento);
           <li class="mb-1.5"><Calendar class="float-left mr-1"></Calendar><b>Data:</b> {evento.data.date.toLocaleDateString("es-ES")}</li>
           <li class="mb-1.5"><Clock class="float-left mr-1"></Clock><b>Hora:</b> {evento.data.date.getHours()+evento.data.date.getTimezoneOffset()/60}:{("0"+evento.data.date.getMinutes()).slice(-2)}</li>}
         {evento.data.location && <li class="mb-1.5"><MapPin class="float-left mr-1"></MapPin><b>Lugar:</b> {evento.data.location}</li>}
-        {evento.data.authors && <li class="mb-1.5"><User class="float-left mr-1"></User><b>Poñentes:</b> {authors.map((author,idx)=> <span> <a class="text-blue-600 hover:underline" href={author.data.portfolio} target="_blank">{author.data.name}</a>{idx < authors.length - 1 && ", "}</span>)}</li>}
+        {evento.data.authors && <li class="mb-1.5"><User class="float-left mr-1"></User><b>Relatores:</b> {authors.map((author,idx)=> <span> <a class="text-blue-600 hover:underline" href={author.data.portfolio} target="_blank">{author.data.name}</a>{idx < authors.length - 1 && ", "}</span>)}</li>}
         {evento.data.video && <li><Video class="float-left mr-1"></Video><b>Vídeo:</b> <a href={evento.data.video} class="text-blue-600 hover:underline" target="_blank">Gravación da charla</a></li>}
       </ul>
     </div>
