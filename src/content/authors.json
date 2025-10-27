@@ -38,5 +38,20 @@
     "id": "gamuwastaken",
     "name": "@GamuWasTaken",
     "portfolio": "https://github.com/GamuWasTaken"
+  },
+  {
+    "id": "JuanGilArregui",
+    "name": "Juan Gil",
+    "portfolio": "https://github.com/JuanGilArregui"
+  },
+  {
+    "id": "castrinho8",
+    "name": "Pablo Castro",
+    "portfolio": "https://github.com/castrinho8"
+  },
+  {
+    "id": "braisarias",
+    "name": "Brais Arias",
+    "portfolio": "https://github.com/braisarias"
   }
 ]
