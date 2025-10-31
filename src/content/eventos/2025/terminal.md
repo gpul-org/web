@@ -4,6 +4,7 @@ excerpt: Aprende a dominar la terminal. Entenderás cómo funcionan las variable
 date: 2025-10-30T17:30:00
 location: Aula 2.12, Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [sprinter05]
+video: https://youtu.be/hXaGcbSt7VE
 ---

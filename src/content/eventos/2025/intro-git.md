@@ -6,7 +6,7 @@ location: Aula 3.5, Facultade de Informática
 tags: [School]
 status: past
 authors: [emiliojpg]
-video: https://www.youtube.com/watch?v=o_ah0gpGEts
+video: https://youtu.be/o_ah0gpGEts
 ---
 
 Traballes só ou en equipo; desenvolvendo código, escribindo documentación, artellando configuracións ou facendo páxinas webs: levar un axeitado control de versións é unha práctica imprescindible.
