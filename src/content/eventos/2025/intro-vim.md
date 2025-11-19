@@ -14,3 +14,7 @@ Aprenderemos trucos y atajos indispensables para usar Vim.
 Desde los conceptos básicos hasta los trucos avanzados que te harán sentir como un verdadero maestro de la productividad. Tocaremos un poco de todo, tanto si estás interesado en aprender Vim de cero como si llevas un tiempo con él y quieres entender mejor los conceptos (y algún truquillo).
 
 **¡No te lo puedes perder!**
+
+## Documentación
+
+Podes consultar a documentación complementaria á charla que [@migueldeoleiros](https://github.com/migueldeoleiros) escribiu na súa wiki:[wiki.migueldeoleiros.com/notes/20250309132443-vim](https://wiki.migueldeoleiros.com/notes/20250309132443-vim).
