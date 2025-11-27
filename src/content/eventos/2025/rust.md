@@ -4,8 +4,9 @@ excerpt: Un paseo ligero por todos los elementos y decisiones que hacen que Rust
 date: 2025-11-25T18:30:00
 location: Aula 3.1, Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [gamuwastaken]
+video: https://youtu.be/Kn4qVoZWwHg
 ---
 
 Un paseo ligero por todos los elementos y decisiones que hacen que Rust sea especial. Desde la gestión de memoria hasta el diseño de tipos, pensando en la experiencia de desarrollo y la seguridad.
