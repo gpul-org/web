@@ -4,8 +4,9 @@ excerpt: Descubre cómo colaborar co software libre che axuda na vida profesiona
 date: 2025-12-02T18:00:00
 location: Aula 3.5, Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [castrinho8, braisarias]
+video: https://youtu.be/oWfGbmZHR90
 ---
 
 Ano tras ano vemos como a tecnoloxía é un campo con moita saída laboral, moito sitio donde innovar e aprender cousas modernísimas e con tobogáns nas oficinas pero cando chegas a currar atópaste con código en Java 4, horas extra sin pagar e con unha cultura empresarial moi lonxe do que debería ser.
