@@ -17,4 +17,4 @@ Desde los conceptos básicos hasta los trucos avanzados que te harán sentir com
 
 ## Documentación
 
-Podes consultar a documentación complementaria á charla que [@migueldeoleiros](https://github.com/migueldeoleiros) escribiu na súa wiki:[wiki.migueldeoleiros.com/notes/20250309132443-vim](https://wiki.migueldeoleiros.com/notes/20250309132443-vim).
+Podes consultar a documentación complementaria á charla que [@migueldeoleiros](https://github.com/migueldeoleiros) escribiu na súa wiki: [wiki.migueldeoleiros.com/notes/20250309132443-vim](https://wiki.migueldeoleiros.com/notes/20250309132443-vim).

@@ -1,6 +1,7 @@
 ---
 import { getCollection, render, getEntries } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
+import Prose from "../../components/Prose.astro";
 import Calendar from "lucide-astro/Calendar";
 import Clock from "lucide-astro/Clock";
 import MapPin from "lucide-astro/MapPin";
@@ -60,7 +61,9 @@ const { Content } = await render(evento);
         {evento.data.video && <li><Video class="float-left mr-1"></Video><b>Vídeo:</b> <a href={evento.data.video} class="text-blue-600 hover:underline" target="_blank">Gravación da charla</a></li>}
       </ul>
     </div>
-    <Content />
+    <Prose>
+      <Content />
+    </Prose>
     <br />
   </div>
 </PageLayout>
