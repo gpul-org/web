@@ -1,6 +1,8 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Round poster images on event page */
-#event-body img {
+#event-body img,
+#post-body img {
   @apply rounded-2xl w-10/12 m-auto mb-4;
 }
