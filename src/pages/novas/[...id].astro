@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import PageLayout from "../../layouts/PageLayout.astro";
 import Card from "../../components/Card.astro";
+import Prose from '../../components/Prose.astro';
 
 export async function getStaticPaths() {
   const novas = await getCollection('novas');
@@ -13,10 +14,19 @@ export async function getStaticPaths() {
 
 const { nova } = Astro.props;
 const { Content } = await render(nova);
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat("gl", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+};
 ---
 <PageLayout
   title=`GPUL - ${nova.data.title}` 
   description=`${nova.data.excerpt}`
+  image=`${nova.data.image.src}`
 >
   <div
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 mt-8"
@@ -24,8 +34,7 @@ const { Content } = await render(nova);
   >
     <h1 class="text-5xl font-semibold">{nova.data.title}</h1>
     <p class="text-gray-500 italic">{nova.data.excerpt}</p>
-    <p>{nova.data.author} - {nova.data.date.toLocaleDateString()}</p>
-{
+    {
       nova.data.tags.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-4 mt-2">
           {nova.data.tags.map((tag) => (
@@ -33,10 +42,31 @@ const { Content } = await render(nova);
               {tag}
             </span>
           ))}
+          · {formatDate(nova.data.date)}{ (nova.data.author) ? ' - ' : ''}{nova.data.author}
         </div>
       )
     }
-    <Content />
+
+
+  {
+    nova.data.image ? (
+      <img
+        height="200px"
+        src={nova.data.image.src}
+        class="aspect-video rounded-lg "
+      />
+    ) : (
+      <ImagePlaceholder
+        height="200px"
+        alt={imageAlt}
+        className="aspect-video rounded-lg"
+      />
+    )
+  }
+    <Prose>
+      <Content />
+    </Prose>
     <br />
+
   </div>
 </PageLayout>

@@ -4,15 +4,17 @@ import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
 export const definition = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/novas'}),
-  schema : z.object({
+  loader: glob({ pattern: '**/*.md', base: './src/content/novas'}),
+  schema: ({ image }) => z.object({
     title: z.string(),
     excerpt: z.string(),
     date: z.date(),
-    author: z.string(),
+    image: image().optional(),
+    author: z.string().optional(),
     tags: z.array(z.string()),
   })
 });
+
 
 export type Nova = CollectionEntry<'novas'>;
 
