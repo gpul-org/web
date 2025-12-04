@@ -1,10 +1,10 @@
 ---
-import type { Nova } from '../content/nova.ts';
+import type { Nova } from "../content/nova.ts";
 import Card from "../components/Card.astro";
 
 interface Props {
-  content : Nova,
-  class: string
+  content: Nova;
+  class: string;
 }
 const { content, class: className } = Astro.props;
 ---
@@ -14,8 +14,8 @@ const { content, class: className } = Astro.props;
   title={content.data.title}
   excerpt={content.data.excerpt}
   date={content.data.date}
-  image={( content.data.image ) ? content.data.image.src : null}
+  image={content.data.image ? content.data.image.src : null}
   author={content.data.author}
-  href={`novas/${content.id}`}
+  href={`/novas/${content.id}`}
   tags={content.data.tags}
 />
