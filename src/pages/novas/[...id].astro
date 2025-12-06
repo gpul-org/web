@@ -1,12 +1,12 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, render } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
 import Card from "../../components/Card.astro";
-import Prose from '../../components/Prose.astro';
+import Prose from "../../components/Prose.astro";
 
 export async function getStaticPaths() {
-  const novas = await getCollection('novas');
-  return novas.map(nova => ({
+  const novas = await getCollection("novas");
+  return novas.map((nova) => ({
     params: { id: nova.id },
     props: { nova },
   }));
@@ -23,50 +23,53 @@ const formatDate = (date: Date) => {
   }).format(date);
 };
 ---
+
 <PageLayout
-  title=`GPUL - ${nova.data.title}` 
+  title=`GPUL - ${nova.data.title}`
   description=`${nova.data.excerpt}`
   image=`${nova.data.image.src}`
 >
   <div
-    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 mt-8"
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 mt-8 dark:text-white"
     id="post-body"
   >
     <h1 class="text-5xl font-semibold">{nova.data.title}</h1>
-    <p class="text-gray-500 italic">{nova.data.excerpt}</p>
+    <p class="text-gray-500 italic dark:text-neutral-300">
+      {nova.data.excerpt}
+    </p>
     {
       nova.data.tags.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-4 mt-2">
           {nova.data.tags.map((tag) => (
-            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">
+            <span class="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-300 dark:text-blue-800 text-xs font-semibold rounded-full">
               {tag}
             </span>
           ))}
-          · {formatDate(nova.data.date)}{ (nova.data.author) ? ' - ' : ''}{nova.data.author}
+          · {formatDate(nova.data.date)}
+          {nova.data.author ? " - " : ""}
+          {nova.data.author}
         </div>
       )
     }
 
-
-  {
-    nova.data.image ? (
-      <img
-        height="200px"
-        src={nova.data.image.src}
-        class="aspect-video rounded-lg "
-      />
-    ) : (
-      <ImagePlaceholder
-        height="200px"
-        alt={imageAlt}
-        className="aspect-video rounded-lg"
-      />
-    )
-  }
+    {
+      nova.data.image ? (
+        <img
+          height="200px"
+          src={nova.data.image.src}
+          class="aspect-video rounded-lg "
+        />
+      ) : (
+        <ImagePlaceholder
+          height="200px"
+          alt={imageAlt}
+          className="aspect-video rounded-lg"
+        />
+      )
+    }
     <Prose>
       <Content />
     </Prose>
     <br />
-
   </div>
 </PageLayout>

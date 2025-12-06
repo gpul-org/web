@@ -1,21 +1,31 @@
 ---
 import Mail from "lucide-astro/Mail";
 import MapPin from "lucide-astro/MapPin";
-import Twitter  from "lucide-astro/Twitter";
+import Twitter from "lucide-astro/Twitter";
 
 const { class: className } = Astro.props;
 ---
+
 <!-- Información de contacto -->
 <div class={`space-y-6 ${className}`}>
   <!-- Email -->
   <div class="flex items-start space-x-4">
-    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+    <div
+      class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center"
+    >
       <Mail class="w-5 h-5 text-blue-600" />
     </div>
     <div>
-      <h3 class="text-lg font-semibold text-gray-900 mb-1">Email</h3>
-      <p class="text-gray-600 mb-2">Para consultas xerais e información</p>
-      <a href="mailto:info@gpul.org" class="text-blue-600 hover:text-blue-700 font-medium">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+        Email
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400 mb-2">
+        Para consultas xerais e información
+      </p>
+      <a
+        href="mailto:info@gpul.org"
+        class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
+      >
         info@gpul.org
       </a>
     </div>
@@ -23,14 +33,18 @@ const { class: className } = Astro.props;
 
   <!-- Localización -->
   <div class="flex items-start space-x-4">
-    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+    <div
+      class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center"
+    >
       <MapPin class="w-5 h-5 text-purple-600" />
     </div>
     <div>
-      <h3 class="text-lg font-semibold text-gray-900 mb-1">Localización</h3>
-      <p class="text-gray-600">
-        Facultade de Informática<br>
-        Campus de Elviña s/n<br>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+        Localización
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400">
+        Facultade de Informática<br />
+        Campus de Elviña s/n<br />
         15071 A Coruña, España
       </p>
     </div>
@@ -38,18 +52,35 @@ const { class: className } = Astro.props;
 
   <!-- Redes sociais -->
   <div class="flex space-x-4">
-    <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+    <div
+      class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center"
+    >
       <Twitter class="w-5 h-5 text-indigo-600" />
     </div>
     <div>
-      <h3 class="text-lg font-semibold text-gray-900 mb-1">Redes sociais</h3>
-      <p class="text-gray-600 mb-2">Síguenos nas redes sociais</p>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+        Redes sociais
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400 mb-2">
+        Síguenos nas redes sociais
+      </p>
       <div class="flex space-x-4">
-        <a href="#" class="text-blue-600 hover:text-blue-700">Twitter</a>
-        <a href="#" class="text-blue-600 hover:text-blue-700">GitHub</a>
-        <a href="#" class="text-blue-600 hover:text-blue-700">Telegram</a>
+        <a
+          href="#"
+          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+          >Twitter</a
+        >
+        <a
+          href="#"
+          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+          >GitHub</a
+        >
+        <a
+          href="#"
+          class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+          >Telegram</a
+        >
       </div>
     </div>
   </div>
 </div>
-

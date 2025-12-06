@@ -1,93 +1,98 @@
 ---
 type Select = {
   type: "select";
-  placeholder: {value: string, text: string}[];
-}
+  placeholder: { value: string; text: string }[];
+};
 
 type Input = {
   type: "text" | "email" | "date" | "tel";
   placeholder?: string;
-}
+};
 
 type TextArea = {
   type: "textarea";
   placeholder?: string;
-}
+};
 
 type CheckBox = {
   type: "checkbox";
   placeholder?: string;
-}
+};
 const CheckBoxClass = `flex flex-row-reverse justify-end gap-3`;
 
-type Props = { name: string, required?: boolean, class?: string} & (
-  Input | Select | TextArea | CheckBox
-)
+type Props = { name: string; required?: boolean; class?: string } & (
+  | Input
+  | Select
+  | TextArea
+  | CheckBox
+);
 
 const props = Astro.props;
-const { name, required = true, type, placeholder, class: className = '' } = props;
+const {
+  name,
+  required = true,
+  type,
+  placeholder,
+  class: className = "",
+} = props;
 
 const safeName = name
   .toLowerCase()
   // Remove all accents
-  .normalize('NFD').replaceAll(/[\u0300-\u036f]/g, '')
+  .normalize("NFD")
+  .replaceAll(/[\u0300-\u036f]/g, "")
   // Convert all non alphanumeric to dashes
-  .replaceAll(/[^a-z0-9]+/g, '-')
+  .replaceAll(/[^a-z0-9]+/g, "-");
 ---
 
 <div
-  class={className + (type == 'checkbox' ? CheckBoxClass : '')}
-  id={safeName} 
+  class={className + (type == "checkbox" ? CheckBoxClass : "")}
+  id={safeName}
 >
-  <label for={safeName} class="block text-sm font-medium text-gray-700 mb-1">
+  <label
+    for={safeName}
+    class="block text-sm font-medium text-gray-700 dark:text-white mb-1"
+  >
     <slot>
       {name}
     </slot>
-      { required && <i class="text-red-600">*</i> }
+    {required && <i class="text-red-600">*</i>}
   </label>
   {
-    type == "select" ?
-
-      <select 
+    type == "select" ? (
+      <select
         name={safeName}
         required={required}
-        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400 dark:text-neutral-300"
       >
         {/* Los tipos de ts son de papel mojado :( */}
-        { (placeholder as Select['placeholder']).map( ({value, text}) =>
+        {(placeholder as Select["placeholder"]).map(({ value, text }) => (
           <option value={value}>{text}</option>
-        )}
+        ))}
       </select>
-
-    : type == "textarea" ?
-
-      <textarea 
-        name={safeName} 
+    ) : type == "textarea" ? (
+      <textarea
+        name={safeName}
         rows="5"
         required={required}
-        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        placeholder={placeholder as TextArea['placeholder']}
-      ></textarea>
-
-    : type == "checkbox" ?
-
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400 dark:text-neutral-300"
+        placeholder={placeholder as TextArea["placeholder"]}
+      />
+    ) : type == "checkbox" ? (
       <input
         name={name}
-        type="checkbox" 
+        type="checkbox"
         required={required}
         class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
       />
-
-    :
-
+    ) : (
       <input
-        type={type as Input['type']} 
-        name={safeName} 
+        type={type as Input["type"]}
+        name={safeName}
         required={required}
-        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        placeholder={placeholder as Input['placeholder']}
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400 dark:text-neutral-300"
+        placeholder={placeholder as Input["placeholder"]}
       />
-
+    )
   }
-
 </div>
