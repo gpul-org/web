@@ -7,24 +7,23 @@ import ContactForm from "../components/ContactForm.astro";
 import ContactMap from "../components/ContactMap.astro";
 ---
 
-<PageLayout 
-  title="Contacto - GPUL" 
+<PageLayout
+  title="Contacto - GPUL"
   description="Ponte en contacto co Grupo de Programadores e Usuarios de Linux (GPUL). Información sobre como asociarse, colaborar ou participar nas nosas actividades."
 >
-  <PageTitle 
-    title="Contacto" 
+  <PageTitle
+    title="Contacto"
     subtitle="Tes algunha dúbida? Queres participar nas nosas actividades? Contacta connosco!"
   />
 
-<section class="my-6 max-w-7xl m-auto">
-  <h2 class="text-3xl font-bold text-gray-900 m-8">
-    Como contactar connosco
-  </h2>
-  <div class="flex gap-8 flex-wrap p-6">
-    <ContactInfo/>
-    <ContactForm class="flex-grow"/>
-    <ContactMap class="flex-grow"/>
-  </div>
-</section>
-
+  <section class="my-6 max-w-7xl m-auto">
+    <h2 class="text-3xl font-bold text-gray-900 dark:text-white m-8">
+      Como contactar connosco
+    </h2>
+    <div class="flex gap-8 flex-wrap p-6">
+      <ContactInfo />
+      <ContactForm class="flex-grow" />
+      <ContactMap class="flex-grow" />
+    </div>
+  </section>
 </PageLayout>

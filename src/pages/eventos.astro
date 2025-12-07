@@ -6,34 +6,38 @@ import EventCard from "../components/EventCard.astro";
 import ContentDisplay from "../components/ContentDisplay.astro";
 
 import Plus from "lucide-astro/Plus";
-import { upcomingEvents, pastEvents } from '../content/event.ts';
+import { upcomingEvents, pastEvents } from "../content/event.ts";
 import StarContent from "../components/StarContent.astro";
 ---
 
-<PageLayout 
-  title="Eventos - GPUL" 
+<PageLayout
+  title="Eventos - GPUL"
   description="Descubre os próximos eventos, charlas, cursos e actividades organizadas polo Grupo de Programadores e Usuarios de Linux (GPUL)."
 >
-  <PageTitle 
-    title="Eventos GPUL" 
+  <PageTitle
+    title="Eventos GPUL"
     subtitle="Participa nas nosas actividades, aprende novas tecnoloxías e conecta coa comunidade"
   />
 
-  <Stats/>
+  <Stats />
 
   <!-- Eventos próximos -->
   <ContentDisplay contents={upcomingEvents} card={EventCard}>
     <Fragment slot="title">
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">Próximos Eventos</h2>
-      <p class="text-xl text-gray-600">
+      <h2
+        class="text-3xl font-bold text-gray-900 dark:text-white dark:mt-8 mb-4"
+      >
+        Próximos Eventos
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-neutral-400">
         Non te perdas as nosas próximas actividades
       </p>
     </Fragment>
 
     <Fragment slot="cta">
       <div class="text-center mt-12">
-        <a 
-          href="/contact" 
+        <a
+          href="/contact"
           class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
         >
           Propón un evento
@@ -43,17 +47,18 @@ import StarContent from "../components/StarContent.astro";
     </Fragment>
   </ContentDisplay>
 
-  <StarContent/>
+  <StarContent />
 
   <!-- Eventos pasados -->
   <ContentDisplay contents={pastEvents} card={EventCard}>
     <Fragment slot="title">
-      <h2 class="text-3xl font-bold text-gray-900">Eventos Anteriores</h2>
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
+        Eventos Anteriores
+      </h2>
       <!-- TODO: can't we doomscroll this as well -->
       <!-- <a href="/blog" class="text-blue-600 hover:text-blue-700 font-medium"> -->
-        <!-- Ver todas as crónicas → -->
+      <!-- Ver todas as crónicas → -->
       <!-- </a> -->
     </Fragment>
   </ContentDisplay>
-
 </PageLayout>

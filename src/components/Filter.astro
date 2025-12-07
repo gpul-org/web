@@ -1,84 +1,91 @@
 ---
 interface Props {
-  tags: string[]
+  tags: string[];
 }
 
-const {
-  tags
-} = Astro.props;
+const { tags } = Astro.props;
 
 const tagClass = `
     block px-4 py-2 border rounded-full whitespace-nowrap h-max text-sm
     transition-colors cursor-pointer 
-    bg-white has-checked:bg-blue-600
+    bg-white dark:bg-neutral-700 dark:text-white dark:border-neutral-500 has-checked:bg-blue-600 dark:has-checked:bg-blue-500 dark:hover:has-checked:bg-blue-400 dark:hover:bg-neutral-500
     text-gray-700 has-checked:text-white
-    hover:bg-gray-100 has-checked:hover:bg-blue-700`
+    hover:bg-gray-100 has-checked:hover:bg-blue-700`;
 ---
 
-<section class="py-3 bg-gray-50 border-b flex flex-row gap-3">
+<section
+  class="py-3 bg-gray-50 dark:bg-neutral-800 border-b flex flex-row gap-3"
+>
   <div class="max-w-7xl mx-auto flex gap-3 px-4 overflow-hidden">
     <label class={tagClass}>
-      <input
-        data-filter="all" checked
-        type="checkbox" class="hidden"
-      />
+      <input data-filter="all" checked type="checkbox" class="hidden" />
       Todas
     </label>
     <div class="flex gap-3 place-center overflow-x-scroll" id="filters">
       {
-        tags.map(name =>
+        tags.map((name) => (
           <label class={tagClass}>
             <input data-filter={name} type="checkbox" class="hidden" />
             {name}
           </label>
-        )
+        ))
       }
     </div>
   </div>
 
-  <script is:inline defer>window.addEventListener("load", ()=>{
-    const allCheckbox = document.querySelector('[data-filter="all"]');
-    const otherCheckboxes = document.querySelectorAll('[data-filter]:not([data-filter="all"])');
-    const filtrables = document.querySelectorAll(`[data-filtrable]`);
-    const filtrableWithTag = tag => document.querySelectorAll(`[data-filtrable~="${tag}"]`);
+  <script is:inline defer>
+    window.addEventListener("load", () => {
+      const allCheckbox = document.querySelector('[data-filter="all"]');
+      const otherCheckboxes = document.querySelectorAll(
+        '[data-filter]:not([data-filter="all"])'
+      );
+      const filtrables = document.querySelectorAll(`[data-filtrable]`);
+      const filtrableWithTag = (tag) =>
+        document.querySelectorAll(`[data-filtrable~="${tag}"]`);
 
-    const showContent = content => content.classList.remove("hidden")
-    const hideContent = content => content.classList.add("hidden")
+      const showContent = (content) => content.classList.remove("hidden");
+      const hideContent = (content) => content.classList.add("hidden");
 
-    allCheckbox.addEventListener("change", () => {
-      // Ignore turning off all
-      if (!allCheckbox.checked) { allCheckbox.checked = true }
-      // Uncheck other filters
-      otherCheckboxes.forEach(cb => cb.checked = false);
-      // Show every filtrable
-      filtrables.forEach(showContent)
-    });
-
-    otherCheckboxes.forEach(cb => {
-      cb.addEventListener("change", () => {
-        // Uncheck all filter
-        allCheckbox.checked = false;
-        // Take all checked filters
-        const filters = [...document.querySelectorAll(`[data-filter]:checked`)
-          .values().map(tag => tag.dataset.filter)];
-
-        // Show everything if no tag is selected
-        if(filters.length == 0) {
-          filtrables.forEach(showContent);
+      allCheckbox.addEventListener("change", () => {
+        // Ignore turning off all
+        if (!allCheckbox.checked) {
           allCheckbox.checked = true;
-          return;
-        } 
+        }
+        // Uncheck other filters
+        otherCheckboxes.forEach((cb) => (cb.checked = false));
+        // Show every filtrable
+        filtrables.forEach(showContent);
+      });
 
-        // Hide everything
-        filtrables.forEach(hideContent);
-        console.log({filtrables})
-        // Show selected content
-        filters.forEach( tag => {
-          console.log(filtrableWithTag(tag))
-          filtrableWithTag(tag).forEach(showContent)
+      otherCheckboxes.forEach((cb) => {
+        cb.addEventListener("change", () => {
+          // Uncheck all filter
+          allCheckbox.checked = false;
+          // Take all checked filters
+          const filters = [
+            ...document
+              .querySelectorAll(`[data-filter]:checked`)
+              .values()
+              .map((tag) => tag.dataset.filter),
+          ];
+
+          // Show everything if no tag is selected
+          if (filters.length == 0) {
+            filtrables.forEach(showContent);
+            allCheckbox.checked = true;
+            return;
+          }
+
+          // Hide everything
+          filtrables.forEach(hideContent);
+          console.log({ filtrables });
+          // Show selected content
+          filters.forEach((tag) => {
+            console.log(filtrableWithTag(tag));
+            filtrableWithTag(tag).forEach(showContent);
+          });
         });
       });
     });
-
-  })</script>
+  </script>
 </section>
