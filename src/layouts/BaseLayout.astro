@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 
 interface Props {
@@ -14,7 +15,7 @@ const imageUrl = `${siteUrl}${image}`;
 ---
 
 <!doctype html>
-<html lang="gl" class="h-full">
+<html lang="gl" class="h-full" transition:name="root" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -24,6 +25,7 @@ const imageUrl = `${siteUrl}${image}`;
     <script
       is:inline
       defer
+      data-astro-rerun
       src="https://umami.gpul.org/script.js"
       data-website-id="a9895841-f600-4828-924a-4f15ef96c429"></script>
 
@@ -55,6 +57,9 @@ const imageUrl = `${siteUrl}${image}`;
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={imageUrl} />
+
+    <!-- View Transitions -->
+    <ClientRouter />
   </head>
   <body class="h-full bg-white dark:bg-neutral-900">
     <slot />
