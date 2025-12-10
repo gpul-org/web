@@ -26,7 +26,7 @@ const currentPath = "/" + Astro.url.pathname.split("/")[1];
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo/Brand -->
-      <div class="flex items-center">
+      <div class="flex items-center" transition:persist="logo">
         <a href="/" class="flex items-center space-x-3">
           <Image
             src={logoSmall}
@@ -104,11 +104,13 @@ const currentPath = "/" + Astro.url.pathname.split("/")[1];
 </nav>
 
 <script>
-  // Mobile menu toggle
-  const mobileMenuButton = document.getElementById("mobile-menu-button");
-  const mobileMenu = document.getElementById("mobile-menu");
+  document.addEventListener("astro:page-load", () => {
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-  mobileMenuButton?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("hidden");
+    mobileMenuButton?.addEventListener("click", () => {
+      mobileMenu?.classList.toggle("hidden");
+    });
   });
 </script>

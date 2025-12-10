@@ -7,7 +7,7 @@ const { tags } = Astro.props;
 
 const tagClass = `
     block px-4 py-2 border rounded-full whitespace-nowrap h-max text-sm
-    transition-colors cursor-pointer 
+    transition-colors cursor-pointer
     bg-white dark:bg-neutral-700 dark:text-white dark:border-neutral-500 has-checked:bg-blue-600 dark:has-checked:bg-blue-500 dark:hover:has-checked:bg-blue-400 dark:hover:bg-neutral-500
     text-gray-700 has-checked:text-white
     hover:bg-gray-100 has-checked:hover:bg-blue-700`;
@@ -34,7 +34,7 @@ const tagClass = `
   </div>
 
   <script is:inline defer>
-    window.addEventListener("load", () => {
+    document.addEventListener("astro:page-load", () => {
       const allCheckbox = document.querySelector('[data-filter="all"]');
       const otherCheckboxes = document.querySelectorAll(
         '[data-filter]:not([data-filter="all"])'

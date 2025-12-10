@@ -17,11 +17,11 @@ const { title, description, image } = Astro.props;
     <header>
       <Navigation />
     </header>
-    
-    <main class="flex-1 pt-16">
+
+    <main class="flex-1 pt-16" transition:animate="fade">
       <slot />
     </main>
-    
-    <Footer />
+
+    <Footer transition:persist="footer"/>
   </div>
 </BaseLayout>

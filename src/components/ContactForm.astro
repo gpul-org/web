@@ -97,7 +97,7 @@ const { class: className } = Astro.props;
 </div>
 
 {/* Send form data and animate form */}
-<script is:inline defer>
+<script is:inline defer data-astro-rerun>
   {
     const form = document.querySelector("#contact-form");
     const loader = form.querySelector(".loader");
@@ -140,7 +140,7 @@ const { class: className } = Astro.props;
 </script>
 
 {/* Set the subject of the select automatically from the url params */}
-<script is:inline defer>
+<script is:inline defer data-astro-rerun>
   {
     /** @type {HTMLSelectElement} */
     const select = document.querySelector("#subject select");
@@ -157,7 +157,7 @@ const { class: className } = Astro.props;
 </script>
 
 {/* React to subject changes */}
-<script is:inline defer>
+<script is:inline defer data-astro-rerun>
   {
     /** @type {HTMLSelectElement} */
     const select = document.querySelector("#subject select");

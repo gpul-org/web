@@ -30,12 +30,12 @@ const { Content } = await render(evento);
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-3 dark:text-white"
     id="event-body"
   >
-    <h1 class="text-5xl font-semibold dark:text-white">{evento.data.title}</h1>
+    <h1 class="text-5xl font-semibold dark:text-white" transition:name={`title-${evento.data.title}`}>{evento.data.title}</h1>
     {
       evento.data.tags.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-4 mt-2">
           {evento.data.tags.map((tag) => (
-            <span class="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-300 dark:text-blue-800 text-xs font-semibold rounded-full">
+            <span transition:name={`tag-${evento.data.title}-${tag}`} class="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-300 dark:text-blue-800 text-xs font-semibold rounded-full">
               {tag}
             </span>
           ))}
@@ -48,6 +48,7 @@ const { Content } = await render(evento);
           src={"/media/eventos/"+evento.id+".png"}
           alt="Póster do evento"
           class="aspect-video rounded-lg"
+          transition:name={`img-${evento.data.title}`}
         />
 
     <div class="bg-orange-100 border border-orange-500 p-4 rounded-md dark:bg-orange-950">
