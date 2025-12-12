@@ -4,7 +4,7 @@ excerpt: Descubre SteamOS, o sistema para máquinas de videoxogos baseado en Lin
 date: 2025-12-11T19:30:00
 location: Aula 3.1, Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [berto]
 ---
 
