@@ -6,20 +6,24 @@ const Card = card;
 
 <section>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
     <div class="text-center mb-12">
-      <slot name="title"/>
+      <slot name="title" />
     </div>
 
-    <div class="flex flex-wrap gap-8 place-content-center justify-items-center pb-4">
+    <div
+      class="flex flex-wrap gap-8 place-content-center justify-items-center pb-4"
+    >
       {
-        contents.map((content: any) => (
-          <Card
-            content={content}
-          />
-        ))
+        contents.length > 0 ? (
+          contents.map((content: any) => <Card content={content} />)
+        ) : (
+          <h3 class="text-2xl text-gray-900 dark:text-neutral-400">
+            <i>Parece que non hai moito por aquí agora mesmo</i>
+            <br />
+            <i>Seguro que pronto prepararemos máis actividades!</i>
+          </h3>
+        )
       }
     </div>
-
   </div>
 </section>
