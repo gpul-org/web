@@ -4,8 +4,9 @@ excerpt: Nix es una herramienta que tiene un enfoque único sobre la gestión de
 date: 2025-12-16T17:00:00
 location: Aula 3.5, Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [peprolinbot]
+video: https://youtu.be/g2szGH6vmsk
 ---
 
 > Nix es una herramienta que tiene un enfoque único sobre la gestión de paquetes y configuración de sistemas. Permitiendo que estos sean reproducibles y declarativos. 
