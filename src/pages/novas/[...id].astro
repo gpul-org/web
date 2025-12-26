@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
 import Card from "../../components/Card.astro";
+import ImagePlaceholder from "../../components/ImagePlaceholder.astro";
 import Prose from "../../components/Prose.astro";
 
 export async function getStaticPaths() {
@@ -33,7 +34,7 @@ const formatDate = (date: Date) => {
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 mt-8 dark:text-white"
     id="post-body"
   >
-    <h1 class="text-5xl font-semibold">{nova.data.title}</h1>
+    <h1 class="text-5xl font-semibold" transition:name={`title-${nova.data.title}`}>{nova.data.title}</h1>
     <p class="text-gray-500 italic dark:text-neutral-300">
       {nova.data.excerpt}
     </p>
@@ -41,7 +42,7 @@ const formatDate = (date: Date) => {
       nova.data.tags.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-4 mt-2">
           {nova.data.tags.map((tag) => (
-            <span class="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-300 dark:text-blue-800 text-xs font-semibold rounded-full">
+            <span transition:name={`tag-${nova.data.title}-${tag}`} class="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-300 dark:text-blue-800 text-xs font-semibold rounded-full">
               {tag}
             </span>
           ))}
@@ -58,12 +59,14 @@ const formatDate = (date: Date) => {
           height="200px"
           src={nova.data.image.src}
           class="aspect-video rounded-lg "
+          transition:name={`img-${nova.data.title}`}
         />
       ) : (
         <ImagePlaceholder
           height="200px"
-          alt={imageAlt}
+          alt={nova.data.title}
           className="aspect-video rounded-lg"
+          transition:name={`img-${nova.data.title}`}
         />
       )
     }

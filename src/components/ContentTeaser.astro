@@ -9,7 +9,7 @@ const sizes = ["", "hidden md:block", "hidden lg:block"]
       <slot name="title"/>
       <slot name="more"/>
     </div>
-    
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {contents.slice(0,3).map( (content: any, i: number) =>
         <Card
