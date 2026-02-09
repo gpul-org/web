@@ -4,7 +4,7 @@ excerpt: "Descubre por qué Emacs sigue siendo relevante en 2026. Veremos cómo 
 date: 2026-02-05T18:00:00
 location: Aula 2.4, Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [migueldeoleiros]
 ---
 
