@@ -103,8 +103,8 @@ const currentPath = "/" + Astro.url.pathname.split("/")[1];
   </div>
 </nav>
 
-<script>
-  document.addEventListener("astro:page-load", () => {
+<script is:inline defer data-astro-rerun>
+  {
     // Mobile menu toggle
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -112,5 +112,5 @@ const currentPath = "/" + Astro.url.pathname.split("/")[1];
     mobileMenuButton?.addEventListener("click", () => {
       mobileMenu?.classList.toggle("hidden");
     });
-  });
+  }
 </script>
