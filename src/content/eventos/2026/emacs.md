@@ -6,6 +6,7 @@ location: Aula 2.4, Facultade de Informática
 tags: ['School']
 status: past
 authors: [migueldeoleiros]
+video: https://youtu.be/M150BK4jqIE
 ---
 
 Emacs es uno de esos programas que existen desde siempre… y que todavía hoy siguen siendo sorprendentemente modernos.
