@@ -4,8 +4,9 @@ excerpt: "Algúnha vez pensaches en montar a túa propia startup, pero non sabes
 date: 2026-02-24T18:00:00
 location: Aula 2.4, Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [castrinho8]
+video: https://youtu.be/0wCG67H8JtY
 ---
 
 Algúnha vez pensaches en montar a túa propia startup, pero non sabes por onde empezar? Ou crees que para triunfar hai que irse fóra? Esta charla é para ti.
