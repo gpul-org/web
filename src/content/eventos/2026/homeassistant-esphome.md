@@ -1,7 +1,7 @@
 ---
 title: "ESPHome + Home Assistant: domótica sin nube y sin magia"
 excerpt: "Vamos a montar domótica de verdad usando Home Assistant y ESPHome. Veremos cómo flashear un ESP32, integrar sensores, crear automatizaciones locales y acceder de forma remota sin cargarte la seguridad. Lo veremos con demos en vivo y código real."
-date: 2026-03-10T18:00:00
+date: 2026-03-18T19:00:00
 location: Aula 2.4, Facultade de Informática
 tags: ['School']
 status: upcoming
