@@ -4,7 +4,7 @@ excerpt: "Vamos a montar domótica de verdad usando Home Assistant y ESPHome. Ve
 date: 2026-03-18T19:00:00
 location: Aula 2.4, Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [ssaavedra]
 ---
 
