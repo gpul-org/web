@@ -21,7 +21,7 @@ const tagClass = `
       <input data-filter="all" checked type="checkbox" class="hidden" />
       Todas
     </label>
-    <div class="flex gap-3 place-center overflow-x-scroll" id="filters">
+    <div class="flex gap-3 place-center overflow-x-auto" id="filters">
       {
         tags.map((name) => (
           <label class={tagClass}>
