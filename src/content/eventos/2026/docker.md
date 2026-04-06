@@ -2,7 +2,7 @@
 title: "Facilitando el despliegue de servicios a través de contenedores"
 excerpt: "En esta charla aprenderás a usar Docker desde cero, abarcando todos los conceptos clave necesarios. También conocerás Docker Compose, que permite desplegar de forma fácil y sencilla cualquier tipo de servicio mediante un solo archivo."
 date: 2026-04-08T19:00:00
-location: Facultade de Informática
+location: Aula 2.11 - Facultade de Informática
 tags: ['School']
 status: upcoming
 authors: [sprinter05]
