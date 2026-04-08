@@ -4,8 +4,9 @@ excerpt: "En esta charla aprenderás a usar Docker desde cero, abarcando todos l
 date: 2026-04-08T19:00:00
 location: Aula 2.11 - Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [sprinter05]
+video: https://youtu.be/fDPlgDb8rYM
 ---
 
 En esta charla de GPUL se explica con detalle el despliegue de aplicaciones mediante contenedores. 
