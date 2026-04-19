@@ -78,5 +78,18 @@
     "id": "jorgeteixe",
     "name": "Jorge Teixeira",
     "portfolio": "https://github.com/jorgeteixe"
+  },
+  {
+    "id": "martinge17",
+    "name": "Martín García",
+    "portfolio": "https://github.com/martinge17"
+  },
+  {
+    "id": "estevo-a",
+    "name": "Estevo Aldea"
+  },
+  {
+    "id": "mateo-p",
+    "name": "Mateo Palmeiro"
   }
 ]
