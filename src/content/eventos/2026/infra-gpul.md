@@ -4,7 +4,7 @@ excerpt: "Descubre cómo montar tu propia nube con software libre, viendo cómo 
 date: 2026-04-14T18:30:00
 location: Laboratorio 0.3 - Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [jorgeteixe, delthia]
 ---
 
