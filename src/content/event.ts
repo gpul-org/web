@@ -26,7 +26,7 @@ export const authors_definition = defineCollection({
   schema: z.object({
     id: z.string(),
     name: z.string(),
-    portfolio: z.string().url(),
+    portfolio: z.string().url().optional(),
   }),
 });
 
