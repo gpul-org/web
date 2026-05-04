@@ -8,5 +8,5 @@ status: upcoming
 authors: [julio]
 ---
 
-Aprende a mejorar tus apuntes y documentaciones con este sencillo y lenguaje. También veremos otras herramientas que hacen markdown aún más potente, como logseq.
+Aprende a mejorar tus apuntes y documentaciones con este sencillo lenguaje. También veremos otras herramientas que hacen markdown aún más potente, como logseq.
 
