@@ -4,7 +4,7 @@ excerpt: "SuperTuxKart es un juego de carreras de karts abierto y de código lib
 date: 2026-04-29T16:00:00
 location: Laboratorio 1.3 - Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 ---
 
 SuperTuxKart es un juego de carreras de karts abierto y de código libre que además permite poder diseñar tus propios modelos para usar dentro del juego.
