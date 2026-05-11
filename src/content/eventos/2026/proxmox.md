@@ -6,6 +6,7 @@ location: Aula 2.2 - Facultade de Informática
 tags: ['School']
 status: past
 authors: [estevo-a, martinge17, mateo-p]
+video: https://youtu.be/bFJqsIZS-V0
 ---
 
 En esta charla aprenderás a dar os primeiros pasos en Proxmox (entorno de virtualización Software Libre), instalando servizos como Immich.
