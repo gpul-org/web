@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
-import Button from './Button.astro';
-import logo from '../assets/logo.svg';
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import logo from "../assets/logo.svg";
 
 interface Props {
   title?: string;
@@ -10,52 +10,60 @@ interface Props {
   showImage?: boolean;
 }
 
-const { 
+const {
   title = "GPUL",
   subtitle = "Grupo de Programadores e Usuarios de Linux",
   description = "Defendendo o software libre dende 1998",
-  showImage = true
+  showImage = true,
 } = Astro.props;
 ---
 
-<section class="bg-gray-900 text-white relative overflow-hidden">
+<section class="bg-neutral-950 text-white relative overflow-hidden">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-<div class="flex flex-col lg:flex-row items-center lg:items-end justify-center gap-8 lg:gap-12">
+    <div
+      class="flex flex-col lg:flex-row items-center lg:items-end justify-center gap-8 lg:gap-12"
+    >
       <!-- Logo -->
-      {showImage && (
-        <div class="flex-shrink-0">
-          <div class="bg-white rounded-2xl p-6 shadow-xl max-w-xs lg:max-w-sm">
-            <Image 
-              src={logo} 
-              alt="GPUL Logo" 
-              width={300}
-              height={225}
-              class="w-full h-auto drop-shadow-sm"
-            />
+      {
+        showImage && (
+          <div class="flex-shrink-0">
+            <div class="bg-white rounded-2xl p-6 shadow-xl max-w-xs lg:max-w-sm">
+              <Image
+                src={logo}
+                alt="GPUL Logo"
+                width={300}
+                height={225}
+                class="w-full h-auto drop-shadow-sm"
+              />
+            </div>
           </div>
-        </div>
-      )}
-      
+        )
+      }
+
       <!-- Content -->
       <div class="text-center lg:text-left flex-1">
-        <h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 leading-tight">
+        <h1
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 leading-tight"
+        >
           {subtitle}
         </h1>
-        <p class="text-lg lg:text-xl text-gray-300 mb-8">
+        <p class="text-lg lg:text-xl text-neutral-200 mb-8">
           {description}
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <Button 
-            variant="primary" 
-            size="lg" 
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+        >
+          <Button
+            variant="primary"
+            size="lg"
             href="/sobre-nos"
             class="text-white"
           >
             Coñécenos
           </Button>
-          <Button 
-            variant="secondary" 
-            size="lg" 
+          <Button
+            variant="secondary"
+            size="lg"
             href="/eventos"
             class="text-white border-white hover:bg-white hover:text-gray-900"
           >
@@ -63,7 +71,6 @@ const {
           </Button>
         </div>
       </div>
-
     </div>
   </div>
 </section>
