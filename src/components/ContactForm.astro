@@ -5,18 +5,28 @@ const { class: className } = Astro.props;
 ---
 
 <div
-  class={`bg-gray-100 dark:bg-neutral-800 rounded-2xl p-8 m-auto h-fit ${className}`}
+  class={`bg-neutral-100 dark:bg-neutral-800 rounded-2xl p-8 m-auto h-fit ${className}`}
 >
   <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
     Envíanos unha mensaxe
   </h2>
 
-  <form id="contact-form" class="space-y-6" action="mailto:info@gpul.org" target="_blank">
+  <form
+    id="contact-form"
+    class="space-y-6"
+    action="mailto:info@gpul.org"
+    target="_blank"
+  >
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <SimpleInput name="name" type="text" placeholder="O teu nome">
         Nome
       </SimpleInput>
-      <SimpleInput name="surname" type="text" placeholder="Os teus apelidos" disabled>
+      <SimpleInput
+        name="surname"
+        type="text"
+        placeholder="Os teus apelidos"
+        disabled
+      >
         Apelidos
       </SimpleInput>
       <SimpleInput
@@ -53,8 +63,12 @@ const { class: className } = Astro.props;
       <SimpleInput name="dni" type="text" placeholder="12345678A" disabled>
         DNI/NIE/Pasaporte
       </SimpleInput>
-      <SimpleInput name="birth" type="date" disabled> Data de nacemento </SimpleInput>
-      <SimpleInput name="address" type="text" disabled> Enderezo completo </SimpleInput>
+      <SimpleInput name="birth" type="date" disabled>
+        Data de nacemento
+      </SimpleInput>
+      <SimpleInput name="address" type="text" disabled>
+        Enderezo completo
+      </SimpleInput>
       <SimpleInput
         name="occupation"
         type="text"
@@ -79,7 +93,7 @@ const { class: className } = Astro.props;
     <SimpleInput name="privacy-policy" type="checkbox">
       Acepto a <a
         href="#"
-        class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+        class="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300"
         >política de privacidade</a
       >
     </SimpleInput>
@@ -87,7 +101,7 @@ const { class: className } = Astro.props;
     <button
       type="submit"
       formtarget="_blank"
-      class="w-full bg-blue-600 dark:bg-blue-400 text-white py-3 px-4 rounded-md hover:bg-blue-700 dark:hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200 font-medium flex justify-center gap-4"
+      class="w-full bg-orange-600 dark:bg-orange-400 text-white py-3 px-4 rounded-md hover:bg-orange-700 dark:hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-colors duration-200 font-medium flex justify-center gap-4"
     >
       Enviar mensaxe
     </button>
@@ -102,10 +116,10 @@ const { class: className } = Astro.props;
     const toVariants = {
       default: "info@gpul.org",
       socio: "secretaria@gpul.org",
-    }
+    };
     const bodyVariants = {
-      default: data => `${data.get("body")}\n\n- ${data.get("name")}`,
-      socio: data => `Hola buenos días, me gustaría asociarme.
+      default: (data) => `${data.get("body")}\n\n- ${data.get("name")}`,
+      socio: (data) => `Hola buenos días, me gustaría asociarme.
   - Nombre: ${data.get("name")}
   - Apellido: ${data.get("surname")}
   - Telefono: ${data.get("phone")}
@@ -114,23 +128,24 @@ const { class: className } = Astro.props;
   - Fecha de nacimiento: ${data.get("birth")}
   - Ocupación: ${data.get("occupation")}
   - Dirección: ${data.get("address")}
-  - Soy de la UDC: ${data.get("udc-student") == "on" ? "Si" : "No"}`
-    }
+  - Soy de la UDC: ${data.get("udc-student") == "on" ? "Si" : "No"}`,
+    };
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      let data = new FormData(form)
-      let subject = data.get("subject")
+      let data = new FormData(form);
+      let subject = data.get("subject");
 
-      const bodyBuilder = bodyVariants[subject] ?? bodyVariants.default
-      const body = bodyBuilder(data)
+      const bodyBuilder = bodyVariants[subject] ?? bodyVariants.default;
+      const body = bodyBuilder(data);
 
-      const to = toVariants[subject] ?? toVariants.default
+      const to = toVariants[subject] ?? toVariants.default;
 
-      const mailto = encodeURI(`mailto:${to}?subject=Contacto web: ${subject}&body=${body}`)
-      window.open(mailto)
-
+      const mailto = encodeURI(
+        `mailto:${to}?subject=Contacto web: ${subject}&body=${body}`,
+      );
+      window.open(mailto);
     });
   }
 </script>

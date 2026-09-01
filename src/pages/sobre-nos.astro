@@ -4,7 +4,7 @@ import PageTitle from "../components/PageTitle.astro";
 import Mission from "../components/Mission.astro";
 import CallToAction from "../components/CallToAction.astro";
 
-import { directive } from '../content/directive.ts'
+import { directive } from "../content/directive.ts";
 import DirectiveCard from "../components/DirectiveCard.astro";
 import ContentDisplay from "../components/ContentDisplay.astro";
 ---
@@ -18,25 +18,29 @@ import ContentDisplay from "../components/ContentDisplay.astro";
     subtitle="26 anos promovendo a cultura libre na Universidade da Coruña e máis alá"
   />
 
-  <Mission/>
+  <Mission />
 
   <!-- Historia -->
   <!-- TODO: HistoryCard? ContentDisplay(HistoryCard)? -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-16 bg-gray-50 dark:bg-neutral-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">A nosa historia</h2>
-        <p class="text-xl text-gray-600">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4 dark:text-white">
+          A nosa historia
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-neutral-300">
           Máis de dúas décadas defendendo os valores do software libre
         </p>
       </div>
 
-      <div class="bg-white p-12 rounded-lg shadow-md text-center">
+      <div
+        class="bg-white p-12 rounded-lg shadow-md text-center dark:bg-neutral-800"
+      >
         <div
-          class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6"
+          class="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-6"
         >
           <svg
-            class="w-8 h-8 text-blue-600"
+            class="w-8 h-8 text-orange-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -49,10 +53,12 @@ import ContentDisplay from "../components/ContentDisplay.astro";
               d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
         </div>
-        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 dark:text-white">
           Sección en construción
         </h3>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p
+          class="text-lg text-gray-600 max-w-2xl mx-auto dark:text-neutral-300"
+        >
           Estamos traballando na cronoloxía da historia de GPUL. Mentres tanto,
           podes coñecer máis sobre nós a través da nosa xunta directiva e das
           nosas actividades.
@@ -64,13 +70,14 @@ import ContentDisplay from "../components/ContentDisplay.astro";
   <!-- Directiva actual -->
   <ContentDisplay contents={directive} card={DirectiveCard}>
     <Fragment slot="title">
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">Xunta Directiva</h2>
-      <p class="text-xl text-gray-600">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4 dark:text-white mt-8">
+        Xunta Directiva
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-neutral-300">
         O equipo que lidera GPUL na actualidade
       </p>
     </Fragment>
   </ContentDisplay>
 
-  <CallToAction/>
-
+  <CallToAction />
 </PageLayout>
