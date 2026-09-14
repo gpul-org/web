@@ -12,6 +12,7 @@ const { content, class: className = "" } = Astro.props;
 <Card
   class={className}
   title={content.data.title}
+  transitionId={`event-${content.id}`}
   excerpt={content.data.excerpt}
   date={content.data.date}
   author={content.data.authors?.map((author) => author.id).join(", ")}

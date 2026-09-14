@@ -12,6 +12,7 @@ const { content, class: className = "" } = Astro.props;
 <Card
   class={className}
   title={content.data.title}
+  transitionId={`nova-${content.id}`}
   excerpt={content.data.excerpt}
   date={content.data.date}
   image={content.data.image}

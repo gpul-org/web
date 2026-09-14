@@ -1,4 +1,5 @@
 ---
+import { fade } from "astro:transitions";
 import BaseLayout from "./BaseLayout.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
@@ -41,6 +42,8 @@ const pageStructuredData = [
     : []),
   ...structuredData,
 ];
+
+const pageTransition = { navigation: fade().forwards };
 ---
 
 <BaseLayout
@@ -59,7 +62,7 @@ const pageStructuredData = [
 
     <main
       class:list={["flex-1 pt-16", { "pb-8": footerSpacing }]}
-      transition:animate="fade"
+      transition:animate={pageTransition}
     >
       <slot />
     </main>
