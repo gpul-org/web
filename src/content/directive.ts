@@ -1,6 +1,6 @@
-import { getCollection, type CollectionEntry } from "astro:content"
+import { type CollectionEntry, defineCollection } from "astro:content"
 import { file } from 'astro/loaders';
-import { defineCollection, z } from 'astro:content';
+import { z } from 'astro/zod';
 
 export const definition = defineCollection({
   loader: file('./src/content/directive.yaml'),
@@ -13,4 +13,3 @@ export const definition = defineCollection({
 });
 
 export type Directive = CollectionEntry<'directiva'>;
-export const directive = await getCollection('directiva')

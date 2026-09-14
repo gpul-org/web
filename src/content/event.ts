@@ -2,10 +2,9 @@ import { file, glob } from "astro/loaders";
 import {
   type CollectionEntry,
   defineCollection,
-  getCollection,
   reference,
-  z,
 } from "astro:content";
+import { z } from "astro/zod";
 
 export const definition = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/eventos" }),
@@ -26,24 +25,8 @@ export const authors_definition = defineCollection({
   schema: z.object({
     id: z.string(),
     name: z.string(),
-    portfolio: z.string().url().optional(),
+    portfolio: z.url().optional(),
   }),
 });
 
-enum EventStatus {
-  Upcoming = "upcoming",
-  Past = "past",
-}
-
 export type Event = CollectionEntry<"eventos">;
-export const events: Event[] = (await getCollection("eventos")).toSorted(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
-
-export const upcomingEvents = events
-  .filter(({ data }) => data.status === EventStatus.Upcoming)
-  .toSorted((a, b) => a.data.date.getTime() - b.data.date.getTime());
-
-export const pastEvents = events.filter(
-  ({ data }) => data.status === EventStatus.Past
-);

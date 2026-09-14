@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
-import Card from "../../components/Card.astro";
 import ImagePlaceholder from "../../components/ImagePlaceholder.astro";
 import Prose from "../../components/Prose.astro";
 
@@ -28,7 +27,7 @@ const formatDate = (date: Date) => {
 <PageLayout
   title=`GPUL - ${nova.data.title}`
   description=`${nova.data.excerpt}`
-  image=`${nova.data.image.src}`
+  image={nova.data.image?.src}
 >
   <div
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 mt-8 dark:text-white"
@@ -54,6 +53,7 @@ const formatDate = (date: Date) => {
               {tag}
             </span>
           ))}
+          {" "}
           · {formatDate(nova.data.date)}
           {nova.data.author ? " - " : ""}
           {nova.data.author}
