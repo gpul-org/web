@@ -39,7 +39,7 @@ const CardTag = href ? "a" : "div";
 
 <CardTag
   href={href}
-  class={`w-sm h-full p-3 bg-white block dark:bg-neutral-800 rounded-lg shadow-md overflow-hidden
+  class={`w-full max-w-sm h-full p-3 bg-white block dark:bg-neutral-800 rounded-lg shadow-md overflow-hidden
           transition-transform duration-200 hover:scale-102
           hover:shadow-lg ${href == "a" ? "cursor-pointer" : ""} ${className}`}
   data-filtrable={tags.join(" ")}
@@ -105,7 +105,7 @@ const CardTag = href ? "a" : "div";
 
       {
         href && (
-          <span class="text-orange-600 dark:text-orange-500 font-medium flex items-center">
+          <span class="text-orange-700 dark:text-orange-500 font-medium flex items-center">
             Ler máis
             <ChevronRight class="ml-1 w-4 h-4" />
           </span>

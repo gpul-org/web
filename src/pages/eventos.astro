@@ -22,7 +22,7 @@ import StarContent from "../components/StarContent.astro";
   <Stats />
 
   <!-- Eventos próximos -->
-  <ContentDisplay contents={upcomingEvents} card={EventCard}>
+  <ContentDisplay contents={upcomingEvents} card={EventCard} threeColumns={true}>
     <Fragment slot="title">
       <h2
         class="text-3xl font-bold text-gray-900 dark:text-white dark:mt-8 mb-4"
@@ -50,7 +50,7 @@ import StarContent from "../components/StarContent.astro";
   <StarContent />
 
   <!-- Eventos pasados -->
-  <ContentDisplay contents={pastEvents} card={EventCard}>
+  <ContentDisplay contents={pastEvents} card={EventCard} threeColumns={true}>
     <Fragment slot="title">
       <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
         Eventos Anteriores

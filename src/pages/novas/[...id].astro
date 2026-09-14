@@ -30,25 +30,25 @@ const formatDate = (date: Date) => {
   image={nova.data.image?.src}
 >
   <div
-    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 mt-8 dark:text-white"
+    class="mx-auto mt-8 max-w-prose px-4 sm:mt-12 sm:px-0 dark:text-white"
     id="post-body"
   >
     <h1
-      class="text-5xl font-semibold"
+      class="text-[1.9375rem] font-semibold leading-[2.25rem] tracking-tight text-balance sm:text-[2.5rem] sm:leading-[2.875rem]"
       transition:name={`title-${nova.data.title}`}
     >
       {nova.data.title}
     </h1>
-    <p class="text-gray-500 italic dark:text-neutral-300">
+    <p class="mt-2 text-xl leading-[1.5625rem] text-gray-600 text-pretty dark:text-neutral-300 sm:text-[1.4375rem] sm:leading-[1.875rem]">
       {nova.data.excerpt}
     </p>
     {
       nova.data.tags.length > 0 && (
-        <div class="flex flex-wrap gap-2 mb-4 mt-2">
+        <div class="mt-2 mb-4 flex flex-wrap gap-2">
           {nova.data.tags.map((tag) => (
             <span
               transition:name={`tag-${nova.data.title}-${tag}`}
-              class="px-2 py-1 bg-orange-100 text-orange-800 dark:bg-orange-300 dark:text-orange-800 text-xs font-semibold rounded-full"
+              class="rounded-full bg-orange-100 px-2 py-1 text-xs font-semibold text-orange-800 dark:bg-orange-300 dark:text-orange-800"
             >
               {tag}
             </span>
@@ -61,26 +61,27 @@ const formatDate = (date: Date) => {
       )
     }
 
-    {
-      nova.data.image ? (
-        <img
-          height="200px"
-          src={nova.data.image.src}
-          class="aspect-video rounded-lg "
-          transition:name={`img-${nova.data.title}`}
-        />
-      ) : (
-        <ImagePlaceholder
-          height="200px"
-          alt={nova.data.title}
-          className="aspect-video rounded-lg"
-          transition:name={`img-${nova.data.title}`}
-        />
-      )
-    }
+    <div class="my-8 sm:my-10">
+      {
+        nova.data.image ? (
+          <img
+            height="200px"
+            src={nova.data.image.src}
+            class="aspect-video w-full rounded-2xl object-cover"
+            transition:name={`img-${nova.data.title}`}
+          />
+        ) : (
+          <ImagePlaceholder
+            height="200px"
+            alt={nova.data.title}
+            className="aspect-video w-full !h-auto rounded-2xl object-cover"
+            transition:name={`img-${nova.data.title}`}
+          />
+        )
+      }
+    </div>
     <Prose>
       <Content />
     </Prose>
-    <br />
   </div>
 </PageLayout>

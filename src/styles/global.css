@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Round poster images on event page */
-#event-body img,
-#post-body img {
-  @apply rounded-2xl w-10/12 m-auto mb-4;
+/* Keep article images aligned with the prose measure. */
+#event-body .prose img,
+#post-body .prose img {
+  @apply rounded-2xl w-full m-auto mb-4;
 }
