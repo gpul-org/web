@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
 import "../styles/global.css";
 import StructuredData from "../components/StructuredData.astro";
 import { canonicalUrl, type JsonLd } from "../lib/seo";
@@ -135,6 +136,8 @@ const schemas: JsonLd[] = [
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={imageUrl} />
 
+    <PagefindConfig lang="gl" />
+
     <StructuredData data={schemas} />
 
     <!-- View Transitions -->
@@ -150,5 +153,6 @@ const schemas: JsonLd[] = [
   </head>
   <body class="h-full bg-white dark:bg-neutral-900">
     <slot />
+    <pagefind-modal reset-on-close></pagefind-modal>
   </body>
 </html>

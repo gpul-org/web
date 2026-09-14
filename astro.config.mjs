@@ -10,6 +10,8 @@ import mdx from "@astrojs/mdx";
 
 import sitemap from "@astrojs/sitemap";
 
+import pagefind from "astro-pagefind";
+
 function markdownFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
@@ -65,6 +67,7 @@ export default defineConfig({
 
   integrations: [
     mdx(),
+    pagefind(),
     sitemap({
       serialize(item) {
         const eventDate = eventDates.get(new URL(item.url).pathname);
