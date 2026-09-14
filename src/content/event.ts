@@ -8,10 +8,11 @@ import { z } from "astro/zod";
 
 export const definition = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/eventos" }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     excerpt: z.string(),
     date: z.date(),
+    image: image(),
     location: z.string(),
     tags: z.array(z.string()),
     status: z.string(),

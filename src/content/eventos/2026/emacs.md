@@ -2,6 +2,7 @@
 title: "Emacs: un editor del pasado para el futuro"
 excerpt: "Descubre por qué Emacs sigue siendo relevante en 2026. Veremos cómo convertirlo en un entorno de trabajo completo: edición, notas, tareas, Git y mucho más"
 date: 2026-02-05T18:00:00
+image: "./emacs.png"
 location: Aula 2.4, Facultade de Informática
 tags: ['School']
 status: past

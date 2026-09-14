@@ -2,6 +2,7 @@
 title: "SteamOS, un sistema operativo para videoxogos"
 excerpt: Descubre SteamOS, o sistema para máquinas de videoxogos baseado en Linux, da man dun membro do seu equipo!
 date: 2025-12-11T19:30:00
+image: "./steamos.png"
 location: Aula 3.1, Facultade de Informática
 tags: ['School']
 status: past

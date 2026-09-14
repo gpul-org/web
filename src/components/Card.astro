@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import ImagePlaceholder from "./ImagePlaceholder.astro";
 import ChevronRight from "lucide-astro/ChevronRight";
 
@@ -9,7 +11,7 @@ interface Props {
   date?: Date;
   author?: string;
   href?: string;
-  image?: string;
+  image?: ImageMetadata;
   imageAlt?: string;
   tags?: string[];
 }
@@ -46,11 +48,16 @@ const CardTag = href ? "a" : "div";
 >
   {
     image ? (
-      <img
-        height="200px"
+      <Image
         src={image}
         alt={imageAlt}
-        class="aspect-video rounded-lg"
+        width={640}
+        height={360}
+        sizes="(min-width: 1024px) 360px, (min-width: 768px) calc(50vw - 2.5rem), calc(100vw - 2rem)"
+        layout="constrained"
+        fit="cover"
+        position="center"
+        class="w-full aspect-video rounded-lg object-cover"
         loading="lazy"
         transition:name={`img-${title}`}
       />

@@ -2,6 +2,7 @@
 title: "zsh + stow: Shell personalizada con control de versiones"
 excerpt: "Aún queda tiempo antes de exámenes, así que ¿por qué no jugar un poco con la shell?"
 date: 2026-02-19T17:30:00
+image: "./zsh-stow.png"
 location: Aula 2.11, Facultade de Informática
 tags: ['School']
 status: past

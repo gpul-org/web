@@ -2,6 +2,7 @@
 title: "Cómo montamos nuestra propia nube con software libre"
 excerpt: "Descubre cómo montar tu propia nube con software libre, viendo cómo lo hicimos en GPUL."
 date: 2026-04-14T18:30:00
+image: "./infra-gpul.png"
 location: Laboratorio 0.3 - Facultade de Informática
 tags: ['School']
 status: past

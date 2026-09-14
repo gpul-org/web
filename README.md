@@ -57,4 +57,10 @@ Terás que crear o autor en `src/content/authors.json`, engadindo algo coma:
 
 (o atributo portfolio é opcional)
 
-Tamén terás que gardar unha imaxe que será a miniatura do evento en `public/<ano>/<nome-do-evento>.png`. Será unha imaxe preferiblemente en formato 16:9 (unha boa resolución é 1920x1080), sempre en formato `png`, e sempre en `src/public/` respetando o nome do evento no nome da imaxe.
+Tamén terás que gardar unha imaxe que será a miniatura do evento no mesmo directorio que o Markdown, usando o nome do evento e a extensión `.png`. Engade o camiño relativo no frontmatter:
+
+```
+image: "./nome-do-evento.png"
+```
+
+Será unha imaxe preferiblemente en formato 16:9. Unha boa resolución é 1920x1080.

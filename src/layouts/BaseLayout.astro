@@ -1,17 +1,88 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
+import StructuredData from "../components/StructuredData.astro";
+import { canonicalUrl, type JsonLd } from "../lib/seo";
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  eventDate?: Date;
+  publishedDate?: Date;
+  modifiedDate?: Date;
+  structuredData?: JsonLd[];
 }
 
-const { title = "", description = "", image = "/meta.png" } = Astro.props;
+const {
+  title = "",
+  description = "",
+  image = "/meta.png",
+  eventDate,
+  publishedDate,
+  modifiedDate,
+  structuredData = [],
+} = Astro.props;
 
-const siteUrl = Astro.site?.toString();
-const imageUrl = `${siteUrl}${image}`;
+const siteUrl = new URL(Astro.site ?? Astro.url.origin);
+const canonicalURL = canonicalUrl(Astro.url.pathname, siteUrl);
+const organizationId = new URL("#organization", siteUrl).href;
+const websiteId = new URL("#website", siteUrl).href;
+const imageUrl = new URL(image, siteUrl).href;
+const eventDateIso = eventDate?.toISOString();
+const publishedDateIso = publishedDate?.toISOString();
+const modifiedDateIso = modifiedDate?.toISOString();
+
+const schemas: JsonLd[] = [
+  {
+    "@type": "Organization",
+    "@id": organizationId,
+    name: "Grupo de Programadores e Usuarios de Linux",
+    alternateName: "GPUL",
+    url: siteUrl.href,
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/logo.svg", siteUrl).href,
+    },
+    sameAs: [
+      "https://mastodon.social/@gpul_",
+      "https://bsky.app/profile/gpul.org",
+      "https://github.com/gpul-org",
+      "https://x.com/gpul_",
+    ],
+    email: "info@gpul.org",
+    telephone: "+34 881 01 1369",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Facultade de Informática, Campus de Elviña s/n",
+      addressLocality: "A Coruña",
+      addressCountry: "ES",
+    },
+  },
+  {
+    "@type": "WebSite",
+    "@id": websiteId,
+    url: siteUrl.href,
+    name: "GPUL",
+    description:
+      "Asociación universitaria dedicada á promoción do software libre e a tecnoloxía aberta.",
+    inLanguage: "gl",
+    publisher: { "@id": organizationId },
+  },
+  {
+    "@type": "WebPage",
+    "@id": `${canonicalURL.href}#webpage`,
+    url: canonicalURL.href,
+    name: title,
+    description,
+    inLanguage: "gl",
+    isPartOf: { "@id": websiteId },
+    publisher: { "@id": organizationId },
+    ...(publishedDateIso ? { datePublished: publishedDateIso } : {}),
+    ...(modifiedDateIso ? { dateModified: modifiedDateIso } : {}),
+  },
+  ...structuredData,
+];
 ---
 
 <!doctype html>
@@ -41,22 +112,30 @@ const imageUrl = `${siteUrl}${image}`;
     <!-- Meta Tags Generated with https://metatags.io -->
     <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <link rel="canonical" href={canonicalURL} />
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    {eventDateIso && <meta name="date" content={eventDateIso} />}
+    {publishedDateIso && <meta name="publish_date" content={publishedDateIso} />}
+    {publishedDateIso && <meta property="article:published_time" content={publishedDateIso} />}
+    {modifiedDateIso && <meta property="article:modified_time" content={modifiedDateIso} />}
+    {modifiedDateIso && <meta property="og:updated_time" content={modifiedDateIso} />}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={imageUrl} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={imageUrl} />
+
+    <StructuredData data={schemas} />
 
     <!-- View Transitions -->
     <ClientRouter />

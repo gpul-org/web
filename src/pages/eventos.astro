@@ -8,11 +8,41 @@ import ContentDisplay from "../components/ContentDisplay.astro";
 import Plus from "lucide-astro/Plus";
 import { upcomingEvents, pastEvents } from "../content/event-data.ts";
 import StarContent from "../components/StarContent.astro";
+import { absoluteUrl, canonicalUrl, type JsonLd } from "../lib/seo";
+
+const siteUrl = new URL(Astro.site ?? Astro.url.origin);
+const pageUrl = canonicalUrl(Astro.url.pathname, siteUrl);
+const eventListSchema: JsonLd = {
+  "@type": "ItemList",
+  "@id": `${pageUrl.href}#event-list`,
+  name: "Eventos de GPUL",
+  itemListElement: [...upcomingEvents, ...pastEvents].map((event, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Event",
+      name: event.data.title,
+      url: absoluteUrl(`/eventos/${event.id}`, siteUrl),
+      startDate: event.data.date.toISOString(),
+      image: new URL(event.data.image.src, siteUrl).href,
+      location: {
+        "@type": "Place",
+        name: event.data.location,
+      },
+    },
+  })),
+};
 ---
 
 <PageLayout
   title="Eventos - GPUL"
   description="Descubre os próximos eventos, charlas, cursos e actividades organizadas polo Grupo de Programadores e Usuarios de Linux (GPUL)."
+  breadcrumbs={[
+    { name: "Inicio", href: "/" },
+    { name: "Eventos" },
+  ]}
+  structuredData={[eventListSchema]}
+  footerSpacing
 >
   <PageTitle
     title="Eventos GPUL"

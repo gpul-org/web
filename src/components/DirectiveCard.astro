@@ -17,8 +17,10 @@ const { content, class: className = "" } = Astro.props;
     <img
       src={content.data.github + ".png"}
       alt={content.id}
-      height="100%"
-      width="100%"
+      width={288}
+      height={192}
+      loading="lazy"
+      decoding="async"
       class="w-full h-48 object-cover rounded"
     />
   </div>

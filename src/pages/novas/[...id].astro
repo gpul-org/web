@@ -1,8 +1,10 @@
 ---
 import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
 import PageLayout from "../../layouts/PageLayout.astro";
 import ImagePlaceholder from "../../components/ImagePlaceholder.astro";
 import Prose from "../../components/Prose.astro";
+import { canonicalUrl, type JsonLd } from "../../lib/seo";
 
 export async function getStaticPaths() {
   const novas = await getCollection("novas");
@@ -22,12 +24,39 @@ const formatDate = (date: Date) => {
     day: "numeric",
   }).format(date);
 };
+
+const siteUrl = new URL(Astro.site ?? Astro.url.origin);
+const pageUrl = canonicalUrl(Astro.url.pathname, siteUrl);
+const articleSchema: JsonLd = {
+  "@type": "Article",
+  "@id": `${pageUrl.href}#article`,
+  headline: nova.data.title,
+  description: nova.data.excerpt,
+  url: pageUrl.href,
+  mainEntityOfPage: { "@id": `${pageUrl.href}#webpage` },
+  datePublished: nova.data.date.toISOString(),
+  inLanguage: "gl",
+  ...(nova.data.image
+    ? { image: new URL(nova.data.image.src, siteUrl).href }
+    : {}),
+  author: nova.data.author
+    ? { "@type": "Person", name: nova.data.author }
+    : { "@id": new URL("#organization", siteUrl).href },
+  publisher: { "@id": new URL("#organization", siteUrl).href },
+  ...(nova.data.tags.length > 0 ? { keywords: nova.data.tags } : {}),
+};
 ---
 
 <PageLayout
   title=`GPUL - ${nova.data.title}`
   description=`${nova.data.excerpt}`
   image={nova.data.image?.src}
+  breadcrumbs={[
+    { name: "Inicio", href: "/" },
+    { name: "Noticias", href: "/novas" },
+    { name: nova.data.title },
+  ]}
+  structuredData={[articleSchema]}
 >
   <div
     class="mx-auto mt-8 max-w-prose px-4 sm:mt-12 sm:px-0 dark:text-white"
@@ -64,10 +93,17 @@ const formatDate = (date: Date) => {
     <div class="my-8 sm:my-10">
       {
         nova.data.image ? (
-          <img
-            height="200px"
-            src={nova.data.image.src}
+          <Image
+            src={nova.data.image}
+            alt={nova.data.title}
+            width={1200}
+            height={675}
+            sizes="(min-width: 768px) 672px, calc(100vw - 2rem)"
+            layout="constrained"
+            fit="cover"
+            position="center"
             class="aspect-video w-full rounded-2xl object-cover"
+            loading="eager"
             transition:name={`img-${nova.data.title}`}
           />
         ) : (

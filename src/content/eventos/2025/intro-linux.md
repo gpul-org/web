@@ -2,6 +2,7 @@
 title: Introducción á terminal
 excerpt: Aprende a utilizar bash desde cero. Coñecerás os comandos básicos para moverte polo sistema e xestionalo.
 date: 2025-09-30T17:30:00
+image: "./intro-linux.png"
 location: Aula 3.5, Facultade de Informática
 tags: [School]
 status: past

@@ -26,12 +26,15 @@ const {
       {
         showImage && (
           <div class="flex-shrink-0">
-            <div class="bg-white rounded-2xl p-6 shadow-xl max-w-xs lg:max-w-sm">
+            <div class="bg-white rounded-2xl p-6 shadow-xl max-w-[235px]">
               <Image
                 src={logo}
                 alt="GPUL Logo"
                 width={300}
-                height={225}
+                height={324}
+                layout="fixed"
+                loading="eager"
+                fetchpriority="high"
                 class="w-full h-auto drop-shadow-sm"
               />
             </div>

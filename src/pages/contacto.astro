@@ -5,11 +5,30 @@ import PageTitle from "../components/PageTitle.astro";
 import ContactInfo from "../components/ContactInfo.astro";
 import ContactForm from "../components/ContactForm.astro";
 import ContactMap from "../components/ContactMap.astro";
+import { canonicalUrl, type JsonLd } from "../lib/seo";
+
+const siteUrl = new URL(Astro.site ?? Astro.url.origin);
+const pageUrl = canonicalUrl(Astro.url.pathname, siteUrl);
+const contactPageSchema: JsonLd = {
+  "@type": "ContactPage",
+  "@id": `${pageUrl.href}#contact-page`,
+  url: pageUrl.href,
+  name: "Contacto - GPUL",
+  description:
+    "Ponte en contacto co Grupo de Programadores e Usuarios de Linux (GPUL).",
+  mainEntity: { "@id": new URL("#organization", siteUrl).href },
+  inLanguage: "gl",
+};
 ---
 
 <PageLayout
   title="Contacto - GPUL"
   description="Ponte en contacto co Grupo de Programadores e Usuarios de Linux (GPUL). Información sobre como asociarse, colaborar ou participar nas nosas actividades."
+  breadcrumbs={[
+    { name: "Inicio", href: "/" },
+    { name: "Contacto" },
+  ]}
+  structuredData={[contactPageSchema]}
 >
   <PageTitle
     title="Contacto"

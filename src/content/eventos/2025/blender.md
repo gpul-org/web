@@ -2,6 +2,7 @@
 title: "Iniciación a Blender: aprende a utilizarlo como un profesional"
 excerpt: Ahorra horas de trabajo  aprendiendo a usar las configuraciones y atajos más comunes. Exploraremos sus múltiples usos y cómo utilizar la herramienta de la manera más eficaz
 date: 2025-11-13T17:00:00
+image: "./blender.png"
 location: Aula 3.5, Facultade de Informática
 tags: ['School']
 status: past

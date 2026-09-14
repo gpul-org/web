@@ -2,6 +2,7 @@
 title: "Guía para sobrevivir fóra da FIC"
 excerpt: Descubre cómo colaborar co software libre che axuda na vida profesional!
 date: 2025-12-02T18:00:00
+image: "./sobrevivir-fora-da-fic.png"
 location: Aula 3.5, Facultade de Informática
 tags: ['School']
 status: past

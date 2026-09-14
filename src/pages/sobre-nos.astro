@@ -7,11 +7,31 @@ import CallToAction from "../components/CallToAction.astro";
 import { directive } from "../content/directive-data.ts";
 import DirectiveCard from "../components/DirectiveCard.astro";
 import ContentDisplay from "../components/ContentDisplay.astro";
+import { canonicalUrl, type JsonLd } from "../lib/seo";
+
+const siteUrl = new URL(Astro.site ?? Astro.url.origin);
+const pageUrl = canonicalUrl(Astro.url.pathname, siteUrl);
+const aboutPageSchema: JsonLd = {
+  "@type": "AboutPage",
+  "@id": `${pageUrl.href}#about-page`,
+  url: pageUrl.href,
+  name: "Quen somos - GPUL",
+  description:
+    "Coñece a historia, misión e equipo do Grupo de Programadores e Usuarios de Linux (GPUL).",
+  mainEntity: { "@id": new URL("#organization", siteUrl).href },
+  inLanguage: "gl",
+};
 ---
 
 <PageLayout
   title="Quen somos - GPUL"
   description="Coñece a historia, misión e equipo do Grupo de Programadores e Usuarios de Linux (GPUL), defendendo o software libre dende 1998."
+  breadcrumbs={[
+    { name: "Inicio", href: "/" },
+    { name: "Quen somos" },
+  ]}
+  structuredData={[aboutPageSchema]}
+  footerSpacing
 >
   <PageTitle
     title="Quen Somos"

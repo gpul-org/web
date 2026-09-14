@@ -2,6 +2,7 @@
 title: Software libre y datos abiertos en la administración pública
 excerpt: Aprende cómo funciona a contratación pública e como é o software da administración
 date: 2025-10-16T16:00:00
+image: "./software-libre-datos-abiertos.png"
 location: Aula 2.12, Facultade de Informática
 tags: [School]
 status: past
