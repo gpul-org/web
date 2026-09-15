@@ -2,7 +2,6 @@
 title: "Da FIC ao Nasdaq, a aventura de montar unha startup dende Galicia."
 excerpt: "Algúnha vez pensaches en montar a túa propia startup, pero non sabes por onde empezar? Crees que para triunfar hai que irse fóra? Ven se tes esa curiosidade por emprender ou meterte en saraos ou simplemente se queres escoitar unha historia de emprendemento real."
 date: 2026-02-24T18:00:00
-image: "./emprendemento.png"
 location: Aula 2.4, Facultade de Informática
 tags: ['School']
 status: past

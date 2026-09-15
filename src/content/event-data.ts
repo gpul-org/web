@@ -1,13 +1,11 @@
-import { getCollection } from "astro:content";
-
-import type { Event } from "./event";
+import { getEvents, type Event } from "./event";
 
 enum EventStatus {
   Upcoming = "upcoming",
   Past = "past",
 }
 
-const events: Event[] = (await getCollection("eventos")).toSorted(
+const events: Event[] = (await getEvents()).toSorted(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
 

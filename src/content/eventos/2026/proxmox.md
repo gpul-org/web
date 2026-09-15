@@ -2,7 +2,6 @@
 title: "De cero a homelab: Instalando Proxmox y desplegando tu primer servicio"
 excerpt: "En esta charla aprenderás a dar os primeiros pasos en Proxmox, instalando servizos como Immich."
 date: 2026-04-22T18:30:00
-image: "./proxmox.png"
 location: Aula 2.2 - Facultade de Informática
 tags: ['School']
 status: past

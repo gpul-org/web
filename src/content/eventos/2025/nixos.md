@@ -2,7 +2,6 @@
 title: "Introducción a Nix & NixOS"
 excerpt: Nix es una herramienta que tiene un enfoque único sobre la gestión de paquetes y configuración de sistemas. Permitiendo que estos sean reproducibles y declarativos.
 date: 2025-12-16T17:00:00
-image: "./nixos.png"
 location: Aula 3.5, Facultade de Informática
 tags: ['School']
 status: past

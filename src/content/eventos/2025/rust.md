@@ -2,7 +2,6 @@
 title: "Rust: un lenguaje aburrido y expresivo"
 excerpt: Un paseo ligero por todos los elementos y decisiones que hacen que Rust sea especial. Desde la gestión de memoria hasta el diseño de tipos, pensando en la experiencia de desarrollo y la seguridad.
 date: 2025-11-25T18:30:00
-image: "./rust.png"
 location: Aula 3.1, Facultade de Informática
 tags: ['School']
 status: past

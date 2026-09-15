@@ -1,5 +1,5 @@
 ---
-import { getCollection, render, getEntries } from "astro:content";
+import { render, getEntries } from "astro:content";
 import { Image } from "astro:assets";
 import PageLayout from "../../layouts/PageLayout.astro";
 import Prose from "../../components/Prose.astro";
@@ -10,9 +10,10 @@ import User from "lucide-astro/User";
 import Video from "lucide-astro/Video";
 import VideoEmbed from "../../components/VideoEmbed.astro";
 import { canonicalUrl, type JsonLd } from "../../lib/seo";
+import { getEvents } from "../../content/event";
 
 export async function getStaticPaths() {
-	const eventos = await getCollection("eventos");
+	const eventos = await getEvents();
 	return eventos.map((evento) => ({
 		params: { id: evento.id },
 		props: { evento },

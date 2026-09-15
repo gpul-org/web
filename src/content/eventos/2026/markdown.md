@@ -2,7 +2,6 @@
 title: "# Markdown desde cero"
 excerpt: "Aprende a mejorar tus apuntes y documentaciones con este sencillo lenguaje."
 date: 2026-05-07T18:30:00
-image: "./markdown.png"
 location: Laboratorio 0.3 - Facultade de Informática
 tags: ['School']
 status: past

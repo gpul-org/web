@@ -2,7 +2,6 @@
 title: Introdución ao control de versións con Git
 excerpt: Git é un versátil e potente sistema de control de versións que se axeita a case calquera fluxo de traballo e necesidade. Neste obradoiro aprenderás o seu uso máis básico.
 date: 2025-10-21T17:30:00
-image: "./intro-git.png"
 location: Aula 3.5, Facultade de Informática
 tags: [School]
 status: past

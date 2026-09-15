@@ -2,7 +2,6 @@
 title: "Imprimiendo la ciencia: descubre la impresión 3D"
 excerpt: "¿Te imaginas poder materializar modelos científicos capa a capa? En este taller aprenderás los fundamentos de la impresión 3D y descubrirás cómo se preparan los archivos para imprimir en resina, una tecnología utilizada en investigación, ingeniería y divulgación científica."
 date: 2026-03-26T18:00:00
-image: "./impresion-3d-udcbigbang.png"
 location: Aula 2.4, Facultade de Informática
 tags: ['School']
 status: past
