@@ -1,6 +1,11 @@
 ---
 // TODO: TS wizardry for this pls 👉👈
-const { contents, card, threeColumns = false } = Astro.props;
+const {
+  contents,
+  card,
+  threeColumns = false,
+  prioritizeFirstImage = false,
+} = Astro.props;
 const Card = card;
 const contentLayout = threeColumns
   ? "grid grid-cols-1 gap-8 pb-4 justify-items-center md:grid-cols-2 lg:grid-cols-3"
@@ -16,7 +21,12 @@ const contentLayout = threeColumns
     <div class={contentLayout}>
       {
         contents.length > 0 ? (
-          contents.map((content: any) => <Card content={content} />)
+          contents.map((content: any, index: number) => (
+            <Card
+              content={content}
+              priority={prioritizeFirstImage && index === 0}
+            />
+          ))
         ) : (
           <p class="col-span-full w-full text-center text-2xl text-gray-700 dark:text-neutral-300">
             <i>Parece que non hai moito por aquí agora mesmo</i>

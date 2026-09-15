@@ -15,6 +15,7 @@ interface Props {
   image?: ImageMetadata;
   imageAlt?: string;
   tags?: string[];
+  priority?: boolean;
 }
 
 const {
@@ -28,6 +29,7 @@ const {
   image,
   imageAlt = title,
   tags = [],
+  priority = false,
 } = Astro.props;
 
 const formatDate = (date: Date) => {
@@ -59,7 +61,8 @@ const CardTag = href ? "a" : "div";
         fit="cover"
         position="center"
         class="card-image block w-full aspect-video rounded-lg object-cover"
-        loading="lazy"
+        priority={priority}
+        loading={priority ? undefined : "lazy"}
         transition:name={`img-${transitionId}`}
       />
     ) : (

@@ -49,7 +49,12 @@ const articleListSchema: JsonLd = {
   <Filter tags={novaTags} />
 
   <!-- Lista de noticias -->
-  <ContentDisplay contents={novas} card={NovaCard} threeColumns={true}/>
+  <ContentDisplay
+    contents={novas}
+    card={NovaCard}
+    threeColumns={true}
+    prioritizeFirstImage={true}
+  />
 
   <!-- TODO: should we really paginate this? the data is already loaded, can't it be doomscroll? -->
   <!-- <div class="mt-12 flex justify-center"> -->
