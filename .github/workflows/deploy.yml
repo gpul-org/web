@@ -19,12 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Install, build, and upload your site
         uses: withastro/action@v6
         with:
           node-version: 22
-          package-manager: pnpm@10.33.0
+          package-manager: pnpm@12
 
   deploy:
     needs: build
