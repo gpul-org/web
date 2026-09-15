@@ -31,3 +31,9 @@
 #post-body .prose img {
   @apply rounded-2xl w-full m-auto mb-4;
 }
+
+/* Keep long URLs in article content inside the mobile reading measure. */
+#event-body .prose a,
+#post-body .prose a {
+  overflow-wrap: anywhere;
+}
