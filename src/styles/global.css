@@ -1,6 +1,31 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Pagefind uses isolated styles, so theme it through its public CSS variables. */
+:root {
+  --pf-outline-focus: var(--color-orange-700);
+  --pf-border-focus: var(--color-orange-700);
+  --pf-mark: var(--color-orange-700);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pf-text: var(--color-neutral-100);
+    --pf-text-secondary: var(--color-neutral-300);
+    --pf-text-muted: var(--color-neutral-400);
+    --pf-background: var(--color-neutral-800);
+    --pf-border: var(--color-neutral-700);
+    --pf-border-focus: var(--color-orange-400);
+    --pf-skeleton: var(--color-neutral-700);
+    --pf-skeleton-shine: var(--color-neutral-600);
+    --pf-hover: var(--color-neutral-700);
+    --pf-mark: var(--color-orange-300);
+    --pf-scroll-shadow: rgb(255 255 255 / 0.1);
+    --pf-outline-focus: var(--color-orange-400);
+    --pf-modal-backdrop: rgb(0 0 0 / 0.7);
+  }
+}
+
 /* Keep article images aligned with the prose measure. */
 #event-body .prose img,
 #post-body .prose img {
