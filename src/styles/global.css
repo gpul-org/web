@@ -8,6 +8,11 @@
   --pf-mark: var(--color-orange-700);
 }
 
+/* Keep fragment targets visible below the fixed navigation. */
+:where([id]) {
+  scroll-margin-block-start: 5rem;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --pf-text: var(--color-neutral-100);
