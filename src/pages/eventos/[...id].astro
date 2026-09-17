@@ -8,7 +8,7 @@ import Clock from "lucide-astro/Clock";
 import MapPin from "lucide-astro/MapPin";
 import User from "lucide-astro/User";
 import Video from "lucide-astro/Video";
-import VideoEmbed from "../../components/VideoEmbed.astro";
+import ExternalLink from "lucide-astro/ExternalLink";
 import { canonicalUrl, type JsonLd } from "../../lib/seo";
 import { getEvents } from "../../content/event";
 
@@ -110,11 +110,10 @@ const eventSchema: JsonLd = {
           <li class="flex items-start gap-2"><Clock class="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" /><span><b>Hora:</b> {evento.data.date.getHours()+evento.data.date.getTimezoneOffset()/60}:{("0"+evento.data.date.getMinutes()).slice(-2)}</span></li>
         </>}
         {evento.data.location && <li class="flex items-start gap-2"><MapPin class="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" /><span><b>Lugar:</b> {evento.data.location}</span></li>}
-        {evento.data.authors && <li class="flex items-start gap-2"><User class="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" /><span><b>Relatores:</b>{authors.map((author,idx) => <span> {author.data.portfolio && <a class="text-orange-800 underline decoration-1 underline-offset-2 hover:decoration-2 dark:text-orange-400" href={author.data.portfolio} target="_blank">{author.data.name}</a>||<span>{author.data.name}</span>}{idx < authors.length - 1 && ", "}</span>)}</span></li>}
-        {evento.data.video && <li class="flex items-start gap-2"><Video class="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" /><span><b>Vídeo:</b> <a href={evento.data.video} class="text-orange-800 underline decoration-1 underline-offset-2 hover:decoration-2 dark:text-orange-400" target="_blank">Gravación da charla</a></span></li>}
+        {evento.data.authors && <li class="flex items-start gap-2"><User class="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" /><span><b>Relatores:</b>{authors.map((author,idx) => <span> {author.data.portfolio && <a class="inline-flex items-center gap-1 text-orange-800 underline decoration-1 underline-offset-2 hover:decoration-2 dark:text-orange-400" href={author.data.portfolio} target="_blank" rel="noopener noreferrer">{author.data.name}<ExternalLink aria-hidden="true" class="h-4 w-4" /></a>||<span>{author.data.name}</span>}{idx < authors.length - 1 && ", "}</span>)}</span></li>}
+        {evento.data.video && <li class="flex items-start gap-2"><Video class="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" /><span><b>Vídeo:</b>{" "}<a href={evento.data.video} class="inline-flex items-center gap-1 text-orange-800 underline decoration-1 underline-offset-2 hover:decoration-2 dark:text-orange-400" target="_blank" rel="noopener noreferrer">Gravación da charla<ExternalLink aria-hidden="true" class="h-4 w-4" /></a></span></li>}
       </ul>
     </div>
-    {evento.data.video && <VideoEmbed url={evento.data.video} title={evento.data.title} />}
     <Prose>
       <Content />
     </Prose>
