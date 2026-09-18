@@ -5,11 +5,40 @@ import { novas, novaTags } from "../content/nova.ts";
 import ContentDisplay from "../components/ContentDisplay.astro";
 import NovaCard from "../components/NovaCard.astro";
 import Filter from "../components/Filter.astro";
+import { absoluteUrl, canonicalUrl, type JsonLd } from "../lib/seo";
+
+const siteUrl = new URL(Astro.site ?? Astro.url.origin);
+const pageUrl = canonicalUrl(Astro.url.pathname, siteUrl);
+const articleListSchema: JsonLd = {
+  "@type": "ItemList",
+  "@id": `${pageUrl.href}#article-list`,
+  name: "Noticias de GPUL",
+  itemListElement: novas.map((nova, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Article",
+      headline: nova.data.title,
+      description: nova.data.excerpt,
+      url: absoluteUrl(`/novas/${nova.id}`, siteUrl),
+      datePublished: nova.data.date.toISOString(),
+      ...(nova.data.image
+        ? { image: new URL(nova.data.image.src, siteUrl).href }
+        : {}),
+    },
+  })),
+};
 ---
 
 <PageLayout
   title="Noticias - GPUL"
   description="Mantente ao día coas últimas noticias e actualidades do Grupo de Programadores e Usuarios de Linux (GPUL)."
+  breadcrumbs={[
+    { name: "Inicio", href: "/" },
+    { name: "Noticias" },
+  ]}
+  structuredData={[articleListSchema]}
+  footerSpacing
 >
   <PageTitle
     title="Noticias GPUL"
@@ -20,9 +49,12 @@ import Filter from "../components/Filter.astro";
   <Filter tags={novaTags} />
 
   <!-- Lista de noticias -->
-  <ContentDisplay contents={novas} card={NovaCard}>
-    <Fragment slot="title"> </Fragment>
-  </ContentDisplay>
+  <ContentDisplay
+    contents={novas}
+    card={NovaCard}
+    threeColumns={true}
+    prioritizeFirstImage={true}
+  />
 
   <!-- TODO: should we really paginate this? the data is already loaded, can't it be doomscroll? -->
   <!-- <div class="mt-12 flex justify-center"> -->

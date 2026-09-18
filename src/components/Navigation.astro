@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Menu from "lucide-astro/Menu";
+import Search from "lucide-astro/Search";
 import logoSmall from "../assets/logo-small.svg";
 
 interface NavItem {
@@ -33,12 +34,14 @@ const currentPath = "/" + Astro.url.pathname.split("/")[1];
             alt="GPUL Logo"
             width={40}
             height={40}
+            layout="fixed"
+            loading="eager"
             class="w-10 h-10"
           />
           <div>
-            <h1 class="text-xl font-bold text-gray-800 dark:text-white">
+            <span class="text-xl font-bold text-gray-800 dark:text-white">
               GPUL
-            </h1>
+            </span>
             <p class="text-xs text-gray-500 dark:text-neutral-400">
               Grupo de Programadores e Usuarios de Linux
             </p>
@@ -46,36 +49,51 @@ const currentPath = "/" + Astro.url.pathname.split("/")[1];
         </a>
       </div>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:block">
-        <div class="ml-10 flex items-center space-x-4">
-          {
-            navItems.map((item) => (
-              <a
-                href={item.href}
-                class={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                  currentPath === item.href
-                    ? "bg-orange-100 dark:bg-orange-300 text-orange-700 dark:text-orange-800"
-                    : "text-gray-600 dark:text-neutral-400 hover:bg-orange-50 dark:hover:bg-orange-300 hover:text-orange-600 dark:hover:text-orange-800"
-                }`}
-              >
-                {item.name}
-              </a>
-            ))
-          }
+      <div class="flex items-center gap-2">
+        <!-- Desktop Navigation -->
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-center space-x-4">
+            {
+              navItems.map((item) => (
+                <a
+                  href={item.href}
+                  class={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                    currentPath === item.href
+                      ? "bg-orange-100 dark:bg-orange-300 text-orange-700 dark:text-orange-800"
+                      : "text-gray-600 dark:text-neutral-400 hover:bg-orange-50 dark:hover:bg-orange-300 hover:text-orange-700 dark:hover:text-orange-800"
+                  }`}
+                >
+                  {item.name}
+                </a>
+              ))
+            }
+          </div>
         </div>
-      </div>
 
-      <!-- Mobile menu button -->
-      <div class="md:hidden">
         <button
           type="button"
-          class="bg-white dark:bg-neutral-800 dark:border dark:border-neutral-700 inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-neutral-400 hover:text-orange-600 dark:hover:text-orange-800 hover:bg-orange-50 dark:hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-orange-500"
-          id="mobile-menu-button"
+          id="search-trigger"
+          class="site-search-trigger inline-flex h-10 w-10 shrink-0 items-center justify-center p-0 leading-none rounded-md text-gray-600 hover:bg-orange-50 hover:text-orange-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700 dark:text-neutral-400 dark:hover:bg-orange-300 dark:hover:text-orange-800 dark:focus-visible:outline-orange-400"
+          aria-label="Buscar no sitio"
+          aria-haspopup="dialog"
+          aria-expanded="false"
         >
-          <span class="sr-only">Abrir menú principal</span>
-          <Menu class="h-6 w-6" />
+          <Search class="h-5 w-5" aria-hidden="true" />
         </button>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button
+            type="button"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-neutral-400 hover:text-orange-600 dark:hover:text-orange-800 hover:bg-orange-50 dark:hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-orange-500"
+            id="mobile-menu-button"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Abrir menú principal</span>
+            <Menu class="h-6 w-6" />
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -92,7 +110,7 @@ const currentPath = "/" + Astro.url.pathname.split("/")[1];
             class={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
               currentPath === item.href
                 ? "bg-orange-100 dark:bg-orange-300 text-orange-700 dark:text-orange-800"
-                : "text-gray-600 dark:text-neutral-400 hover:bg-orange-50 dark:hover:bg-orange-300 hover:text-orange-600 dark:hover:text-orange-800"
+                : "text-gray-600 dark:text-neutral-400 hover:bg-orange-50 dark:hover:bg-orange-300 hover:text-orange-700 dark:hover:text-orange-800"
             }`}
           >
             {item.name}
@@ -103,14 +121,50 @@ const currentPath = "/" + Astro.url.pathname.split("/")[1];
   </div>
 </nav>
 
-<script is:inline defer data-astro-rerun>
-  {
-    // Mobile menu toggle
+<script>
+  const setupMobileMenu = () => {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    mobileMenuButton?.addEventListener("click", () => {
-      mobileMenu?.classList.toggle("hidden");
+    if (!mobileMenuButton || !mobileMenu) return;
+
+    const setMenuExpanded = (expanded: boolean) => {
+      mobileMenu.classList.toggle("hidden", !expanded);
+      mobileMenuButton.setAttribute("aria-expanded", String(expanded));
+    };
+
+    setMenuExpanded(false);
+    mobileMenuButton.addEventListener("click", () => {
+      setMenuExpanded(mobileMenu.classList.contains("hidden"));
     });
-  }
+  };
+
+  const setupSearchTrigger = () => {
+    const trigger = document.getElementById("search-trigger");
+    const modal = document.querySelector("pagefind-modal") as
+      | (HTMLElement & {
+          open?: () => void;
+        })
+      | null;
+
+    if (!trigger || !modal || trigger.dataset.searchReady) return;
+
+    const dialog = modal.querySelector("dialog");
+    if (dialog) {
+      trigger.setAttribute("aria-controls", dialog.id);
+      dialog.addEventListener("close", () => {
+        trigger.setAttribute("aria-expanded", "false");
+        trigger.focus();
+      });
+    }
+
+    trigger.addEventListener("click", () => {
+      modal.open?.();
+      trigger.setAttribute("aria-expanded", "true");
+    });
+    trigger.dataset.searchReady = "true";
+  };
+
+  document.addEventListener("astro:page-load", setupMobileMenu);
+  document.addEventListener("astro:page-load", setupSearchTrigger);
 </script>

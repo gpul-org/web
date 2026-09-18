@@ -3,7 +3,6 @@ title: XVIII edición do Premio ao TFG Libre
 excerpt: O pasado 21 de novembro, celebrouse a entrega de premios da XVIII edición do concurso
 date: 2025-12-03
 # author: Redacción
-image: "premio-tfg.jpg"
 tags: [Asociación, Premio TFG]
 ---
 
@@ -20,4 +19,3 @@ Os cinco finalistas foron:
 - Martín Garcia
 
 Noraboa aos finalistas, ao gañador, e tamén a todas aquelas personas que se animaron a enviaron o seu traballo, facendo esta, unha vez máis, una edición exitosa do premio, que trataremos de manter no futuro.
-

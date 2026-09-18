@@ -1,24 +1,69 @@
 ---
+import { fade } from "astro:transitions";
 import BaseLayout from "./BaseLayout.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
+import {
+  breadcrumbListSchema,
+  canonicalUrl,
+  type BreadcrumbItem,
+  type JsonLd,
+} from "../lib/seo";
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  eventDate?: Date;
+  publishedDate?: Date;
+  modifiedDate?: Date;
+  footerSpacing?: boolean;
+  breadcrumbs?: BreadcrumbItem[];
+  structuredData?: JsonLd[];
 }
 
-const { title, description, image } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  eventDate,
+  publishedDate,
+  modifiedDate,
+  footerSpacing = false,
+  breadcrumbs = [],
+  structuredData = [],
+} = Astro.props;
+
+const siteUrl = new URL(Astro.site ?? Astro.url.origin);
+const pageUrl = canonicalUrl(Astro.url.pathname, siteUrl);
+const pageStructuredData = [
+  ...(breadcrumbs.length > 0
+    ? [breadcrumbListSchema(breadcrumbs, siteUrl, pageUrl)]
+    : []),
+  ...structuredData,
+];
+
+const pageTransition = { navigation: fade().forwards };
 ---
 
-<BaseLayout title={title} description={description} image={image}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  eventDate={eventDate}
+  publishedDate={publishedDate}
+  modifiedDate={modifiedDate}
+  structuredData={pageStructuredData}
+>
   <div class="min-h-screen flex flex-col">
     <header>
       <Navigation />
     </header>
 
-    <main class="flex-1 pt-16" transition:animate="fade">
+    <main
+      class:list={["flex-1 pt-16", { "pb-8": footerSpacing }]}
+      transition:animate={pageTransition}
+    >
       <slot />
     </main>
 

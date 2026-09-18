@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import charla from "../../public/media/img/charla.jpg";
+import charla from "../assets/charla.jpg";
 ---
 
 <!-- Misión e visión -->
@@ -42,10 +42,11 @@ import charla from "../../public/media/img/charla.jpg";
         <Image
           src={charla}
           width={500}
-          height={400}
+          height={332}
+          sizes="(min-width: 1024px) 500px, 100vw"
+          layout="constrained"
           alt="GPUL en acción"
           class="rounded-lg shadow-lg"
-          quality={100}
         />
       </div>
     </div>

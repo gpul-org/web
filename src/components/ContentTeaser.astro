@@ -1,7 +1,7 @@
 ---
-const { contents, card } = Astro.props
-const Card = card
-const sizes = ["", "hidden md:block", "hidden lg:block"]
+const { contents, card } = Astro.props;
+const Card = card;
+const sizes = ["", "hidden md:block", "hidden lg:block"];
 ---
 <section class="py-16">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,12 +11,17 @@ const sizes = ["", "hidden md:block", "hidden lg:block"]
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {contents.slice(0,3).map( (content: any, i: number) =>
-        <Card
-          class={sizes[i]}
-          content={content}
-        />
-      )}
+      {
+        contents.length > 0 ? (
+          contents.slice(0,3).map( (content: any, i: number) => <Card class={sizes[i]} content={content}/>)
+        ) : (
+          <p class="col-span-full w-full text-center text-2xl text-gray-700 dark:text-neutral-300">
+            <i>Parece que non hai moito por aquí agora mesmo</i>
+            <br />
+            <i>Seguro que pronto prepararemos máis actividades!</i>
+          </p>
+        )
+      }
     </div>
 
   </div>

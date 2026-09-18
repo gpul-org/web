@@ -3,7 +3,6 @@ title: HackUDC 2026
 excerpt: A pasada fin de semana, celebrouse a cuarta edición do hackathon
 date: 2026-03-03
 # author: Redacción
-image: "hackudc/HACK UDC-682.jpg"
 tags: [Asociación, HackUDC]
 ---
 
@@ -17,7 +16,7 @@ Esta ocasión, unha vez máis, a máis grande ata o momento, centrouse en mellor
 
 Organizar HackUDC leva meses de traballo e un esforzo enorme durante os días anteriores e do evento. Noites longas, pensar actividades, mover caixas, mesas, repartir comidas... todo é máis complicado cando se multiplica por 500, mais seguiremos a traballar nas futuras edicións para asegurarnos de que segue a ser un evento que a xente desfruta, ao que mereza a pena vir.
 
-![O equipo](../2026/hackudc/equipo.jpg)
+![O equipo](@assets/novas/2026/hackudc-2026/equipo.jpg)
 
 Este ano, a organización do evento aumentou o seu tamaño, con máis do doble de persoas que na pasada edición de 2025. Isto permitiunos especializarnos en tareas, facendo grupos de traballos concretos que permitiron dar maior detalle a cada área do evento. Ademáis, tarefas repetitivas como a montaxe dos kits de benvida ou os repartos de comida, víronse eficientemente acelerados e paralelizados grazas ao maior número de mans.
 
@@ -33,21 +32,21 @@ Podes consultar o resto de equipos premiados polos patrocinadores no [devpost do
 
 ### Mellores proxectos software libre
 
-![Premio mellor proxecto FOSS](../2026/hackudc/principal.jpg)
+![Premio mellor proxecto FOSS](@assets/novas/2026/hackudc-2026/principal.jpg)
 
 **Primeiro posto:** [stepcode](https://devpost.com/software/stepcode). Equipo formado por:
 - Javi Nogueira
 - Javier Manotas
 - Daniel Queijo
 
-![Segundo premio mellor proxecto FOSS](../2026/hackudc/principal-2.jpg)
+![Segundo premio mellor proxecto FOSS](@assets/novas/2026/hackudc-2026/principal-2.jpg)
 
 **Segundo posto:** [BFG-I](https://devpost.com/software/bfg-i). Equipo formado por:
 - Ignacio Garbayo
 - Carlos Cao López
 - Yago Falgueras
 
-![Terceiro premio mellor proxecto FOSS](../2026/hackudc/principal-3.jpg)
+![Terceiro premio mellor proxecto FOSS](@assets/novas/2026/hackudc-2026/principal-3.jpg)
 
 **Terceiro posto:** [Notas FIC](https://devpost.com/software/notas-fic). Equipo formado por:
 - Daniel Feito Pin
@@ -56,7 +55,7 @@ Podes consultar o resto de equipos premiados polos patrocinadores no [devpost do
 
 ### Mellor proxecto rookie
 
-![Premio mellor proxecto rookie](../2026/hackudc/rookie.jpg)
+![Premio mellor proxecto rookie](@assets/novas/2026/hackudc-2026/rookie.jpg)
 
 [HackHUB](https://devpost.com/software/hackhub). Equipo formado por:
 - Oscar Edward Perdiguero Smolen
@@ -65,7 +64,7 @@ Podes consultar o resto de equipos premiados polos patrocinadores no [devpost do
 
 ### Mellor uso da IA open source
 
-![Premio mellor proxecto ia](../2026/hackudc/ia.jpg)
+![Premio mellor proxecto ia](@assets/novas/2026/hackudc-2026/ia.jpg)
 
 [MXNJ-inditex-HackUDC2026](https://devpost.com/software/mxnj-inditex-hackudc2026). Equipo formado por:
 - Nicolás Aller Ponte

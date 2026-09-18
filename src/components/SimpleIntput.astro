@@ -20,7 +20,12 @@ type CheckBox = {
 };
 const CheckBoxClass = `flex flex-row-reverse justify-end gap-3`;
 
-type Props = { name: string; required?: boolean; class?: string } & (
+type Props = {
+  name: string;
+  required?: boolean;
+  class?: string;
+  disabled?: boolean;
+} & (
   Input | Select | TextArea | CheckBox
 );
 

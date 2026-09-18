@@ -1,12 +1,13 @@
 ---
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
+import { Image } from "astro:assets";
 import PageLayout from "../../layouts/PageLayout.astro";
-import Card from "../../components/Card.astro";
 import ImagePlaceholder from "../../components/ImagePlaceholder.astro";
 import Prose from "../../components/Prose.astro";
+import { canonicalUrl, type JsonLd } from "../../lib/seo";
+import { novas } from "../../content/nova";
 
 export async function getStaticPaths() {
-  const novas = await getCollection("novas");
   return novas.map((nova) => ({
     params: { id: nova.id },
     props: { nova },
@@ -23,37 +24,65 @@ const formatDate = (date: Date) => {
     day: "numeric",
   }).format(date);
 };
+
+const siteUrl = new URL(Astro.site ?? Astro.url.origin);
+const pageUrl = canonicalUrl(Astro.url.pathname, siteUrl);
+const articleSchema: JsonLd = {
+  "@type": "Article",
+  "@id": `${pageUrl.href}#article`,
+  headline: nova.data.title,
+  description: nova.data.excerpt,
+  url: pageUrl.href,
+  mainEntityOfPage: { "@id": `${pageUrl.href}#webpage` },
+  datePublished: nova.data.date.toISOString(),
+  inLanguage: "gl",
+  ...(nova.data.image
+    ? { image: new URL(nova.data.image.src, siteUrl).href }
+    : {}),
+  author: nova.data.author
+    ? { "@type": "Person", name: nova.data.author }
+    : { "@id": new URL("#organization", siteUrl).href },
+  publisher: { "@id": new URL("#organization", siteUrl).href },
+  ...(nova.data.tags.length > 0 ? { keywords: nova.data.tags } : {}),
+};
 ---
 
 <PageLayout
   title=`GPUL - ${nova.data.title}`
   description=`${nova.data.excerpt}`
-  image=`${nova.data.image.src}`
+  image={nova.data.image?.src}
+  breadcrumbs={[
+    { name: "Inicio", href: "/" },
+    { name: "Noticias", href: "/novas" },
+    { name: nova.data.title },
+  ]}
+  structuredData={[articleSchema]}
 >
   <div
-    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 mt-8 dark:text-white"
+    class="mx-auto mt-8 max-w-prose px-4 sm:mt-12 sm:px-0 dark:text-white"
     id="post-body"
   >
     <h1
-      class="text-5xl font-semibold"
-      transition:name={`title-${nova.data.title}`}
+      class="text-[1.9375rem] font-semibold leading-[2.25rem] tracking-tight text-balance sm:text-[2.5rem] sm:leading-[2.875rem]"
+      transition:name={`title-nova-${nova.id}`}
     >
       {nova.data.title}
     </h1>
-    <p class="text-gray-500 italic dark:text-neutral-300">
+    <p class="mt-2 text-xl leading-[1.5625rem] text-gray-600 text-pretty dark:text-neutral-300 sm:text-[1.4375rem] sm:leading-[1.875rem]">
       {nova.data.excerpt}
     </p>
     {
       nova.data.tags.length > 0 && (
-        <div class="flex flex-wrap gap-2 mb-4 mt-2">
+        <div class="mt-2 mb-4 flex flex-wrap gap-2">
           {nova.data.tags.map((tag) => (
             <span
-              transition:name={`tag-${nova.data.title}-${tag}`}
-              class="px-2 py-1 bg-orange-100 text-orange-800 dark:bg-orange-300 dark:text-orange-800 text-xs font-semibold rounded-full"
+              transition:name={`tag-nova-${nova.id}-${tag}`}
+              class="rounded-full bg-orange-100 px-2 py-1 text-xs font-semibold text-orange-800 dark:bg-orange-300 dark:text-orange-800"
             >
               {tag}
             </span>
           ))}
+          {" "}
           · {formatDate(nova.data.date)}
           {nova.data.author ? " - " : ""}
           {nova.data.author}
@@ -61,26 +90,34 @@ const formatDate = (date: Date) => {
       )
     }
 
-    {
-      nova.data.image ? (
-        <img
-          height="200px"
-          src={nova.data.image.src}
-          class="aspect-video rounded-lg "
-          transition:name={`img-${nova.data.title}`}
-        />
-      ) : (
-        <ImagePlaceholder
-          height="200px"
-          alt={nova.data.title}
-          className="aspect-video rounded-lg"
-          transition:name={`img-${nova.data.title}`}
-        />
-      )
-    }
+    <div class="my-8 sm:my-10">
+      {
+        nova.data.image ? (
+          <Image
+            src={nova.data.image}
+            alt={nova.data.title}
+            width={1200}
+            height={675}
+            sizes="(min-width: 768px) 672px, calc(100vw - 2rem)"
+            layout="constrained"
+            fit="cover"
+            position="center"
+            class="aspect-video w-full rounded-2xl object-cover"
+            priority
+            transition:name={`img-nova-${nova.id}`}
+          />
+        ) : (
+          <ImagePlaceholder
+            height="200px"
+            alt={nova.data.title}
+            className="aspect-video w-full !h-auto rounded-2xl object-cover"
+            transition:name={`img-nova-${nova.id}`}
+          />
+        )
+      }
+    </div>
     <Prose>
       <Content />
     </Prose>
-    <br />
   </div>
 </PageLayout>

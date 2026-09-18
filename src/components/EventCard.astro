@@ -4,18 +4,19 @@ import Card from "../components/Card.astro";
 
 interface Props {
   content: Event;
-  class: string;
+  class?: string;
 }
-const { content, class: className } = Astro.props;
+const { content, class: className = "" } = Astro.props;
 ---
 
 <Card
-  class={`${className}`}
+  class={className}
   title={content.data.title}
+  transitionId={`event-${content.id}`}
   excerpt={content.data.excerpt}
   date={content.data.date}
   author={content.data.authors?.map((author) => author.id).join(", ")}
-  image={`/media/eventos/${content.id}.png`}
+  image={content.data.image}
   href={`/eventos/${content.id}`}
   tags={content.data.tags}
 />

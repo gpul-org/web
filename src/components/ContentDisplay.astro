@@ -1,7 +1,15 @@
 ---
 // TODO: TS wizardry for this pls 👉👈
-const { contents, card } = Astro.props;
+const {
+  contents,
+  card,
+  threeColumns = false,
+  prioritizeFirstImage = false,
+} = Astro.props;
 const Card = card;
+const contentLayout = threeColumns
+  ? "grid grid-cols-1 gap-8 pb-4 justify-items-center md:grid-cols-2 lg:grid-cols-3"
+  : "flex flex-wrap gap-8 place-content-center justify-items-center pb-4";
 ---
 
 <section>
@@ -10,18 +18,21 @@ const Card = card;
       <slot name="title" />
     </div>
 
-    <div
-      class="flex flex-wrap gap-8 place-content-center justify-items-center pb-4"
-    >
+    <div class={contentLayout}>
       {
         contents.length > 0 ? (
-          contents.map((content: any) => <Card content={content} />)
+          contents.map((content: any, index: number) => (
+            <Card
+              content={content}
+              priority={prioritizeFirstImage && index === 0}
+            />
+          ))
         ) : (
-          <h3 class="text-2xl text-gray-300 dark:text-neutral-700 text-center">
+          <p class="col-span-full w-full text-center text-2xl text-gray-700 dark:text-neutral-300">
             <i>Parece que non hai moito por aquí agora mesmo</i>
             <br />
             <i>Seguro que pronto prepararemos máis actividades!</i>
-          </h3>
+          </p>
         )
       }
     </div>

@@ -57,4 +57,13 @@ Terás que crear o autor en `src/content/authors.json`, engadindo algo coma:
 
 (o atributo portfolio é opcional)
 
-Tamén terás que gardar unha imaxe que será a miniatura do evento en `public/<ano>/<nome-do-evento>.png`. Será unha imaxe preferiblemente en formato 16:9 (unha boa resolución é 1920x1080), sempre en formato `png`, e sempre en `src/public/` respetando o nome do evento no nome da imaxe.
+Tamén terás que gardar unha imaxe que será a miniatura do evento nun destes dous formatos:
+
+1. `src/assets/eventos/<ano>/<nome-do-evento>.png`
+2. `src/assets/eventos/<ano>/<nome-do-evento>/<nome-do-evento>.png`
+
+O nome da imaxe debe coincidir co do Markdown. Non é necesario engadila ao frontmatter. A mesma convención aplícase ás novas, dentro de `src/assets/novas/<ano>/`.
+
+Dentro do markdown do evento ou nova, podes engadir máis imaxes de dentro da carpeta de evento (segundo formato), e logo engadilas, por exemplo, así: `![Un pulpo nun garaxe](@assets/eventos/<ano>/<nome-do-evento>/garaxe-pulpo.jpg)`.
+
+Será unha imaxe preferiblemente en formato 16:9. Unha boa resolución é 1920x1080.
