@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://gpul.org/_astro/logo.BisyB_iF_DFKqE.svg", width="150">
+    <img src="https://gpul.org/favicon.svg", width="150">
     <br>
     <strong>Web de GPUL</strong>
     <br>
