@@ -95,5 +95,10 @@
   {
     "id": "julio",
     "name": "Julio"
+  },
+  {
+    "id": "l12raptor",
+    "name": "Luis Doce",
+    "portfolio": "https://codeberg.org/L12Raptor"
   }
 ]
