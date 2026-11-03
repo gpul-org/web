@@ -4,7 +4,7 @@ excerpt: "Trae o teu portátil e axudaremosche a instalarlle GNU/Linux!"
 date: 2026-10-21T17:00:00
 location: Laboratorio 0.6 - Facultade de Informática
 tags: ['School']
-status: upcoming
+status: past
 authors: [l12raptor]
 ---
 
