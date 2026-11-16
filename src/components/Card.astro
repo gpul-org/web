@@ -60,17 +60,21 @@ const CardTag = href ? "a" : "div";
         layout="constrained"
         fit="cover"
         position="center"
-        class="block w-full aspect-video rounded-lg object-cover outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10"
+        class="content-image block w-full aspect-video rounded-lg object-cover outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10"
         priority={priority}
         loading={priority ? undefined : "lazy"}
         transition:name={`img-${transitionId}`}
+        transition:animate="initial"
+        data-content-image={transitionId}
       />
     ) : (
       <ImagePlaceholder
         height="200px"
         alt={imageAlt}
-        className="aspect-video rounded-lg"
+        className="content-image aspect-video !h-auto rounded-lg"
         transition:name={`img-${transitionId}`}
+        transition:animate="initial"
+        data-content-image={transitionId}
       />
     )
   }
@@ -81,7 +85,6 @@ const CardTag = href ? "a" : "div";
         <div class="mb-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
-              transition:name={`tag-${transitionId}-${tag}`}
               class="rounded-full bg-orange-100 px-2 py-1 text-xs font-semibold text-orange-800 dark:bg-orange-300 dark:text-orange-900"
             >
               {tag}
@@ -93,7 +96,6 @@ const CardTag = href ? "a" : "div";
 
     <h3
       class="mb-3 min-h-[3.5rem] text-xl font-semibold leading-7 text-gray-900 line-clamp-2 text-balance dark:text-white"
-      transition:name={`title-${transitionId}`}
     >
       {title}
     </h3>

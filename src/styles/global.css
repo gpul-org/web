@@ -13,6 +13,42 @@
   scroll-margin-block-start: 5rem;
 }
 
+/* Keep the article image in its own snapshot above the fading page content.
+   `initial` on each image preserves the browser's native geometry animation. */
+::view-transition-group(page-content) {
+  animation: none;
+}
+
+::view-transition-group(.content-image) {
+  animation-duration: 280ms;
+  animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 1;
+}
+
+::view-transition-image-pair(.content-image) {
+  overflow: clip;
+  border-radius: 1rem;
+  isolation: isolate;
+}
+
+/* Only matched images receive this class, so unrelated cards still fade. */
+::view-transition-old(.content-image) {
+  animation: none;
+  opacity: 0;
+}
+
+::view-transition-new(.content-image) {
+  animation: none;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(.content-image) {
+    animation: none;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --pf-text: var(--color-neutral-100);

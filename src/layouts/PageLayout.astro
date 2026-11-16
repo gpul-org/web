@@ -43,7 +43,7 @@ const pageStructuredData = [
   ...structuredData,
 ];
 
-const pageTransition = { navigation: fade().forwards };
+const pageTransition = fade({ duration: "180ms" });
 ---
 
 <BaseLayout
@@ -62,6 +62,7 @@ const pageTransition = { navigation: fade().forwards };
 
     <main
       class:list={["flex-1 pt-16", { "pb-8": footerSpacing }]}
+      transition:name="page-content"
       transition:animate={pageTransition}
     >
       <slot />
