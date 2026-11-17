@@ -143,11 +143,41 @@ const schemas: JsonLd[] = [
     <!-- View Transitions -->
     <ClientRouter fallback="animate" />
 
-    <script is:inline>
+    <script>
+      // Prepare the matching image before capturing the destination page. This
+      // also loads a lazy card image when returning to a scrolled listing.
       document.addEventListener("astro:before-preparation", (event) => {
-        event.direction = event.sourceElement?.closest("nav")
-          ? "navigation"
-          : "content";
+        const load = event.loader;
+        event.loader = async () => {
+          await load();
+          if (event.signal.aborted) return;
+          const currentImages = new Map(
+            [...document.querySelectorAll<HTMLElement>("[data-content-image]")].map(
+              (image) => {
+                image.style.removeProperty("view-transition-class");
+                return [image.dataset.contentImage, image] as const;
+              },
+            ),
+          );
+          for (const image of event.newDocument.querySelectorAll<HTMLElement>("[data-content-image]")) {
+            const current = currentImages.get(image.dataset.contentImage);
+            if (current) {
+              current.style.setProperty("view-transition-class", "content-image");
+              image.style.setProperty("view-transition-class", "content-image");
+            }
+          }
+          await Promise.all(
+            [...event.newDocument.querySelectorAll<HTMLImageElement>("img[data-content-image]")]
+              .filter((image) => currentImages.has(image.dataset.contentImage ?? ""))
+              .map(async (image) => {
+                const preload = new Image();
+                preload.sizes = image.sizes;
+                preload.srcset = image.srcset;
+                preload.src = image.src;
+                await preload.decode().catch(() => {});
+              }),
+          );
+        };
       });
     </script>
   </head>
